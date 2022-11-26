@@ -15,4 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private String none="none";
     private String mohd="mohd";
     private String hello = "Hello";
+
+    private static String Shuying(){
+        return "ABC";
+    }
 }
