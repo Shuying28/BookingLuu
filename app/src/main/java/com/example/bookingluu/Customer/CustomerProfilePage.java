@@ -50,9 +50,9 @@ public class CustomerProfilePage extends AppCompatActivity {
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                fNameText.setText(value.getString("Full Name"));
-                eText.setText(value.getString("Email"));
-                pNumberText.setText(value.getString("Phone Number"));
+                fNameText.setText(value.getString("fullName"));
+                eText.setText(value.getString("email"));
+                pNumberText.setText(value.getString("phoneNumber"));
             }
         });
 
