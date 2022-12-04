@@ -12,10 +12,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bookingluu.CustomerLoginPage;
+import com.example.bookingluu.JavaMailAPI;
 import com.example.bookingluu.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,6 +37,7 @@ public class CustomerRegisterPage extends AppCompatActivity {
     FirebaseFirestore fStore;
     private TextView haveAccountText;
     String userID;
+    private ProgressBar registerProgressBar;
 
 
     @Override
@@ -47,6 +50,8 @@ public class CustomerRegisterPage extends AppCompatActivity {
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                registerProgressBar.setVisibility(View.VISIBLE);
+                signUpBtn.setVisibility(View.INVISIBLE);
                 String email=emailText.getText().toString().trim();
                 String password= passwordText.getText().toString().trim();
                 String conPassword = confirmPasswordText.getText().toString().trim();
@@ -75,13 +80,13 @@ public class CustomerRegisterPage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            sendMail(fullName);
+                            registerProgressBar.setVisibility(View.GONE);
+                            signUpBtn.setVisibility(View.VISIBLE);
                             Toast.makeText(CustomerRegisterPage.this, "User Created", Toast.LENGTH_SHORT).show();
                             userID=fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference =fStore.collection("customers").document(userID);
-                            Map<String, Object> customer= new HashMap<>();
-                            customer.put("Full Name",fullName);
-                            customer.put("Email", email);
-                            customer.put("Phone Number", phoneNumber);
+                            Customer customer= new Customer(fullName,email,phoneNumber,"");
                             documentReference.set(customer).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
@@ -93,6 +98,8 @@ public class CustomerRegisterPage extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), CustomerLoginPage.class));
                             
                         }else{
+                            registerProgressBar.setVisibility(View.GONE);
+                            signUpBtn.setVisibility(View.VISIBLE);
                             Toast.makeText(CustomerRegisterPage.this, "Error ! "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -110,9 +117,16 @@ public class CustomerRegisterPage extends AppCompatActivity {
         });
 
 
+
+
     }
 
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(getApplicationContext(), CustomerLoginPage.class));
+    }
     private void init(){
         fullNameText=findViewById(R.id.fullNameText);
         phoneNumberText=findViewById(R.id.phoneNumberText);
@@ -123,5 +137,20 @@ public class CustomerRegisterPage extends AppCompatActivity {
         fAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
         haveAccountText=findViewById(R.id.haveAccountText);
+        registerProgressBar=findViewById(R.id.registerProgressBar);
+    }
+
+
+    private void sendMail(String customer) {
+
+        String mail = emailText.getText().toString().trim();
+        String message = "Dear "+customer+",\n\nThank You for choosing BookingLuu!\n\nWe are very happy to welcome you as a registered customer of BookingLuu.\nWe look forward to first reservation with us.\nIf you need any assistance please contact bookingluucustomerservice@gmail.com\n\nBest Regards,\nBookingLuu Customer Center";
+        String subject = "BookingLuu User Registration";
+
+        //Send Mail
+        JavaMailAPI javaMailAPI = new JavaMailAPI(this,mail,subject,message);
+
+        javaMailAPI.execute();
+
     }
 }

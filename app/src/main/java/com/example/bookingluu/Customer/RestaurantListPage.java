@@ -28,6 +28,13 @@ public class RestaurantListPage extends AppCompatActivity {
 
             }
         });
+
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CustomerProfilePage.class));
+            }
+        });
     }
 
     private void init(){

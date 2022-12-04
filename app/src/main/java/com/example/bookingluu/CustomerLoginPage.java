@@ -72,7 +72,9 @@ public class CustomerLoginPage extends AppCompatActivity {
                             startActivity(new Intent(getApplicationContext(), RestaurantListPage.class));
                             finish();
                         }else{
-                            Toast.makeText(CustomerLoginPage.this, "Error! "+ task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                            loginBtn.setVisibility(View.VISIBLE);
+                            Toast.makeText(CustomerLoginPage.this, "Error! "+ task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
