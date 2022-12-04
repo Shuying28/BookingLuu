@@ -19,4 +19,5 @@ public class MainActivity extends AppCompatActivity {
     private static String Shuying(){
         return "ABC";
     }
+    private static String Test(){ return  "123";}
 }
