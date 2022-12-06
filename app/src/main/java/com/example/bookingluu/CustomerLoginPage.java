@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bookingluu.Customer.CustomerRegisterPage;
+import com.example.bookingluu.Customer.ForgotPasswordPage;
 import com.example.bookingluu.Customer.RestaurantListPage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class CustomerLoginPage extends AppCompatActivity {
-    private TextView registerText;
+    private TextView registerText,forgotPasswordText;
     private EditText emailText, passwordText;
     private Button loginBtn;
     FirebaseAuth fAuth;
@@ -40,8 +41,15 @@ public class CustomerLoginPage extends AppCompatActivity {
                 Intent intent= new Intent(CustomerLoginPage.this, CustomerRegisterPage.class);
                 startActivity(intent);
                 finish();
+            }
+        });
 
-
+        forgotPasswordText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(CustomerLoginPage.this, ForgotPasswordPage.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -87,6 +95,7 @@ public class CustomerLoginPage extends AppCompatActivity {
 
     public void init(){
         registerText=findViewById(R.id.registerText);
+        forgotPasswordText=findViewById(R.id.forgotPasswordText);
         emailText=findViewById(R.id.emailText);
         passwordText=findViewById(R.id.passwordText);
         loginBtn=findViewById(R.id.loginBtn);

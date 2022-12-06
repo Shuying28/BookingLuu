@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bookingluu.CustomerLoginPage;
 import com.example.bookingluu.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,7 +34,7 @@ import com.squareup.picasso.Picasso;
 public class CustomerProfilePage extends AppCompatActivity {
     private TextView fNameText, pNumberText,eText;
     private Button homeBtn, historyBtn, logoutBtn;
-    private ImageView profilePic, editImageBtn;
+    private ImageView profilePic, editImageBtn, myProfileBackBtn;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     StorageReference storageReference;
@@ -46,6 +47,30 @@ public class CustomerProfilePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_profile_page);
         init();
+
+        myProfileBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), RestaurantListPage.class));
+            }
+        });
+
+        historyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CustomerProfilePage.this, ReservationHistoryPage.class));
+            }
+        });
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(getApplicationContext(), CustomerLoginPage.class));
+                finish();
+
+            }
+        });
 
         documentReference= fStore.collection("customers").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -82,14 +107,17 @@ public class CustomerProfilePage extends AppCompatActivity {
         eText=findViewById(R.id.eText);
         homeBtn=findViewById(R.id.homeBtn);
         historyBtn=findViewById(R.id.historyBtn);
-        logoutBtn=findViewById(R.id.loginBtn);
+        logoutBtn=findViewById(R.id.logoutBtn);
         profilePic=findViewById(R.id.profilePic);
+        myProfileBackBtn=findViewById(R.id.myProfileBackBtn);
         fAuth=FirebaseAuth.getInstance();
         fStore=FirebaseFirestore.getInstance();
         storageReference= FirebaseStorage.getInstance().getReference();
         userId=fAuth.getCurrentUser().getUid();
         editImageBtn=findViewById(R.id.editImageBtn);
         progressDialog =new ProgressDialog(this);
+
+
     }
 
     @Override
