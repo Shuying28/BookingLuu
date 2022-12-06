@@ -12,14 +12,15 @@ import android.view.View;
 import android.widget.ImageView;
 
 public class RestaurantListPage extends AppCompatActivity {
-    private ImageView backBtn, profileBtn;
+    private ImageView listBackBtn, profileBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant_list_page);
         init();
-        backBtn.setOnClickListener(new View.OnClickListener() {
+
+        listBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
@@ -38,7 +39,7 @@ public class RestaurantListPage extends AppCompatActivity {
     }
 
     private void init(){
-        backBtn=findViewById(R.id.backBtn);
+        listBackBtn=findViewById(R.id.listBackBtn);
         profileBtn=findViewById(R.id.profileBtn);
     }
 }
