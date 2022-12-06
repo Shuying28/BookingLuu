@@ -40,6 +40,7 @@ public class CustomerProfilePage extends AppCompatActivity {
     String userId;
     DocumentReference documentReference;
     ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,10 +106,6 @@ public class CustomerProfilePage extends AppCompatActivity {
             }catch(NullPointerException ex){
 
             }
-
-
-
-
         }
     }
 
@@ -122,12 +119,11 @@ public class CustomerProfilePage extends AppCompatActivity {
                    @Override
                    public void onSuccess(Uri uri) {
                        Picasso.get().load(uri).into(profilePic);
-
+                       documentReference.update("image",uri);
                    }
                });
                 Toast.makeText(CustomerProfilePage.this, "Image Uploaded", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
-                documentReference.update("image","users/"+fAuth.getCurrentUser().getUid()+"/profile.jpg");
 
             }
         }).addOnFailureListener(new OnFailureListener() {
