@@ -59,6 +59,7 @@ public class RestaurantListPage extends AppCompatActivity {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 startActivity(new Intent(getApplicationContext(), CustomerProfilePage.class));
             }
         });

@@ -63,4 +63,10 @@ public class ForgotPasswordPage extends AppCompatActivity {
         submitBtn=findViewById(R.id.submitBtn);
         fAuth= FirebaseAuth.getInstance();
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(getApplicationContext(), CustomerLoginPage.class));
+    }
 }

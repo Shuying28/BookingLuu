@@ -48,8 +48,9 @@ public class CustomerLoginPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(CustomerLoginPage.this, ForgotPasswordPage.class);
-                startActivity(intent);
                 finish();
+                startActivity(intent);
+
             }
         });
 

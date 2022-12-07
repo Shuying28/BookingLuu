@@ -5,8 +5,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -41,6 +44,7 @@ public class CustomerProfilePage extends AppCompatActivity {
     String userId;
     DocumentReference documentReference;
     ProgressDialog progressDialog;
+    private Dialog logoutDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class CustomerProfilePage extends AppCompatActivity {
         myProfileBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 startActivity(new Intent(getApplicationContext(), RestaurantListPage.class));
             }
         });
@@ -99,6 +104,36 @@ public class CustomerProfilePage extends AppCompatActivity {
         });
 
 
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logoutDialog = new Dialog(CustomerProfilePage.this);
+                logoutDialog.setContentView(R.layout.customer_logout_dialogue);
+                Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
+                Button noBtn= logoutDialog.findViewById(R.id.noBtn);
+                logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                logoutDialog.show();
+                yesBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FirebaseAuth.getInstance().signOut();
+                        logoutDialog.dismiss();
+                        startActivity(new Intent(getApplicationContext(), CustomerLoginPage.class));
+                        finish();
+                    }
+                });
+                noBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        logoutDialog.dismiss();
+                    }
+                });
+
+
+            }
+        });
+
+
     }
 
     public void init(){
@@ -118,6 +153,12 @@ public class CustomerProfilePage extends AppCompatActivity {
         progressDialog =new ProgressDialog(this);
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(getApplicationContext(), RestaurantListPage.class));
     }
 
     @Override
