@@ -21,10 +21,6 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <Button
             android:id="@+id/yesBtn"
             android:layout_width="155dp"
@@ -52,13 +48,12 @@
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
             android:layout_marginStart="71dp"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="72dp"
             android:layout_marginBottom="21dp"
             android:backgroundTint="@color/orange_main"
             android:text="no"
             android:textColor="@color/black"
             app:cornerRadius="15dp" />
-    </RelativeLayout>
 
 </LinearLayout>

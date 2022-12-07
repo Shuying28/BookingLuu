@@ -24,20 +24,22 @@
     <Button
         android:id="@+id/button"
         android:layout_width="155dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:background="@drawable/button_shape2"
+        android:backgroundTint="@color/orange_main"
         android:text="Yes"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        app:cornerRadius="15dp" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="155dp"
-        android:layout_height="40dp"
+        android:layout_height="45dp"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_shape2"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange_main"
         android:text="Cancel"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        app:cornerRadius="15dp" />
 </LinearLayout>
