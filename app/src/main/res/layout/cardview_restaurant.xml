@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
     android:layout_margin="16dp"
     android:orientation="horizontal"
+    app:cardBackgroundColor="#FFF0DE"
     app:cardCornerRadius="20dp"
-    app:cardElevation="8dp"
-    app:cardBackgroundColor="#FFF0DE">
+    app:cardElevation="8dp">
 
     <LinearLayout
         android:id="@+id/leftt"
@@ -26,8 +27,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/restaurant_sample"
-            />
+            app:srcCompat="@drawable/restaurant_sample" />
 
         <LinearLayout
             android:id="@+id/left"
@@ -46,13 +46,12 @@
                     android:id="@+id/Name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:layout_marginLeft="0dp"
+                    android:layout_marginTop="8dp"
                     android:text="Hooland Food"
                     android:textColor="#000F45"
                     android:textSize="14dp"
-                    android:textStyle="bold"
-                    />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -67,7 +66,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
-                    android:text="Address"
+                    android:text="Address:"
                     android:textColor="#000F45"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -77,6 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
+                    android:layout_marginBottom="3dp"
                     android:text="Kolej Kediaman Kinabalu, University Malaya"
                     android:textColor="#000F45"
                     android:textSize="12sp" />
@@ -87,6 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginTop="5dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -106,7 +107,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="0dp"
                             android:layout_marginstop="0dp"
-                            android:text="Star:"
+                            android:text="Rating:"
                             android:textColor="#000F45"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -116,9 +117,17 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="0dp"
-                            android:text=" 5star"
+                            android:text=" 5.00"
                             android:textColor="#000F45"
                             android:textSize="12sp" />
+
+                        <ImageView
+                            android:id="@+id/imageView3"
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/ic_baseline_star_rating" />
                     </LinearLayout>
 
                     <TextView
@@ -135,7 +144,7 @@
                     android:id="@+id/button2"
                     android:layout_width="77dp"
                     android:layout_height="38dp"
-                    android:layout_marginLeft="80dp"
+                    android:layout_marginLeft="75dp"
                     android:backgroundTint="#FE724C"
                     android:text="Visit"
                     android:textColor="#ffffff" />
