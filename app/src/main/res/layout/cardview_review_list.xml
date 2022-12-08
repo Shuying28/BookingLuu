@@ -23,58 +23,38 @@
 
         </com.google.android.material.imageview.ShapeableImageView>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="\@ikhwanrao"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginLeft="10dp">
+                    android:text="/@ikhwanrao">
 
                 </TextView>
+
 
                 <RatingBar
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="25dp"
                     android:numStars="5"
-                    android:progressTint="#FE724C"
-                    android:rating="3"
-                    android:scaleX="0.4"
-                    android:scaleY="0.4"
-                    android:stepSize="0.5"
-                    android:transformPivotX="0dp"
-                    android:transformPivotY="0dp">
+                    android:scaleX="1"
+                    android:scaleY="1"
+                    android:stepSize="1">
 
                 </RatingBar>
+            </LinearLayout>
 
 
-            <TextView
-                android:layout_width="250dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="26dp"
-                android:fontFamily="@font/montserrat"
-                android:text="I would recommend this for all my friend!"
-                android:textColor="@color/black"
-                android:textSize="13sp">
-
-            </TextView>
-        </RelativeLayout>
+        </LinearLayout>
 
 
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>
