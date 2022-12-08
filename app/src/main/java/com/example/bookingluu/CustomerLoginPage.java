@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bookingluu.Admin.AdminLoginPage;
 import com.example.bookingluu.Customer.CustomerRegisterPage;
 import com.example.bookingluu.Customer.ForgotPasswordPage;
 import com.example.bookingluu.Customer.RestaurantListPage;
@@ -22,7 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class CustomerLoginPage extends AppCompatActivity {
-    private TextView registerText,forgotPasswordText;
+    private TextView registerText,forgotPasswordText, loginAsAdminText;
     private EditText emailText, passwordText;
     private Button loginBtn;
     FirebaseAuth fAuth;
@@ -91,6 +92,14 @@ public class CustomerLoginPage extends AppCompatActivity {
             }
         });
 
+        loginAsAdminText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AdminLoginPage.class));
+
+            }
+        });
+
 
     }
 
@@ -102,6 +111,7 @@ public class CustomerLoginPage extends AppCompatActivity {
         loginBtn=findViewById(R.id.loginBtn);
         fAuth=FirebaseAuth.getInstance();
         progressBar=findViewById(R.id.progressBar);
+        loginAsAdminText=findViewById(R.id.loginAsAdminText);
     }
 
 }
