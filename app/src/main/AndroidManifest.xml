@@ -15,6 +15,13 @@
         android:theme="@style/Theme.BookingLuu"
         tools:targetApi="31">
         <activity
+            android:name=".AdminMenuPage"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Customer.ReservationHistoryPage"
             android:exported="false">
             <meta-data
@@ -30,14 +37,14 @@
         </activity>
         <activity
             android:name=".Customer.CustomerProfilePage"
-            android:exported="true">
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Customer.RestaurantListPage"
-            android:exported="true">
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
