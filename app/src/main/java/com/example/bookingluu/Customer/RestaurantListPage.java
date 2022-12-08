@@ -18,6 +18,7 @@ import android.widget.ImageView;
 public class RestaurantListPage extends AppCompatActivity {
     private ImageView backBtn, profileBtn;
     private Dialog logoutDialog;
+    private Button tempBtn;
 
 
     @Override
@@ -63,6 +64,13 @@ public class RestaurantListPage extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), CustomerProfilePage.class));
             }
         });
+
+        tempBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CustomerMainPage.class));
+            }
+        });
     }
 
     @Override
@@ -93,5 +101,6 @@ public class RestaurantListPage extends AppCompatActivity {
     private void init(){
         backBtn=findViewById(R.id.listBackBtn);
         profileBtn=findViewById(R.id.profileBtn);
+        tempBtn=findViewById(R.id.tempBtn);
     }
 }

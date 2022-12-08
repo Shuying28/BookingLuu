@@ -17,4 +17,13 @@
     <style name="Button.White" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@color/orange_main</item>
     </style>
+
+    <style name="Theme.BookingLuu.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.BookingLuu.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.BookingLuu.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

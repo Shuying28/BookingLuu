@@ -15,8 +15,10 @@
         android:theme="@style/Theme.BookingLuu"
         tools:targetApi="31">
         <activity
-            android:name=".AdminMenuPage"
-            android:exported="false">
+            android:name=".Customer.CustomerMainPage"
+            android:exported="false"
+            android:label="@string/title_activity_customer_page"
+            android:theme="@style/Theme.BookingLuu.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -28,6 +30,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
             android:name=".Customer.ReservationHistoryPage"
             android:exported="false">
