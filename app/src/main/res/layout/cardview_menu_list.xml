@@ -28,14 +28,6 @@
             android:layout_height="match_parent"
             android:padding="10dp">
 
-            <ImageView
-                android:id="@+id/threeDotsIcon"
-                android:layout_width="21dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="1px"
-                android:layout_marginLeft="130dp"
-                app:srcCompat="@drawable/threedots" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
