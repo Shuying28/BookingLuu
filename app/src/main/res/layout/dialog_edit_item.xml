@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:layout_height="430dp"
+    android:layout_gravity="center"
+    android:background="@drawable/bluebutton_shape2"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+
+    <TextView
+        android:id="@+id/codeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Code"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold">
+
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="19dp"
+        android:layout_marginLeft="120dp">
+
+        <EditText
+            android:id="@+id/codeEdtTxt"
+            android:layout_width="140dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:foregroundGravity="center|center_horizontal"
+            android:gravity="center|start|center_horizontal|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/dark_blue"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/nameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_below="@+id/codeTxt"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Name"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold">
+
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="68dp"
+        android:layout_marginLeft="120dp"
+        >
+
+        <EditText
+            android:layout_width="140dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:foregroundGravity="center|center_horizontal"
+            android:gravity="center|start|center_horizontal|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/dark_blue"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/priceTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="61dp"
+        android:layout_below="@+id/nameTxt"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Price"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold">
+
+
+    </TextView>
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="117dp"
+        android:layout_marginLeft="120dp"
+        >
+
+        <EditText
+            android:layout_width="140dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:foregroundGravity="center|center_horizontal"
+            android:gravity="center|start|center_horizontal|top"
+            android:inputType="textMultiLine"
+            android:textColor="@color/dark_blue"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/imgTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="56dp"
+        android:layout_below="@+id/priceTxt"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Image"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold">
+
+
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/imgView"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="165dp"
+        android:layout_marginLeft="120dp"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+
+            android:layout_width="90dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:foregroundGravity="center|center_horizontal"
+            android:gravity="center|start|center_horizontal|top"
+            app:shapeAppearanceOverlay="@style/roundImageView"
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imgView"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="200dp"
+        android:text="Choose Image"
+        android:fontFamily="@font/montserrat"
+        android:textSize="10sp"
+        android:textColor="#29FF00">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/desTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="28dp"
+        android:layout_below="@+id/imgTxt"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Description"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold">
+
+
+    </TextView>
+
+    <LinearLayout
+        android:id="@+id/desEdtTxt"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edit_text_shape"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="255dp"
+        android:layout_marginLeft="120dp"
+        >
+
+        <EditText
+            android:layout_width="130dp"
+            android:layout_height="65dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:ems="10"
+            android:foregroundGravity="center|center_horizontal"
+            android:gravity="center|start|center_horizontal|top"
+            android:inputType="textMultiLine"
+            android:isScrollContainer="true"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbarThumbVertical="@color/admin_third"
+            android:scrollbars="vertical"
+            android:shadowColor="@color/admin_second"
+            android:textColor="@color/dark_blue"
+            android:verticalScrollbarPosition="right"
+            />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/cancelBtn"
+        android:layout_width="90dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/desEdtTxt"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="80dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Cancel"
+        android:textColor="@color/dark_blue"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:backgroundTint="@color/white"
+        app:cornerRadius="10dp" />
+
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="90dp"
+        android:layout_height="35dp"
+        android:layout_below="@+id/desEdtTxt"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="180dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Save"
+        android:textColor="@color/dark_blue"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:backgroundTint="#EAF9FF"
+        app:cornerRadius="10dp" />
+
+
+
+</RelativeLayout>
