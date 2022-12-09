@@ -57,7 +57,7 @@
             android:scrollbarAlwaysDrawHorizontalTrack="false"
             android:scrollbarThumbVertical="@color/orange_second"
             android:scrollbars="vertical"
-            android:shadowColor="@color/orange_second"
+            android:shadowColor="@color/orange_main"
             android:textColor="@color/dark_blue"
             android:verticalScrollbarPosition="right" />
 

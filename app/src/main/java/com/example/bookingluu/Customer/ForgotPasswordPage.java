@@ -55,6 +55,7 @@ public class ForgotPasswordPage extends AppCompatActivity {
                 });
             }
         });
+
     }
 
     public void init(){

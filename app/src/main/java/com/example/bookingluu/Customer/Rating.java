@@ -3,6 +3,8 @@ package com.example.bookingluu.Customer;
 public class Rating {
     private String customerName, commentText, imgURI, rate;
 
+    public Rating() {
+    }
 
     public Rating(String customerName, String commentText, String imgURI, String rate) {
         this.customerName = customerName;
