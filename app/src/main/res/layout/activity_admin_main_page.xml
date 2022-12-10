@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".Customer.CustomerMainPage">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addMenuBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@drawable/ic_baseline_add_menu"
+        android:clickable="true"
+        android:visibility="invisible"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_add_menu" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"

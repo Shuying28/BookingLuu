@@ -35,7 +35,7 @@
         android:layout_marginLeft="120dp">
 
         <EditText
-            android:id="@+id/codeEdtTxt"
+            android:id="@+id/menuCodeText"
             android:layout_width="140dp"
             android:layout_height="15dp"
             android:layout_gravity="center"
@@ -148,7 +148,7 @@
 
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/imgView"
+            android:id="@+id/menuImage"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:gravity="center_horizontal"
@@ -157,6 +157,8 @@
             android:layout_gravity="center"
             android:background="@color/white"
             app:shapeAppearanceOverlay="@style/roundImageView"
+            android:src="@drawable/menu_list_1"
+            android:scaleType="centerCrop"
             />
 
 
@@ -165,7 +167,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imgView"
+        android:layout_below="@id/menuImage"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="200dp"
         android:text="Choose Image"
@@ -239,7 +241,7 @@
         app:cornerRadius="10dp" />
 
     <Button
-        android:id="@+id/saveBtn"
+        android:id="@+id/addBtn"
         android:layout_width="90dp"
         android:layout_height="35dp"
         android:layout_below="@+id/desEdtTxt"

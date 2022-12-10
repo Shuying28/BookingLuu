@@ -39,9 +39,9 @@ public class CustomerProfilePage extends AppCompatActivity {
     private Button homeBtn, historyBtn, logoutBtn;
     private ImageView profilePic, editImageBtn, myProfileBackBtn;
     FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
     StorageReference storageReference;
     String userId;
+    FirebaseFirestore fStore;
     DocumentReference documentReference;
     ProgressDialog progressDialog;
     private Dialog logoutDialog;
@@ -108,7 +108,7 @@ public class CustomerProfilePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 logoutDialog = new Dialog(CustomerProfilePage.this);
-                logoutDialog.setContentView(R.layout.customer_logout_dialogue);
+                logoutDialog.setContentView(R.layout.dialog_customer_logout);
                 Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
                 Button noBtn= logoutDialog.findViewById(R.id.noBtn);
                 logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
