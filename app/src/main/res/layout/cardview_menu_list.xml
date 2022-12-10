@@ -14,8 +14,8 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="160dp"
             android:layout_height="90dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/menu_list_1"

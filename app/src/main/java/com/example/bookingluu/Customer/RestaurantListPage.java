@@ -32,7 +32,7 @@ public class RestaurantListPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 logoutDialog = new Dialog(RestaurantListPage.this);
-                logoutDialog.setContentView(R.layout.customer_logout_dialogue);
+                logoutDialog.setContentView(R.layout.dialog_customer_logout);
                 Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
                 Button noBtn= logoutDialog.findViewById(R.id.noBtn);
                 logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -76,7 +76,7 @@ public class RestaurantListPage extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         logoutDialog = new Dialog(RestaurantListPage.this);
-        logoutDialog.setContentView(R.layout.customer_logout_dialogue);
+        logoutDialog.setContentView(R.layout.dialog_customer_logout);
         Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
         Button noBtn= logoutDialog.findViewById(R.id.noBtn);
         logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
