@@ -52,7 +52,7 @@
             android:layout_marginEnd="72dp"
             android:layout_marginBottom="21dp"
             android:backgroundTint="@color/orange_main"
-            android:text="no"
+            android:text="cancel"
             android:textColor="@color/black"
             app:cornerRadius="15dp" />
 
