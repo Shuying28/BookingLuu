@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="350dp"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="23dp"
+    android:layout_marginLeft="28dp"
     android:layout_marginTop="10dp"
     app:cardCornerRadius="13dp"
     app:cardElevation="8dp">
@@ -49,6 +49,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginStart="-1dp"
                     android:layout_marginTop="10dp"
+                    android:fontFamily="@font/montserrat"
                     android:text="/@ikhwanrao"
                     android:textAlignment="viewStart"
                     android:textColor="@color/dark_blue">
@@ -80,8 +81,10 @@
 
             <TextView
                 android:id="@+id/cardCommentText"
-                android:layout_width="274dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:fontFamily="@font/montserrat"
                 android:text="Good Restaurant  and nice service"
                 android:textColor="@color/dark_blue" />
 
