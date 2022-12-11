@@ -37,14 +37,15 @@ import com.squareup.picasso.Picasso;
 public class CustomerProfilePage extends AppCompatActivity {
     private TextView fNameText, pNumberText,eText;
     private Button homeBtn, historyBtn, logoutBtn;
-    private ImageView profilePic, editImageBtn, myProfileBackBtn;
+    private ImageView profilePic, editImageBtn, myProfileBackBtn, editDetailBtn;
     FirebaseAuth fAuth;
     StorageReference storageReference;
     String userId;
     FirebaseFirestore fStore;
     DocumentReference documentReference;
     ProgressDialog progressDialog;
-    private Dialog logoutDialog;
+    private Dialog logoutDialog, editProfileDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +135,12 @@ public class CustomerProfilePage extends AppCompatActivity {
         });
 
 
+         //Todo: editProfileDialog and editProfile in database : all member can try
+        // 1.用和我pop up logout dialog 的方法pop edit profile dialog
+        // 2.去看我怎样update image 的field  在line 199 - 用来update 名字和电话号码
+
+
+
     }
 
     public void init(){
@@ -151,6 +158,7 @@ public class CustomerProfilePage extends AppCompatActivity {
         userId=fAuth.getCurrentUser().getUid();
         editImageBtn=findViewById(R.id.editImageBtn);
         progressDialog =new ProgressDialog(this);
+        editDetailBtn= findViewById(R.id.editDetailBtn);
 
 
     }
