@@ -17,7 +17,7 @@
     <color name="accept_colour">#249A29</color>
     <color name="decline_colour">#FD0B0B</color>
     <color name="grey_colour">#7E7B7B</color>
-
+    <color name="approved_colour">#6AC259</color>
 
 
 </resources>
