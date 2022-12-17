@@ -12,10 +12,15 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
     </style>
 
     <style name="Button.White" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@color/orange_main</item>
+    </style>
+
+    <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">#7994F5</item>
     </style>
 
     <style name="Theme.BookingLuu.NoActionBar">
@@ -26,4 +31,12 @@
     <style name="Theme.BookingLuu.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.BookingLuu.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AdminTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">@color/admin_second</item>
+        <item name="colorPrimary">@color/admin_second</item>
+        <item name="android:itemBackground">#7994F5</item>
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
+
+    </style>
 </resources>
