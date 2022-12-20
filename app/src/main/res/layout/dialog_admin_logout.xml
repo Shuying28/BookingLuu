@@ -4,7 +4,7 @@
     android:layout_width="309dp"
     android:layout_height="238dp"
     android:layout_gravity="center"
-    android:background="@drawable/bluebutton_shape2"
+    android:background="@drawable/bluebotton_shape2"
     android:orientation="vertical"
     android:padding="5dp">
 
@@ -33,8 +33,10 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="73dp"
         android:backgroundTint="@color/admin_main"
+        android:fontFamily="@font/montserrat"
         android:text="Yes"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:theme="@style/Button.White"
         app:cornerRadius="15dp" />
 
@@ -48,12 +50,13 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginStart="71dp"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="21dp"
         android:backgroundTint="@color/admin_main"
+        android:fontFamily="@font/montserrat"
         android:text="cancel"
         android:textColor="@color/black"
+        android:textStyle="bold"
         app:cornerRadius="15dp" />
 
 </LinearLayout>

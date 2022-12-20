@@ -60,19 +60,20 @@ public class CustomerRegisterPage extends AppCompatActivity {
 
 
                 if(TextUtils.isEmpty(email)){
-                    emailText.setError("Email id required");
+                    emailText.setError("Email is required!");
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
-                    passwordText.setError("Password required");
+                    passwordText.setError("Password is required!");
                     return;
                 }
                 if(password.length()<6){
-                    passwordText.setError("Password must be longer than 6 character");
+                    passwordText.setError("Password must be longer than 6 characters!");
                     return;
                 }
+
                 if(!conPassword.equals(password)){
-                    confirmPasswordText.setError("Different password input ");
+                    confirmPasswordText.setError("Different password input!                                                                                      ");
                     return;
                 }
 

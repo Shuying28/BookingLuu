@@ -29,7 +29,9 @@ import android.widget.Toast;
 import com.example.bookingluu.Customer.Customer;
 import com.example.bookingluu.Customer.CustomerMainPage;
 import com.example.bookingluu.Customer.CustomerProfilePage;
+import com.example.bookingluu.Customer.RestaurantListPage;
 import com.example.bookingluu.Customer.ViewPagerFragmentAdapter;
+import com.example.bookingluu.CustomerLoginPage;
 import com.example.bookingluu.R;
 import com.example.bookingluu.Restaurant.Menu;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,6 +40,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -50,6 +53,8 @@ public class AdminMainPage extends AppCompatActivity {
     AdminViewPagerAdapter viewPagerFragmentAdapter;
     TabLayout tabLayout;
     ViewPager2 viewPager2;
+    private Button backBtn;
+    private Dialog logoutDialog;
     private String[] titles= new String[]{"PENDING","UPCOMING","MENU"};
     private FloatingActionButton addMenuBtn;
     private Dialog addMenuDialog;
@@ -66,6 +71,34 @@ public class AdminMainPage extends AppCompatActivity {
         setContentView(R.layout.activity_admin_main_page);
         init();
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logoutDialog = new Dialog(AdminMainPage.this);
+                logoutDialog.setContentView(R.layout.dialog_admin_logout);
+                Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
+                Button noBtn= logoutDialog.findViewById(R.id.noBtn);
+                logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                logoutDialog.show();
+                yesBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FirebaseAuth.getInstance().signOut();
+                        logoutDialog.dismiss();
+                        startActivity(new Intent(getApplicationContext(), AdminLoginPage.class));
+                        finish();
+                    }
+                });
+                noBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        logoutDialog.dismiss();
+                    }
+                });
+
+
+            }
+        });
 
         viewPagerFragmentAdapter= new AdminViewPagerAdapter(this);
         viewPager2.setAdapter(viewPagerFragmentAdapter);
@@ -195,6 +228,7 @@ public class AdminMainPage extends AppCompatActivity {
     }
 
     public void init(){
+        backBtn=findViewById(R.id.adminBackBtn);
         viewPager2=findViewById(R.id.viewPager);
         tabLayout=findViewById(R.id.tabLayout);
         addMenuBtn=findViewById(R.id.addMenuBtn);

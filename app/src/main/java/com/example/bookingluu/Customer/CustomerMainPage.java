@@ -38,7 +38,7 @@ public class CustomerMainPage extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager2 viewPager2;
     private String[] titles= new String[]{"RESERVATION","MENU","RATING","DETAILS"};
-    private Button addReviewBtn;
+    private Button addReviewBtn,backBtn ;
     private Dialog addRatingDialog;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -54,6 +54,14 @@ public class CustomerMainPage extends AppCompatActivity {
         setContentView(R.layout.activity_customer_main_page);
 
         init();
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), RestaurantListPage.class));
+            }
+        });
+
         viewPagerFragmentAdapter= new ViewPagerFragmentAdapter(this);
         viewPager2.setAdapter(viewPagerFragmentAdapter);
 
@@ -129,6 +137,7 @@ public class CustomerMainPage extends AppCompatActivity {
         viewPager2=findViewById(R.id.viewPager);
         tabLayout=findViewById(R.id.tabLayout);
         addReviewBtn=findViewById(R.id.addReviewBtn);
+        backBtn=findViewById(R.id.backBtn);
         fStore=FirebaseFirestore.getInstance();
         fAuth=FirebaseAuth.getInstance();
         userId=fAuth.getCurrentUser().getUid();
