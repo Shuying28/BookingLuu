@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -142,16 +143,25 @@ public class CustomerProfilePage extends AppCompatActivity {
                 Button cancelBtn= editProfileDialog.findViewById(R.id.cancelBtn);
                 editProfileDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 editProfileDialog.show();
+                //Update details to firebase
+                EditText phoneNoText= editProfileDialog.findViewById(R.id.phoneNoText);
+                EditText customerNameText= editProfileDialog.findViewById(R.id.customerNameText);
+
+
+
 
 
                 saveBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         //change ;(
-                        updateDetailsToFirebase();
+                        String custName = customerNameText.getText().toString();
+                        String custPhoneNo = phoneNoText.getText().toString();
+                        updateDetailsToFirebase(custName,custPhoneNo);
 
                     }
                 });
+
                 cancelBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -235,36 +245,34 @@ public class CustomerProfilePage extends AppCompatActivity {
     }
 
     //Shuying: whr the problem is?? :(
-    private void updateDetailsToFirebase() {
-        //Update details to firebase
-        EditText phoneNoText= logoutDialog.findViewById(R.id.phoneNoText);
-        EditText customerNameText= logoutDialog.findViewById(R.id.customerNameText);
-        String custName = customerNameText.getText().toString().trim();
-        String custPhoneNo = phoneNoText.getText().toString().trim();
+    private void updateDetailsToFirebase(String custName, String custPhoneNo) {
 
         documentReference= fStore.collection("customers").document(userId);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
+                System.out.println("ugiyf97td7fouygyu"+custName);
 
-                if (!custName.isEmpty()&&!custPhoneNo.isEmpty()){
+                if (!TextUtils.isEmpty(custName)&&!TextUtils.isEmpty(custPhoneNo)){
                     fNameText.setText(custName);
                     pNumberText.setText(custPhoneNo);
                     documentReference.update("fullName", custName);
-                    documentReference.update("phoneNumber", custName);
+                    documentReference.update("phoneNumber", custPhoneNo);
 
-                }else if(!custName.isEmpty()){
+                }else if(!TextUtils.isEmpty(custName)){
                     fNameText.setText(custName);
                     documentReference.update("fullName", custName);
 
-                }else if(!custPhoneNo.isEmpty()){
+                }else if(!TextUtils.isEmpty(custPhoneNo)){
                     pNumberText.setText(custPhoneNo);
                     documentReference.update("phoneNumber", custPhoneNo);
 
                 }else{
+                    Toast.makeText(CustomerProfilePage.this, "Profile Not Updated", Toast.LENGTH_SHORT).show();
+                    return;
 
                 }
-
+                editProfileDialog.dismiss();
                 Toast.makeText(CustomerProfilePage.this, "Profile Updated", Toast.LENGTH_SHORT).show();
 
             }
@@ -274,6 +282,7 @@ public class CustomerProfilePage extends AppCompatActivity {
                 Toast.makeText(CustomerProfilePage.this, "Upload Fail, Please Try Again ", Toast.LENGTH_SHORT).show();
             }
         });
+
 
     }
 
