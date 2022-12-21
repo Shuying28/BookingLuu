@@ -4,7 +4,7 @@
     android:layout_width="309dp"
     android:layout_height="198dp"
     android:layout_gravity="center"
-    android:background="@drawable/bluebutton_shape2"
+    android:background="@drawable/bluebotton_shape2"
     android:orientation="vertical"
     android:padding="5dp">
 

@@ -62,11 +62,11 @@ public class CustomerLoginPage extends AppCompatActivity {
                 String password= passwordText.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
-                    emailText.setError("Email is required");
+                    emailText.setError("Email is required!");
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
-                    passwordText.setError("Password is required");
+                    passwordText.setError("Password is required!");
                     return;
                 }
                 progressBar.setVisibility(View.VISIBLE);
