@@ -58,7 +58,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
             menuCodeText=itemView.findViewById(R.id.cardMenuCodeText);
             menuNameText=itemView.findViewById(R.id.cardMenuNameText);
             menuDesText=itemView.findViewById(R.id.cardMenuDesText);
-            menuPriceText=itemView.findViewById(R.id.cardMneuPriceText);
+            menuPriceText=itemView.findViewById(R.id.cardMenuPriceText);
             menuImage=itemView.findViewById(R.id.cardMenuImage);
         }
     }

@@ -61,7 +61,7 @@ public class RestaurantListPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                startActivity(new Intent(getApplicationContext(), CustomerProfilePage.class));
+                startActivity(new Intent(getApplicationContext(), CustomerMainPage.class));
             }
         });
 
