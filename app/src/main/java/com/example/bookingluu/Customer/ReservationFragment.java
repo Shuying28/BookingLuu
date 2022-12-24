@@ -41,6 +41,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 
+import java.sql.SQLOutput;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -61,6 +62,7 @@ public class ReservationFragment extends Fragment {
     private boolean[] selectedFood;;
     ArrayList<Integer> foodPositionList;
     ArrayList<String> menuCodeList;
+    String [] menuCodeArray;
 
     public ReservationFragment() {
         // Required empty public constructor
@@ -114,7 +116,6 @@ public class ReservationFragment extends Fragment {
         //Select food
         menuCodeList = new ArrayList<>();
         foodPositionList = new ArrayList<>();
-        selectedFood = new boolean[menuCodeList.size()];
 
         //Get menuCode from firestore
         documentReference= fStore.collection("restaurant").document("HollandFood");
@@ -130,9 +131,13 @@ public class ReservationFragment extends Fragment {
                                 String menuCode = menu.getMenuCode();
                                 String menuName = menu.getMenuName();
                                 menuCodeList.add(menuCode+" "+menuName);
+                                System.out.println("ahahahahahahahahahahahahahahahahahahahahahahahahahaha");
+
 
 
                             }
+                            arrayListToArray();
+                            selectedFood = new boolean[menuCodeList.size()];
 
                         }else {
                             Toast.makeText(getContext(), "No Food Found", Toast.LENGTH_SHORT).show();
@@ -147,12 +152,12 @@ public class ReservationFragment extends Fragment {
 
 
         //ArrayList to Array Conversion
-        String [] menuCodeArray = new String[menuCodeList.size()];
-
-        for (int j = 0; j < menuCodeList.size(); j++) {
-            menuCodeArray[j] = menuCodeList.get(j);
-            System.out.println("ugiyf97td7fouygyu"+menuCodeArray[j]);
-        }
+//        String [] menuCodeArray = new String[menuCodeList.size()];
+//
+//        for (int j = 0; j < menuCodeList.size(); j++) {
+//            menuCodeArray[j] = menuCodeList.get(j);
+//            System.out.println("ugiyf97td7fouygyu"+menuCodeArray[j]);
+//        }
 
         //Multi select drop down
         showSelectedFoodText.setOnClickListener(new View.OnClickListener() {
@@ -252,5 +257,16 @@ public class ReservationFragment extends Fragment {
         });
 
 
+
+
+
+    }
+    public void arrayListToArray(){
+        menuCodeArray = new String[menuCodeList.size()];
+
+        for (int j = 0; j < menuCodeList.size(); j++) {
+            menuCodeArray[j] = menuCodeList.get(j);
+            System.out.println("ugiyf97td7fouygyu"+menuCodeArray[j]);
+        }
     }
 }
