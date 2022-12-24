@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:fontFamily="@font/montserrat"
-            android:text="Kolej Kediaman Kinabalu,\n University Malaya"
+            android:text="Kolej Kediaman Kinabalu,\nUniversity Malaya"
             android:textColor="@color/white"
             android:textSize="14sp" />
         <LinearLayout
@@ -136,6 +136,7 @@
                 </ImageView>
 
             </LinearLayout>
+
             <View
                 android:layout_width="20dp"
                 android:layout_height="match_parent">

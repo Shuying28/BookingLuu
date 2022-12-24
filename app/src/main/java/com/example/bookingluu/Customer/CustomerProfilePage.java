@@ -143,13 +143,9 @@ public class CustomerProfilePage extends AppCompatActivity {
                 Button cancelBtn= editProfileDialog.findViewById(R.id.cancelBtn);
                 editProfileDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 editProfileDialog.show();
-                //Update details to firebase
+
                 EditText phoneNoText= editProfileDialog.findViewById(R.id.phoneNoText);
                 EditText customerNameText= editProfileDialog.findViewById(R.id.customerNameText);
-
-
-
-
 
                 saveBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -244,9 +240,8 @@ public class CustomerProfilePage extends AppCompatActivity {
         });
     }
 
-    //Shuying: whr the problem is?? :(
     private void updateDetailsToFirebase(String custName, String custPhoneNo) {
-
+        //Update details to firebase
         documentReference= fStore.collection("customers").document(userId);
         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -269,6 +264,7 @@ public class CustomerProfilePage extends AppCompatActivity {
 
                 }else{
                     Toast.makeText(CustomerProfilePage.this, "Profile Not Updated", Toast.LENGTH_SHORT).show();
+                    editProfileDialog.dismiss();
                     return;
 
                 }
@@ -279,7 +275,7 @@ public class CustomerProfilePage extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Toast.makeText(CustomerProfilePage.this, "Upload Fail, Please Try Again ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomerProfilePage.this, "Update Fail, Please Try Again ", Toast.LENGTH_SHORT).show();
             }
         });
 

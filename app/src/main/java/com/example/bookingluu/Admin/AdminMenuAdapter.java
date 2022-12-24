@@ -64,7 +64,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
             menuCodeText=itemView.findViewById(R.id.cardMenuCodeText);
             menuNameText=itemView.findViewById(R.id.cardMenuNameText);
             menuDesText=itemView.findViewById(R.id.cardMenuDesText);
-            menuPriceText=itemView.findViewById(R.id.cardMneuPriceText);
+            menuPriceText=itemView.findViewById(R.id.cardMenuPriceText);
             menuImage=itemView.findViewById(R.id.cardMenuImage);
             adminCardMenu=itemView.findViewById(R.id.adminCardMenu);
             adminCardMenu.setOnClickListener(this);
