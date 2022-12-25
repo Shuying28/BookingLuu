@@ -1,9 +1,5 @@
 package com.example.bookingluu.Customer;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -18,6 +14,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bookingluu.CustomerLoginPage;
 import com.example.bookingluu.R;
@@ -76,6 +76,8 @@ public class CustomerProfilePage extends AppCompatActivity {
 
             }
         });
+
+        // TODO : fetch data
 
         documentReference= fStore.collection("customers").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
