@@ -1,5 +1,9 @@
 package com.example.bookingluu.Customer;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -9,20 +13,20 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.bookingluu.CustomerLoginPage;
 import com.example.bookingluu.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -37,14 +41,15 @@ import com.squareup.picasso.Picasso;
 public class CustomerProfilePage extends AppCompatActivity {
     private TextView fNameText, pNumberText,eText;
     private Button homeBtn, historyBtn, logoutBtn;
-    private ImageView profilePic, editImageBtn, myProfileBackBtn;
+    private ImageView profilePic, editImageBtn, myProfileBackBtn, editDetailBtn;
     FirebaseAuth fAuth;
-    FirebaseFirestore fStore;
     StorageReference storageReference;
     String userId;
+    FirebaseFirestore fStore;
     DocumentReference documentReference;
     ProgressDialog progressDialog;
-    private Dialog logoutDialog;
+    private Dialog logoutDialog, editProfileDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,18 +71,6 @@ public class CustomerProfilePage extends AppCompatActivity {
                 startActivity(new Intent(CustomerProfilePage.this, ReservationHistoryPage.class));
             }
         });
-
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(), CustomerLoginPage.class));
-                finish();
-
-            }
-        });
-
-        // TODO : fetch data
 
         documentReference= fStore.collection("customers").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -110,11 +103,12 @@ public class CustomerProfilePage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 logoutDialog = new Dialog(CustomerProfilePage.this);
-                logoutDialog.setContentView(R.layout.customer_logout_dialogue);
+                logoutDialog.setContentView(R.layout.dialog_customer_logout);
                 Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
                 Button noBtn= logoutDialog.findViewById(R.id.noBtn);
                 logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 logoutDialog.show();
+
                 yesBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -128,6 +122,46 @@ public class CustomerProfilePage extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         logoutDialog.dismiss();
+                    }
+                });
+
+
+            }
+        });
+
+
+         //Todo: editProfileDialog and editProfile in database : all member can try
+        // 1.用和我pop up logout dialog 的方法pop edit profile dialog
+        // 2.去看我怎样update image 的field  在line 199 - 用来update 名字和电话号码
+        //Shuying
+        editDetailBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editProfileDialog = new Dialog(CustomerProfilePage.this);
+                editProfileDialog.setContentView(R.layout.dialog_edit_profile);
+                Button saveBtn= editProfileDialog.findViewById(R.id.saveBtn);
+                Button cancelBtn= editProfileDialog.findViewById(R.id.cancelBtn);
+                editProfileDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                editProfileDialog.show();
+
+                EditText phoneNoText= editProfileDialog.findViewById(R.id.phoneNoText);
+                EditText customerNameText= editProfileDialog.findViewById(R.id.customerNameText);
+
+                saveBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //change ;(
+                        String custName = customerNameText.getText().toString();
+                        String custPhoneNo = phoneNoText.getText().toString();
+                        updateDetailsToFirebase(custName,custPhoneNo);
+
+                    }
+                });
+
+                cancelBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        editProfileDialog.dismiss();
                     }
                 });
 
@@ -153,6 +187,7 @@ public class CustomerProfilePage extends AppCompatActivity {
         userId=fAuth.getCurrentUser().getUid();
         editImageBtn=findViewById(R.id.editImageBtn);
         progressDialog =new ProgressDialog(this);
+        editDetailBtn= findViewById(R.id.editDetailBtn);
 
 
     }
@@ -204,4 +239,47 @@ public class CustomerProfilePage extends AppCompatActivity {
             }
         });
     }
+
+    private void updateDetailsToFirebase(String custName, String custPhoneNo) {
+        //Update details to firebase
+        documentReference= fStore.collection("customers").document(userId);
+        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                System.out.println("ugiyf97td7fouygyu"+custName);
+
+                if (!TextUtils.isEmpty(custName)&&!TextUtils.isEmpty(custPhoneNo)){
+                    fNameText.setText(custName);
+                    pNumberText.setText(custPhoneNo);
+                    documentReference.update("fullName", custName);
+                    documentReference.update("phoneNumber", custPhoneNo);
+
+                }else if(!TextUtils.isEmpty(custName)){
+                    fNameText.setText(custName);
+                    documentReference.update("fullName", custName);
+
+                }else if(!TextUtils.isEmpty(custPhoneNo)){
+                    pNumberText.setText(custPhoneNo);
+                    documentReference.update("phoneNumber", custPhoneNo);
+
+                }else{
+                    Toast.makeText(CustomerProfilePage.this, "Profile Not Updated", Toast.LENGTH_SHORT).show();
+                    editProfileDialog.dismiss();
+                    return;
+
+                }
+                editProfileDialog.dismiss();
+                Toast.makeText(CustomerProfilePage.this, "Profile Updated", Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(CustomerProfilePage.this, "Update Fail, Please Try Again ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
 }

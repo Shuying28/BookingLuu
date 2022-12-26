@@ -22,6 +22,7 @@ public class ReservationHistoryPage extends AppCompatActivity {
         historyBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
                 startActivity(new Intent(getApplicationContext(), CustomerProfilePage.class));
             }
         });

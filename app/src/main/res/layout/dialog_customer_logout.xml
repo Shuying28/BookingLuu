@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="309dp"
+    android:layout_height="238dp"
+    android:layout_gravity="center"
+    android:background="@drawable/button_shape"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Are you sure you want \n to log out ?"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/yesBtn"
+        android:layout_width="155dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="73dp"
+        android:backgroundTint="@color/orange_main"
+        android:fontFamily="@font/montserrat"
+        android:text="Yes"
+        android:textColor="@color/dark_blue"
+        android:textStyle="bold"
+        android:theme="@style/Button.White"
+        app:cornerRadius="15dp" />
+
+    <Button
+        android:id="@+id/noBtn"
+        android:layout_width="155dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/yesBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="71dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="21dp"
+        android:backgroundTint="@color/orange_main"
+        android:fontFamily="@font/montserrat"
+        android:text="cancel"
+        android:textColor="@color/dark_blue"
+        android:textStyle="bold"
+        app:cornerRadius="15dp" />
+
+</LinearLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="309dp"
+    android:layout_height="198dp"
+    android:layout_gravity="center"
+    android:background="@drawable/bluebotton_shape2"
+    android:orientation="vertical"
+    android:padding="5dp">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Delete This Item ?"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/montserrat"
+        android:text="This item will be permanantly deleted."
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/yesBtn"
+        android:layout_width="155dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="73dp"
+        android:backgroundTint="@color/orange_second"
+        android:text="Delete"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:theme="@style/Button.White"
+        app:cornerRadius="15dp" />
+
+    <Button
+        android:id="@+id/noBtn"
+        android:layout_width="155dp"
+        android:layout_height="45dp"
+        android:layout_below="@+id/yesBtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="21dp"
+        android:backgroundTint="@color/admin_main"
+        android:text="Cancel"
+        android:textColor="@color/black"
+        app:cornerRadius="15dp" />
+
+</LinearLayout>
