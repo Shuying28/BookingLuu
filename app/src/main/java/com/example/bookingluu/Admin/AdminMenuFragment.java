@@ -87,6 +87,9 @@ public class AdminMenuFragment extends Fragment {
                         menuArrayList.set(dc.getOldIndex(),dc.getDocument().toObject(Menu.class));
 
                     }
+//                    else if(dc.getType()==DocumentChange.Type.REMOVED){
+//                        menuArrayList.remove(dc.getOldIndex());
+//                    }
                     adminMenuAdapter.notifyDataSetChanged();
                     if(progressDialog.isShowing())progressDialog.dismiss();
                 }

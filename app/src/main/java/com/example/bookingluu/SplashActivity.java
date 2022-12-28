@@ -34,6 +34,7 @@ public class SplashActivity extends AppCompatActivity {
                 }else{
                     Intent intent=new Intent(SplashActivity.this, CustomerLoginPage.class);
                     startActivity(intent);
+                    finish();
                 }
 
 

@@ -20,6 +20,7 @@
             android:name=".Admin.AdminMainPage"
             android:exported="false"
             android:theme="@style/AdminTheme"
+            android:persistent="true"
             >
             <meta-data
                 android:name="android.app.lib_name"
@@ -29,13 +30,16 @@
             android:name=".Customer.CustomerMainPage"
             android:exported="false"
             android:label="@string/title_activity_customer_page"
-            android:theme="@style/Theme.BookingLuu.NoActionBar" >
+            android:theme="@style/Theme.BookingLuu.NoActionBar"
+
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Admin.AdminLoginPage"
+            android:theme="@style/AdminTheme"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"

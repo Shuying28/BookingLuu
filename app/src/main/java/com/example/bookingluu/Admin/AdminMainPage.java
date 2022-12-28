@@ -1,7 +1,5 @@
 package com.example.bookingluu.Admin;
 
-import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,22 +14,13 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bookingluu.Customer.Customer;
-import com.example.bookingluu.Customer.CustomerMainPage;
-import com.example.bookingluu.Customer.CustomerProfilePage;
-import com.example.bookingluu.Customer.RestaurantListPage;
-import com.example.bookingluu.Customer.ViewPagerFragmentAdapter;
-import com.example.bookingluu.CustomerLoginPage;
 import com.example.bookingluu.R;
 import com.example.bookingluu.Restaurant.Menu;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -76,8 +65,8 @@ public class AdminMainPage extends AppCompatActivity {
             public void onClick(View view) {
                 logoutDialog = new Dialog(AdminMainPage.this);
                 logoutDialog.setContentView(R.layout.dialog_admin_logout);
-                Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
-                Button noBtn= logoutDialog.findViewById(R.id.noBtn);
+                Button yesBtn= logoutDialog.findViewById(R.id.deleteMenuBtn);
+                Button noBtn= logoutDialog.findViewById(R.id.cancelDeleteMenuBtn);
                 logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 logoutDialog.show();
                 yesBtn.setOnClickListener(new View.OnClickListener() {

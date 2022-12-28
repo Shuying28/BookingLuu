@@ -7,40 +7,108 @@
     android:background="#FFF0DE">
 
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <LinearLayout
+        android:id="@+id/tittleLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/green_tick" />
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <TextView
-        android:id="@+id/textView8"
+        <TextView
+            android:id="@+id/dialogTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Your Reservation"
+            android:textColor="@color/dark_blue"
+            android:textSize="23sp" />
+
+        <ImageView
+            android:id="@+id/closeBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="130dp"
+            android:layout_weight="1"
+            android:backgroundTint="#5C4587"
+            app:srcCompat="@drawable/close_icon" />
+    </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Your reservation is completed!"
-        android:textColor="#6AC259"
-        android:textStyle="bold"
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/tittleLayout">
+
+        <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profilePic"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/profilepic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/resNameText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/resPhoneNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/resEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="TextView"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8">
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
         <LinearLayout
             android:id="@+id/Outer"
@@ -51,7 +119,7 @@
             <LinearLayout
                 android:id="@+id/First"
                 android:layout_width="280dp"
-                android:layout_height="60dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
 
@@ -60,19 +128,19 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/location_icon" />
 
                 <LinearLayout
                     android:id="@+id/first_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
                     android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textView"
+                        android:id="@+id/resRestaurantName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
@@ -82,7 +150,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textView10"
+                        android:id="@+id/resRestaurantAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
@@ -106,15 +174,15 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/date_icon" />
 
                 <TextView
-                    android:id="@+id/date"
+                    android:id="@+id/resDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/montserrat"
                     android:text="Wednesday, 25th Sep 2021"
                     android:textColor="#000F45"
@@ -135,15 +203,15 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/time_icon" />
 
                 <TextView
-                    android:id="@+id/hour_des"
+                    android:id="@+id/resTimeSlot"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="18h00 - 18h30"
@@ -165,15 +233,15 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/people_icon" />
 
                 <TextView
-                    android:id="@+id/people_des"
+                    android:id="@+id/resPax"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="2 People"
@@ -186,7 +254,7 @@
             <LinearLayout
                 android:id="@+id/menu"
                 android:layout_width="280dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
 
@@ -195,15 +263,15 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/menu_icon" />
 
                 <TextView
-                    android:id="@+id/menu_des"
+                    android:id="@+id/resSelectedMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                   android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="Menu"
@@ -225,15 +293,15 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
+                   android:layout_gravity="center"
                     app:srcCompat="@drawable/table_icon" />
 
                 <TextView
-                    android:id="@+id/table_des"
+                    android:id="@+id/resTableNo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                   android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="Table"
@@ -246,7 +314,7 @@
             <LinearLayout
                 android:id="@+id/notes"
                 android:layout_width="280dp"
-                android:layout_height="36dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
 
@@ -255,15 +323,15 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_gravity="center"
                     app:srcCompat="@drawable/notes_icon" />
 
                 <TextView
-                    android:id="@+id/notes_des"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/resNote"
+                    android:layout_width="60dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center"
                     android:layout_weight="1"
                     android:fontFamily="@font/montserrat"
                     android:text="Notes"
@@ -284,7 +352,9 @@
         android:layout_width="280dp"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
-        android:text="Button"
+        android:text="CONFIRM"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/orange_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />

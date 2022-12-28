@@ -23,10 +23,8 @@ import android.widget.Toast;
 
 import com.example.bookingluu.CustomerLoginPage;
 import com.example.bookingluu.R;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -104,8 +102,8 @@ public class CustomerProfilePage extends AppCompatActivity {
             public void onClick(View view) {
                 logoutDialog = new Dialog(CustomerProfilePage.this);
                 logoutDialog.setContentView(R.layout.dialog_customer_logout);
-                Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
-                Button noBtn= logoutDialog.findViewById(R.id.noBtn);
+                Button yesBtn= logoutDialog.findViewById(R.id.deleteMenuBtn);
+                Button noBtn= logoutDialog.findViewById(R.id.cancelDeleteMenuBtn);
                 logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 logoutDialog.show();
 

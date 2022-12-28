@@ -132,16 +132,19 @@
                 android:layout_height="wrap_content"/>
 
             <TextView
+                android:id="@+id/minusNoPax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/edit_text_shape"
                 android:fontFamily="@font/montserrat"
                 android:paddingLeft="5sp"
                 android:paddingRight="5sp"
-                android:text="+"
-                android:textColor="@color/dark_blue" />
+                android:text="-"
+                android:textColor="@color/dark_blue"
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/noOfPax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
@@ -151,14 +154,14 @@
                 android:textColor="@color/dark_blue" />
 
             <TextView
+                android:id="@+id/addNoPax"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
                 android:background="@drawable/edit_text_shape"
+                android:fontFamily="@font/montserrat"
                 android:paddingLeft="5sp"
                 android:paddingRight="5sp"
-                android:textStyle="bold"
-                android:text="-"
+                android:text="+"
                 android:textColor="@color/dark_blue" />
 
         </LinearLayout>
@@ -168,7 +171,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat"
             android:text="Selected food"
@@ -298,13 +301,17 @@
             <EditText
                 android:id="@+id/notesText"
                 android:layout_width="324dp"
-                android:layout_height="40dp"
+                android:layout_height="90dp"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/edit_text_shape"
                 android:ems="10"
                 android:fontFamily="@font/montserrat"
                 android:hint="Notes"
-                android:inputType="text"
+                android:inputType="textMultiLine"
+                android:isScrollContainer="true"
+                android:scrollbarAlwaysDrawHorizontalTrack="false"
+                android:scrollbars="vertical"
+                android:scrollbarThumbVertical="@color/orange_second"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 

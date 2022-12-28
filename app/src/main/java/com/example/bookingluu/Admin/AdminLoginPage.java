@@ -30,7 +30,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -89,7 +88,7 @@ public class AdminLoginPage extends AppCompatActivity {
                             if(emailText.getText().toString().equals(FSadminEmail)&&passwordText.getText().toString().equals(FSadminPassw)){
                                 progressBar.setVisibility(View.GONE);
                                 adminLoginBtn.setVisibility(View.VISIBLE);
-                                Toast.makeText(AdminLoginPage.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AdminLoginPage.this, "Welcome Back, "+documentSnapshot.get("restaurantName"), Toast.LENGTH_SHORT).show();
 
                                 //finish();
                                 startActivity(new Intent(getApplicationContext(), AdminMainPage.class));
@@ -97,9 +96,17 @@ public class AdminLoginPage extends AppCompatActivity {
                             }else{
                                 progressBar.setVisibility(View.GONE);
                                 adminLoginBtn.setVisibility(View.VISIBLE);
-                                Toast.makeText(AdminLoginPage.this, "Error! Admin doesn't exist or Wrong Email or Password!", Toast.LENGTH_LONG).show();
+                                passwordText.setError("Wrong Password!");
+                                passwordText.requestFocus();
+
 
                             }
+                        }
+                        else{
+                            progressBar.setVisibility(View.GONE);
+                            adminLoginBtn.setVisibility(View.VISIBLE);
+                            emailText.setError("The Admin doesn't Exists, Please Re-enter Email !");
+                            emailText.requestFocus();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {

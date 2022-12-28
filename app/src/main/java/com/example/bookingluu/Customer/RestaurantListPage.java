@@ -33,8 +33,8 @@ public class RestaurantListPage extends AppCompatActivity {
             public void onClick(View view) {
                 logoutDialog = new Dialog(RestaurantListPage.this);
                 logoutDialog.setContentView(R.layout.dialog_customer_logout);
-                Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
-                Button noBtn= logoutDialog.findViewById(R.id.noBtn);
+                Button yesBtn= logoutDialog.findViewById(R.id.deleteMenuBtn);
+                Button noBtn= logoutDialog.findViewById(R.id.cancelDeleteMenuBtn);
                 logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 logoutDialog.show();
                 yesBtn.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +61,7 @@ public class RestaurantListPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                startActivity(new Intent(getApplicationContext(), CustomerMainPage.class));
+                startActivity(new Intent(getApplicationContext(), CustomerProfilePage.class));
             }
         });
 
@@ -77,8 +77,8 @@ public class RestaurantListPage extends AppCompatActivity {
     public void onBackPressed() {
         logoutDialog = new Dialog(RestaurantListPage.this);
         logoutDialog.setContentView(R.layout.dialog_customer_logout);
-        Button yesBtn= logoutDialog.findViewById(R.id.yesBtn);
-        Button noBtn= logoutDialog.findViewById(R.id.noBtn);
+        Button yesBtn= logoutDialog.findViewById(R.id.deleteMenuBtn);
+        Button noBtn= logoutDialog.findViewById(R.id.cancelDeleteMenuBtn);
         logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         logoutDialog.show();
         yesBtn.setOnClickListener(new View.OnClickListener() {
