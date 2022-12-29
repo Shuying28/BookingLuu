@@ -1,363 +1,386 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange_main"
-    tools:context=".Customer.DetailsFragment">
+    tools:context=".Customer.DetailsFragment"
+    android:background="@color/orange_main">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
-    <LinearLayout
-        android:id="@+id/Linearlayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="350dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="118dp">
-
-            <LinearLayout
-                android:id="@+id/First"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+<!-- TODO: Update blank fragment layout -->
 
 
-                <ImageView
-                    android:id="@+id/icon_detail_address"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icon_detail_address" />
+        <LinearLayout
+            android:id="@+id/Linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="118dp">
 
                 <LinearLayout
-                    android:id="@+id/First_1"
+                    android:id="@+id/First"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/Address"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Address"
-                        android:textColor="#000F45"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/AddressDetail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Kolej Kediaman Kinabalu, University Malaya"
-                        android:textColor="#000F45" />
+                    <ImageView
+                        android:id="@+id/icon_detail_address"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/icon_detail_address" />
+
+                    <LinearLayout
+                        android:id="@+id/First_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/Address"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Address"
+                            android:textColor="#000F45"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/AddressDetail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Kolej Kediaman Kinabalu, University Malaya"
+                            android:textColor="#000F45" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="118dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="350dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="118dp">
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/maps"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="118dp">
-
-            <LinearLayout
-                android:id="@+id/Second"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <ImageView
-                    android:id="@+id/icon_detial_phone"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icon_detial_phone" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="118dp">
 
                 <LinearLayout
-                    android:id="@+id/Second_1"
+                    android:id="@+id/Second"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/Phone"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Phone"
-                        android:textColor="#000F45"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/PhoneDetail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="03-3333 3333"
-                        android:textColor="#000F45" />
+                    <ImageView
+                        android:id="@+id/icon_detial_phone"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/icon_detial_phone" />
+
+                    <LinearLayout
+                        android:id="@+id/Second_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/Phone"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Phone"
+                            android:textColor="#000F45"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/PhoneDetail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="03-3333 3333"
+                            android:textColor="#000F45" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="350dp"
-            android:layout_height="80dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="118dp">
-
-            <LinearLayout
-                android:id="@+id/Third"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <ImageView
-                    android:id="@+id/icon_detial_opeationhour"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icon_detial_opeationhour" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="80dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="118dp">
 
                 <LinearLayout
-                    android:id="@+id/Third_1"
+                    android:id="@+id/Third"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/Operation_hours"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Operation hours"
-                        android:textColor="#000F45"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/Operation_hours_detatil_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Mon - Fri: 11:00 AM - 11:00 PM"
-                        android:textColor="#000F45" />
+                    <ImageView
+                        android:id="@+id/icon_detial_opeationhour"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/icon_detial_opeationhour" />
 
-                    <TextView
-                        android:id="@+id/Operation_hours_detatil_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Sat - Sun: 10:00 AM - 11:59 PM"
-                        android:textColor="#000F45" />
+                    <LinearLayout
+                        android:id="@+id/Third_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/Operation_hours"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Operation hours"
+                            android:textColor="#000F45"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/Operation_hours_detatil_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Mon - Fri: 11:00 AM - 11:00 PM"
+                            android:textColor="#000F45" />
+
+                        <TextView
+                            android:id="@+id/Operation_hours_detatil_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Sat - Sun: 10:00 AM - 11:59 PM"
+                            android:textColor="#000F45" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="118dp">
-
-            <LinearLayout
-                android:id="@+id/Fourth"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <ImageView
-                    android:id="@+id/icon_detail_cuisine"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icon_detail_cuisine" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="118dp">
 
                 <LinearLayout
-                    android:id="@+id/Fourth_1"
+                    android:id="@+id/Fourth"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="10dp"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/Cuisine"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Cuisine"
-                        android:textColor="#000F45"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/CuisineDes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Netherlander"
-                        android:textColor="#000F45" />
+                    <ImageView
+                        android:id="@+id/icon_detail_cuisine"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/icon_detail_cuisine" />
+
+                    <LinearLayout
+                        android:id="@+id/Fourth_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="10dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/Cuisine"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Cuisine"
+                            android:textColor="#000F45"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/CuisineDes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Netherlander"
+                            android:textColor="#000F45" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="350dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="8dp"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="118dp">
-
-            <LinearLayout
-                android:id="@+id/Linearlayout2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-
-                <ImageView
-                    android:id="@+id/imageView12"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icon_detail_payment" />
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="118dp">
 
                 <LinearLayout
-                    android:id="@+id/Linearlayout1"
+                    android:id="@+id/Linearlayout2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:orientation="vertical"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/Payment_Options"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Payment Options"
-                        android:textColor="#000F45"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/Payment_OptionsDes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="Cash, TnG, MasterCard, Visa "
-                        android:textColor="#000F45" />
+                    <ImageView
+                        android:id="@+id/imageView12"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/icon_detail_payment" />
+
+                    <LinearLayout
+                        android:id="@+id/Linearlayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/Payment_Options"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Payment Options"
+                            android:textColor="#000F45"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/Payment_OptionsDes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/montserrat"
+                            android:text="Cash, TnG, MasterCard, Visa "
+                            android:textColor="#000F45" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
-    </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
+
+
+
+
+
+
+
+
+
+
