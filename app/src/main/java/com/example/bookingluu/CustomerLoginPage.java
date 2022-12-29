@@ -100,7 +100,6 @@ public class CustomerLoginPage extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override

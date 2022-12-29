@@ -21,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-        //this is to make the page continue for 5 second
+        //this is to make the page continue for 5 seconds
         handler=new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -42,7 +42,6 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         },2000);
-
 
     }
 
