@@ -1,32 +1,55 @@
 package com.example.bookingluu.Restaurant;
 
 public class Reservation {
-    private int bookingNo;
-    private String Date,Time,Pax,Food,customerID,customerName, customerPhoneNo,customerEmail, customerNotes,status;
+    private int bookingNo,Pax,TableNo;
+    private String Date,Time,Food,customerID,customerName, customerPhoneNo,customerEmail, customerNotes,status, restaurantName;
 
-    public Reservation(int bookingNo, String date, String time, String pax, String food, String customerID, String customerName, String customerPhoneNo, String customerEmail, String customerNotes, String status) {
+    public Reservation(int bookingNo, int pax,int tableNo, String date, String time, String food, String customerID, String customerName, String customerPhoneNo, String customerEmail, String customerNotes, String restaurantName) {
         this.bookingNo = bookingNo;
+        Pax = pax;
         Date = date;
         Time = time;
-        Pax = pax;
         Food = food;
+        this.TableNo=tableNo;
         this.customerID = customerID;
         this.customerName = customerName;
         this.customerPhoneNo = customerPhoneNo;
         this.customerEmail = customerEmail;
         this.customerNotes = customerNotes;
-        this.status="Pending";
+        this.restaurantName=restaurantName;
+        this.status = "Pending";
     }
 
-    public Reservation() {
+    public int getTableNo() {
+        return TableNo;
+    }
+
+    public void setTableNo(int tableNo) {
+        TableNo = tableNo;
     }
 
     public int getBookingNo() {
         return bookingNo;
     }
 
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
+    }
+
     public void setBookingNo(int bookingNo) {
         this.bookingNo = bookingNo;
+    }
+
+    public int getPax() {
+        return Pax;
+    }
+
+    public void setPax(int pax) {
+        Pax = pax;
     }
 
     public String getDate() {
@@ -43,14 +66,6 @@ public class Reservation {
 
     public void setTime(String time) {
         Time = time;
-    }
-
-    public String getPax() {
-        return Pax;
-    }
-
-    public void setPax(String pax) {
-        Pax = pax;
     }
 
     public String getFood() {

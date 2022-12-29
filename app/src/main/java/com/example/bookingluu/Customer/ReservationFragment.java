@@ -2,19 +2,12 @@ package com.example.bookingluu.Customer;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -34,11 +27,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bookingluu.CustomerLoginPage;
 import com.example.bookingluu.Restaurant.Menu;
+import com.example.bookingluu.Restaurant.Reservation;
 import com.example.bookingluu.Restaurant.Table;
-import com.example.bookingluu.SplashActivity;
-import com.example.bookingluu.TermsOfServicePage;
 import com.example.bookingluu.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -51,14 +42,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.sql.SQLOutput;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -93,6 +79,7 @@ public class ReservationFragment extends Fragment {
     ProgressDialog progressDialog;
     int selectedTableNo;
     FirebaseAuth fAuth;
+    String date;
 
 
     //For making reservation
@@ -108,6 +95,7 @@ public class ReservationFragment extends Fragment {
 
     //For getting the restaurant information
     String restaurantName, restaurantAddress;
+    int reservationNumber;
 
     public ReservationFragment() {
         // Required empty public constructor
@@ -146,7 +134,8 @@ public class ReservationFragment extends Fragment {
         fAuth=FirebaseAuth.getInstance();
 
         //initialize data
-        initData();
+        initRestaurantData();
+
 
         //Select time
         alTimeSlot= new ArrayList<>();
@@ -186,7 +175,7 @@ public class ReservationFragment extends Fragment {
             public void onClick(View view) {
 
                 reservationPax= Integer.parseInt(noOfPax.getText().toString());
-                String date = dateText.getText().toString();
+                date = dateText.getText().toString();
                 reservationName= nameText.getText().toString();
                 reservationEmail= emailText.getText().toString();
                 reservationPhoneNo = phoneNoText.getText().toString();
@@ -303,16 +292,14 @@ public class ReservationFragment extends Fragment {
                             TextView resTableNo= bottomSheetDialog.findViewById(R.id.resTableNo);
                             TextView resNote= bottomSheetDialog.findViewById(R.id.resNote);
                             ImageView closeBtn= bottomSheetDialog.findViewById(R.id.closeBtn);
+                            Button confirmReservationBtn = bottomSheetDialog.findViewById(R.id.confirmReservationBtn);
 
 
 
 
 
 
-
-
-                            //TODO: ambik maklumat from firestore
-
+                            // ASSIGN THE TABLE as the first table in the list
                             selectedTableNo=suitableTable.get(0);
                             customerDocumentReference= fStore.collection("customers").document(fAuth.getUid());
                             customerDocumentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
@@ -332,7 +319,7 @@ public class ReservationFragment extends Fragment {
                             resRestaurantAddress.setText(restaurantAddress);
                             resDate.setText(date);
                             resTimeSlot.setText(reservationSlot);
-                            resPax.setText(String.valueOf(reservationPax)+" people");
+                            resPax.setText(reservationPax+" people");
                             resSelectedMenu.setText(reservationSelectedFood);
                             resTableNo.setText("Table No " + String.valueOf(selectedTableNo));
                             resNote.setText(reservationNotes);
@@ -342,6 +329,30 @@ public class ReservationFragment extends Fragment {
                                 @Override
                                 public void onClick(View view) {
                                     bottomSheetDialog.dismiss();
+                                }
+                            });
+
+
+                            //make reservation to database
+                            confirmReservationBtn.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Reservation reservation = new Reservation(reservationNumber,reservationPax,selectedTableNo,date,reservationSlot,
+                                            reservationSelectedFood,fAuth.getUid(),reservationName,reservationPhoneNo,reservationEmail,reservationNotes,restaurantName);
+                                    DocumentReference reservationDocumentReference =fStore.collection("restaurant").document("HollandFood").collection("Reservation").document(String.valueOf(reservationNumber));
+                                    reservationDocumentReference.set(reservation).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            //Update data to firestore
+                                            updateRestaurantData();
+                                            updateTableAvailability(restaurantName,selectedTableNo,timeSlotPosition);
+                                            bottomSheetDialog.dismiss();
+                                            Toast.makeText(getContext(), "Reservation created. Pending approval", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    });
+
+
                                 }
                             });
 
@@ -538,7 +549,7 @@ public class ReservationFragment extends Fragment {
         return res;
     }
 
-    public void initData(){
+    public void initRestaurantData(){
         DocumentReference restaurantDocumentReference =fStore.collection("restaurant").document("HollandFood");
         restaurantDocumentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
@@ -546,6 +557,27 @@ public class ReservationFragment extends Fragment {
 
                 restaurantName =value.getString("RestaurantName");
                 restaurantAddress =value.getString("Address");
+                reservationNumber = (int)(long)value.getLong("ReservationNumber");
+
+            }
+        });
+    }
+
+    public void updateRestaurantData(){
+        DocumentReference restaurantDocumentReference =fStore.collection("restaurant").document("HollandFood");
+        restaurantDocumentReference.update("ReservationNumber", reservationNumber+1);
+    }
+
+    public void updateTableAvailability(String restaurantName, int tableNo, int timeSlot){
+        DocumentReference dateDocumentReference =fStore.collection("restaurant").document(restaurantName).collection("Table")
+                .document(String.valueOf(tableNo)).collection("Date").document(date);
+        dateDocumentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                StringBuilder availability = new StringBuilder(value.getString("TimeSlot"));
+                availability.setCharAt(timeSlot,'1');
+                System.out.println(availability);
+                dateDocumentReference.update("TimeSlot",availability.toString());
 
             }
         });
