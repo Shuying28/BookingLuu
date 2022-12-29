@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.WindowManager;
 
 import com.example.bookingluu.Customer.RestaurantListPage;
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,9 +18,10 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
 
-        //this is to make the page continue for 2.5 second
+        //this is to make the page continue for 5 second
         handler=new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -39,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
 
 
             }
-        },500);
+        },2000);
 
 
     }

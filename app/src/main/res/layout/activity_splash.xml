@@ -8,14 +8,14 @@
     tools:context=".SplashActivity"
     >
 
-
     <ImageView
         android:id="@+id/splash_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="313dp"
+        android:layout_height="276dp"
         android:layout_below="@id/welcome_text"
         android:layout_centerHorizontal="true"
-        tools:src="@drawable/logo2" />
+        android:layout_marginTop="19dp"
+        app:srcCompat="@drawable/logo" />
 
     <TextView
         android:id="@+id/welcome_text"
@@ -27,5 +27,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Welcome To"
         android:textSize="30sp" />
+
+
 
 </RelativeLayout>

@@ -233,7 +233,7 @@ public class ReservationFragment extends Fragment {
                             List<DocumentSnapshot> list = queryDocumentSnapshots.getDocuments();
                             for (DocumentSnapshot documentSnapshot : list) {
 
-                                // after getting this list of document we are passing that list to our Menu class.
+                                // after getting this list of document we are passing that list to our Table class.
                                 Table table = documentSnapshot.toObject(Table.class);
                                 int tableNoPax= table.getPax();
                                 int tableNo= table.getTableNo();
@@ -371,8 +371,7 @@ public class ReservationFragment extends Fragment {
 
         //Get menuCode from firestore
         menuDocumentReference= fStore.collection("restaurant").document("HollandFood");
-        menuDocumentReference.collection("Menu").get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        menuDocumentReference.collection("Menu").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if (!queryDocumentSnapshots.isEmpty()) {

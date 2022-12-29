@@ -44,6 +44,8 @@ public class AdminLoginPage extends AppCompatActivity {
     FirebaseFirestore fStore;
     DocumentReference documentReference;
 
+    private long pressedTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,7 +118,6 @@ public class AdminLoginPage extends AppCompatActivity {
 
                 }
             });
-
 
             }
         });

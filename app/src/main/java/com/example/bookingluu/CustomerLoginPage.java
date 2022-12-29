@@ -103,6 +103,16 @@ public class CustomerLoginPage extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.setFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addCategory(intent.CATEGORY_HOME);
+        startActivity(intent);
+        finish();
+        System.exit(0);
+    }
+
     public void init(){
         registerText=findViewById(R.id.registerText);
         forgotPasswordText=findViewById(R.id.forgotPasswordText);
