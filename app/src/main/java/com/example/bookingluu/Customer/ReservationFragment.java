@@ -176,6 +176,7 @@ public class ReservationFragment extends Fragment {
 
                 reservationPax= Integer.parseInt(noOfPax.getText().toString());
                 date = dateText.getText().toString();
+                System.out.println("gjoerbgijebngjioegnjqeg"+date);
                 reservationName= nameText.getText().toString();
                 reservationEmail= emailText.getText().toString();
                 reservationPhoneNo = phoneNoText.getText().toString();
@@ -359,8 +360,18 @@ public class ReservationFragment extends Fragment {
 
                         }
 
+
+
+
+
                     }
                 },1500);
+
+
+
+
+
+
             }
         });
 
@@ -485,8 +496,10 @@ public class ReservationFragment extends Fragment {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        String currentDateString = dayOfMonth+" / "+(month+1)+" / "+year;
-                        //String currentDateString = DateFormat.getDateInstance().format(calender.getTime());
+                        calender.set(Calendar.YEAR,year);
+                        calender.set(Calendar.MONTH,month);
+                        calender.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                        String currentDateString = dayOfMonth+"-"+month+"-"+year;
 
                         dateText.setText(currentDateString);
                     }
