@@ -359,18 +359,8 @@ public class ReservationFragment extends Fragment {
 
                         }
 
-
-
-
-
                     }
                 },1500);
-
-
-
-
-
-
             }
         });
 
@@ -495,10 +485,8 @@ public class ReservationFragment extends Fragment {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        calender.set(Calendar.YEAR,year);
-                        calender.set(Calendar.MONTH,month);
-                        calender.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-                        String currentDateString = DateFormat.getDateInstance().format(calender.getTime());
+                        String currentDateString = dayOfMonth+" / "+(month+1)+" / "+year;
+                        //String currentDateString = DateFormat.getDateInstance().format(calender.getTime());
 
                         dateText.setText(currentDateString);
                     }
