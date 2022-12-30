@@ -52,6 +52,7 @@ public class DetailsFragment extends Fragment {
             LatLng hollandLoc = new LatLng(3.1302616854935614, 101.6492878222151 );
             gMap.addMarker(new MarkerOptions().position(hollandLoc).title("Holland Food"));
             gMap.moveCamera(CameraUpdateFactory.newLatLng(hollandLoc));
+            gMap.animateCamera(CameraUpdateFactory.zoomTo(16));
         }
     };
 
