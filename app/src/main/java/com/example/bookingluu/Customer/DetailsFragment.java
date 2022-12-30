@@ -43,6 +43,11 @@ public class DetailsFragment extends Fragment {
         public void onMapReady(GoogleMap googleMap) {
             gMap = googleMap;
 
+            //More Settings
+            gMap.getUiSettings().setCompassEnabled(true);
+            gMap.getUiSettings().setZoomGesturesEnabled(true);
+            gMap.getUiSettings().setZoomControlsEnabled(true);
+
             //Add a marker in HollandFond Restaurant and move the camera
             LatLng hollandLoc = new LatLng(3.1302616854935614, 101.6492878222151 );
             gMap.addMarker(new MarkerOptions().position(hollandLoc).title("Holland Food"));
