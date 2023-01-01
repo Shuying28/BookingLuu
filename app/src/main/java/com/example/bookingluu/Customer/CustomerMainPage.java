@@ -1,28 +1,23 @@
 package com.example.bookingluu.Customer;
 
-import static android.content.ContentValues.TAG;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager2.widget.ViewPager2;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.DeadObjectException;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bookingluu.CustomerLoginPage;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
+
 import com.example.bookingluu.R;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,8 +27,13 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-public class CustomerMainPage extends AppCompatActivity {
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
+public class CustomerMainPage extends AppCompatActivity {
+    private TextView restaurant_name, restaurant_address, end_operation_hour, showReview,operation_status, open_operation_hour;
     ViewPagerFragmentAdapter viewPagerFragmentAdapter;
     TabLayout tabLayout;
     ViewPager2 viewPager2;
@@ -54,6 +54,43 @@ public class CustomerMainPage extends AppCompatActivity {
         setContentView(R.layout.activity_customer_main_page);
 
         init();
+
+        documentReference= fStore.collection("restaurant").document("HollandFood");
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                restaurant_name.setText(value.getString("RestaurantName"));
+                restaurant_address.setText(value.getString("Address"));
+                end_operation_hour.setText(value.getString("EndOperateHour"));
+
+                //rating in 2 decimal places
+                String ratingvalues = value.getString("currentRating");
+                double double_ratingvalues = Double.valueOf(ratingvalues);
+                String strDouble = String.format("%.2f", double_ratingvalues);
+                showReview.setText(strDouble);
+
+                //update operation hour
+                String open_operation_hour = value.getString("OpenOperationHour");
+                SimpleDateFormat formatter = new SimpleDateFormat("hh:mm a");
+                String timeStr2 = formatter.format(Calendar.getInstance().getTime());
+                try{
+                Date dateTime1 = formatter.parse(open_operation_hour);
+                Date dateTime2 = formatter.parse(timeStr2);
+                    Boolean bool1 = dateTime1.after(dateTime2);
+                    Boolean bool2 = dateTime1.before(dateTime2);
+                    Boolean bool3 = dateTime1.equals(dateTime2);
+                    if(bool1){
+                        operation_status.setText("Now Closed");
+                    }else if(bool2){
+                        operation_status.setText("Now Open");
+                    }else if(bool3){
+                        operation_status.setText("Close Soon");
+                    }
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +171,11 @@ public class CustomerMainPage extends AppCompatActivity {
     }
 
     public void init(){
+        restaurant_name=findViewById(R.id.restaurant_name);
+        restaurant_address=findViewById(R.id.restaurant_address);
+        end_operation_hour=findViewById(R.id.EndOperationHour);
+        showReview=findViewById(R.id.showReview);
+        operation_status=findViewById(R.id.Operation_status);
         viewPager2=findViewById(R.id.viewPager);
         tabLayout=findViewById(R.id.tabLayout);
         addReviewBtn=findViewById(R.id.addReviewBtn);
