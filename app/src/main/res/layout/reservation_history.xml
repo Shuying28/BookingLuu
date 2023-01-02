@@ -24,7 +24,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/restaurantImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="4dp"
@@ -53,16 +53,7 @@
                 android:textSize="14dp"
                 android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="0dp"
-                    android:text="September, Wednesday"
-                    android:textColor="#000F45"
-                    android:textSize="14dp"
-                    android:textStyle="bold" />
+
 
             </LinearLayout>
 
@@ -70,7 +61,7 @@
                 android:id="@+id/code"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="170dp"
                 android:layout_marginTop="8dp"
                 android:text="#716001"
                 android:textColor="#000F45"
@@ -80,7 +71,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/restaurant_name"
+            android:id="@+id/restaurantName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
@@ -126,7 +117,7 @@
                 android:layout_marginLeft="110dp"
                 android:layout_marginTop="0dp"
                 android:text="Approved"
-                android:textColor="#000F45"
+                android:textColor="@color/white"
                 android:textSize="14dp"
                 android:textStyle="bold" />
         </LinearLayout>

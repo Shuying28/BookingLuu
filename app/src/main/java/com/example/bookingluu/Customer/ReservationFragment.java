@@ -314,7 +314,7 @@ public class ReservationFragment extends Fragment {
                                 }
                             });
 
-                            resNameText.setText(reservationName);;
+                            resNameText.setText(reservationName);
                             resEmail.setText(reservationEmail);
                             resPhoneNo.setText(reservationPhoneNo);
                             resRestaurantName.setText(restaurantName);
@@ -497,10 +497,7 @@ public class ReservationFragment extends Fragment {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        calender.set(Calendar.YEAR,year);
-                        calender.set(Calendar.MONTH,month);
-                        calender.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-                        String currentDateString = dayOfMonth+"-"+month+"-"+year;
+                        String currentDateString = dayOfMonth+"-"+(month+1)+"-"+year;
 
                         dateText.setText(currentDateString);
                     }

@@ -138,7 +138,7 @@ public class CustomerProfilePage extends AppCompatActivity {
                 editProfileDialog = new Dialog(CustomerProfilePage.this);
                 editProfileDialog.setContentView(R.layout.dialog_edit_profile);
                 Button saveBtn= editProfileDialog.findViewById(R.id.saveBtn);
-                Button cancelBtn= editProfileDialog.findViewById(R.id.cancelBtn);
+                Button cancelBtn= editProfileDialog.findViewById(R.id.cancelReservationBtn);
                 editProfileDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 editProfileDialog.show();
 

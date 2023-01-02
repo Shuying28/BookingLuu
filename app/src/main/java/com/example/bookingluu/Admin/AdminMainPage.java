@@ -1,5 +1,8 @@
 package com.example.bookingluu.Admin;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -131,7 +134,7 @@ public class AdminMainPage extends AppCompatActivity {
                 EditText menuDescriptionText= addMenuDialog.findViewById(R.id.menuDescriptionText);
                 menuImage= addMenuDialog.findViewById(R.id.menuImage);
                 Button addBtn= addMenuDialog.findViewById(R.id.addBtn);
-                Button cancelBtn= addMenuDialog.findViewById(R.id.cancelBtn);
+                Button cancelBtn= addMenuDialog.findViewById(R.id.cancelReservationBtn);
                 TextView chooseImageText= addMenuDialog.findViewById(R.id.chooseImageText);
                 addMenuDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 addMenuDialog.show();
@@ -215,6 +218,8 @@ public class AdminMainPage extends AppCompatActivity {
 
 
     }
+
+
 
     public void init(){
         backBtn=findViewById(R.id.adminBackBtn);
