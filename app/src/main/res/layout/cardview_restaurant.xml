@@ -43,7 +43,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/Name"
+                    android:id="@+id/upcomingNameText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="0dp"
@@ -141,7 +141,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/pendingDeclineBtn"
                     android:layout_width="77dp"
                     android:layout_height="38dp"
                     android:layout_marginLeft="75dp"

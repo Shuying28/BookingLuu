@@ -91,6 +91,7 @@ public class ReservationFragment extends Fragment {
     String reservationSelectedFood ;
     String reservationSlot ;
     int reservationPax;
+    String imageURI;
 
 
     //For getting the restaurant information
@@ -339,7 +340,7 @@ public class ReservationFragment extends Fragment {
                                 @Override
                                 public void onClick(View view) {
                                     Reservation reservation = new Reservation(reservationNumber,reservationPax,selectedTableNo,date,reservationSlot,
-                                            reservationSelectedFood,fAuth.getUid(),reservationName,reservationPhoneNo,reservationEmail,reservationNotes,restaurantName);
+                                            reservationSelectedFood,fAuth.getUid(),reservationName,reservationPhoneNo,reservationEmail,reservationNotes,restaurantName,imageURI);
                                     DocumentReference reservationDocumentReference =fStore.collection("restaurant").document("HollandFood").collection("Reservation").document(String.valueOf(reservationNumber));
                                     reservationDocumentReference.set(reservation).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -562,6 +563,15 @@ public class ReservationFragment extends Fragment {
 
             }
         });
+        DocumentReference documentReference= fStore.collection("customers").document(fAuth.getUid());
+        documentReference.addSnapshotListener( new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                imageURI= value.getString("image");
+            }
+        });
+
+
     }
 
     public void updateRestaurantData(){
