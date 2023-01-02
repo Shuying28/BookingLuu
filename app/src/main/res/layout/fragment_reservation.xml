@@ -63,7 +63,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/resInfoTableNoText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
@@ -88,8 +88,8 @@
             android:paddingRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.025"
-            app:layout_constraintStart_toStartOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@id/textView13">
+            app:layout_constraintStart_toStartOf="@+id/resInfoTableNoText"
+            app:layout_constraintTop_toBottomOf="@id/resInfoTableNoText">
 
             <ImageView
                 android:id="@+id/imageView11"
@@ -167,7 +167,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/resInfoOrderNoText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="28dp"
@@ -328,8 +328,8 @@
             android:gravity="center_horizontal"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            app:layout_constraintStart_toStartOf="@+id/textView15"
-            app:layout_constraintTop_toBottomOf="@+id/textView15">
+            app:layout_constraintStart_toStartOf="@+id/resInfoOrderNoText"
+            app:layout_constraintTop_toBottomOf="@+id/resInfoOrderNoText">
 
             <!-- text view to display selected items-->
             <TextView
@@ -339,8 +339,8 @@
                 android:layout_centerInParent="true"
                 android:background="@android:drawable/editbox_background"
                 android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
-                app:layout_constraintStart_toStartOf="@+id/textView15"
-                app:layout_constraintTop_toBottomOf="@+id/textView15"
+                app:layout_constraintStart_toStartOf="@+id/resInfoOrderNoText"
+                app:layout_constraintTop_toBottomOf="@+id/resInfoOrderNoText"
                 android:drawablePadding="16dp"
                 android:hint="Select Food"
                 android:padding="12dp" />

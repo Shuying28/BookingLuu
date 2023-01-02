@@ -2,9 +2,9 @@ package com.example.bookingluu.Restaurant;
 
 public class Reservation {
     private int bookingNo,Pax,TableNo;
-    private String Date,Time,Food,customerID,customerName, customerPhoneNo,customerEmail, customerNotes,status, restaurantName;
+    private String Date,Time,Food,customerID,customerName, customerPhoneNo,customerEmail, customerNotes,status, restaurantName,imageURI;
 
-    public Reservation(int bookingNo, int pax,int tableNo, String date, String time, String food, String customerID, String customerName, String customerPhoneNo, String customerEmail, String customerNotes, String restaurantName) {
+    public Reservation(int bookingNo, int pax,int tableNo, String date, String time, String food, String customerID, String customerName, String customerPhoneNo, String customerEmail, String customerNotes, String restaurantName, String imageURI) {
         this.bookingNo = bookingNo;
         Pax = pax;
         Date = date;
@@ -17,7 +17,19 @@ public class Reservation {
         this.customerEmail = customerEmail;
         this.customerNotes = customerNotes;
         this.restaurantName=restaurantName;
+        this.imageURI=imageURI;
         this.status = "Pending";
+    }
+
+    public Reservation() {
+    }
+
+    public String getImageURI() {
+        return imageURI;
+    }
+
+    public void setImageURI(String imageURI) {
+        this.imageURI = imageURI;
     }
 
     public int getTableNo() {

@@ -33,7 +33,7 @@
         app:cornerRadius="15dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/pendingDeclineBtn"
         android:layout_width="155dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
