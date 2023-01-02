@@ -135,7 +135,7 @@ public class CustomerMainPage extends AppCompatActivity {
                 addRatingDialog.setContentView(R.layout.add_rating_dialog);
                 EditText commentText= addRatingDialog.findViewById(R.id.commentText);
                 Button postBtn= addRatingDialog.findViewById(R.id.postBtn);
-                Button cancelBtn= addRatingDialog.findViewById(R.id.cancelBtn);
+                Button cancelBtn= addRatingDialog.findViewById(R.id.cancelReservationBtn);
                 RatingBar ratingBar= addRatingDialog.findViewById(R.id.ratingBar);
                 addRatingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 addRatingDialog.show();
@@ -171,7 +171,7 @@ public class CustomerMainPage extends AppCompatActivity {
     }
 
     public void init(){
-        restaurant_name=findViewById(R.id.restaurant_name);
+        restaurant_name=findViewById(R.id.restaurantName);
         restaurant_address=findViewById(R.id.restaurant_address);
         end_operation_hour=findViewById(R.id.EndOperationHour);
         showReview=findViewById(R.id.showReview);

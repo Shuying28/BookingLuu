@@ -131,7 +131,7 @@ public class AdminMainPage extends AppCompatActivity {
                 EditText menuDescriptionText= addMenuDialog.findViewById(R.id.menuDescriptionText);
                 menuImage= addMenuDialog.findViewById(R.id.menuImage);
                 Button addBtn= addMenuDialog.findViewById(R.id.addBtn);
-                Button cancelBtn= addMenuDialog.findViewById(R.id.cancelBtn);
+                Button cancelBtn= addMenuDialog.findViewById(R.id.cancelReservationBtn);
                 TextView chooseImageText= addMenuDialog.findViewById(R.id.chooseImageText);
                 addMenuDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 addMenuDialog.show();

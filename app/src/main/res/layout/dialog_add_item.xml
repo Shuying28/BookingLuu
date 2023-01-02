@@ -227,7 +227,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/cancelBtn"
+        android:id="@+id/cancelReservationBtn"
         android:layout_width="90dp"
         android:layout_height="35dp"
         android:layout_below="@+id/desEdtTxt"
