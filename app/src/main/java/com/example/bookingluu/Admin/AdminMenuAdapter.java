@@ -1,6 +1,8 @@
 package com.example.bookingluu.Admin;
 
 
+import static androidx.core.app.ActivityCompat.startActivityForResult;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -23,6 +25,9 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
@@ -46,6 +51,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -58,6 +64,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
     static String imageLink;
     static String menuCodeTxt;
     static StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+    public static final int PICK_IMAGE = 1;
 
 
     public AdminMenuAdapter(Context context, ArrayList<Menu> menuArrayList) {
@@ -71,25 +78,6 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
         View v = LayoutInflater.from(context).inflate(R.layout.admin_menu_card_view, parent, false);
         temp = parent.getContext();
 
-//        // TODO: show dialog
-//        final MyViewHolder vHolder= new MyViewHolder(v);
-//        vHolder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Dialog d= new Dialog(parent.getContext());
-//                d.setContentView(R.layout.dialog_delete_item);
-//                try {
-//                    d.show();
-//
-//                }
-//                catch (WindowManager.BadTokenException ex) {
-//                    ex.printStackTrace();
-//                }
-//
-//            }
-//        });
-//        return vHolder;
         return new com.example.bookingluu.Admin.AdminMenuAdapter.MyViewHolder(v);
     }
 
@@ -142,15 +130,17 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
 
 
         }
+
         public static void showPopUpMenu(View view) {
             PopupMenu popupMenu = new PopupMenu(view.getContext(), view);
             popupMenu.inflate(R.menu.pop_up_menu);
+
+            ActivityResultLauncher<String> launcher;
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
                     switch (menuItem.getItemId()) {
                         case R.id.menuDelete:
-                            Toast.makeText(context, "hhhh", Toast.LENGTH_SHORT).show();
                             Dialog deleteMenuDialog = new Dialog(temp);
                             deleteMenuDialog.setContentView(R.layout.dialog_delete_item);
                             deleteMenuDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -192,6 +182,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
 
 
                             return true;
+
                         case R.id.menuEdit:
                             Dialog editMenuDialog = new Dialog(temp);
                             editMenuDialog.setContentView(R.layout.dialog_edit_item);
@@ -204,7 +195,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
 
                             Button saveMenuBtn = editMenuDialog.findViewById(R.id.saveEditMenuBtn);
                             Button cancelEditMenuBtn = editMenuDialog.findViewById(R.id.cancelEditMenuBtn);
-                            EditText menuCode = editMenuDialog.findViewById(R.id.menuCodeEditText);
+                            TextView menuCode = editMenuDialog.findViewById(R.id.menuCodeEditText);
                             //set menu code uneditable
                             menuCode.setEnabled(false);
                             EditText menuName = editMenuDialog.findViewById(R.id.menuNameEditText);
@@ -236,20 +227,26 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                                         return;
                                     }
 
+
+
+
 //                                    Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 //                                    startActivityForResult(openGalleryIntent,1000);
                                 }
+
+                                
                             });
 
                             menuCode.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     menuCode.setError("This field cannot be edited!");
+                                    System.out.println("ugh8ygg8yg80g8ygy8");
                                 }
                             });
 
                             saveMenuBtn.setOnClickListener(new View.OnClickListener() {
-
+                                @Override
                                 public void onClick(View view){
                                     String code = menuCode.getText().toString();
                                     String name = menuName.getText().toString();
@@ -271,14 +268,15 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                                     }
 
 
-                                    Menu updatedMenu = new Menu(code, name, price, des, image);
+                                    Menu updatedMenu = new Menu(code, name, price, des, menuToBeEdited.getMenuImage());
 
                                     fStore.collection("restaurant").document("HollandFood").collection("Menu").document(code)
                                             .set(updatedMenu)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void unused) {
-                                                Toast.makeText(context, "Menu" + code + "Successfully Updated!", Toast.LENGTH_SHORT).show();
+                                                editMenuDialog.dismiss();
+                                                Toast.makeText(context, "Menu " + code + " Successfully Updated!", Toast.LENGTH_SHORT).show();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
@@ -309,5 +307,12 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
 
 
     }
+
+
+
+
+
+
+
 
 }
