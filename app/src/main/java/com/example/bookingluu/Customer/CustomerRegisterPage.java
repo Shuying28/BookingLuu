@@ -88,7 +88,7 @@ public class CustomerRegisterPage extends AppCompatActivity {
                             userID=fAuth.getCurrentUser().getUid();
 
                             DocumentReference documentReference =fStore.collection("customers").document(userID);
-                            Customer customer= new Customer(fullName,email,phoneNumber,"");
+                            Customer customer= new Customer(fullName,email,phoneNumber,"https://firebasestorage.googleapis.com/v0/b/bookingluu-b66f7.appspot.com/o/Icon%20-%20Person.png?alt=media&token=d29baa3e-0de1-483e-bdb8-4f2676aab805");
                             documentReference.set(customer).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {

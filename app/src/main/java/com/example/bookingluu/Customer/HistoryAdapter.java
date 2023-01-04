@@ -169,6 +169,12 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
                             }
                         });
+                    }else if(reservationHistory.getStatus().equals("Cancel")){
+                        reservationAccIcon.setImageResource(R.drawable.cancelicon);
+                        reservationStatusText.setText("Your reservation is cancelled!");
+                        reservationStatusText.setTextColor(temp.getResources().getColor(R.color.decline_colour));
+
+
                     }
                     // TODO: the status of other condition
 

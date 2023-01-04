@@ -43,6 +43,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.MyViewHold
     holder.ratingBar.setRating(Float.parseFloat(rating.getRate()));
 
     holder.commentText.setText(rating.getCommentText());
+        System.out.println(rating.getCustomerName());
     Picasso.get().load(rating.getImgURI()).into(holder.userImage);
 
     }
