@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookingluu.JavaMailAPI;
 import com.example.bookingluu.R;
 import com.example.bookingluu.Restaurant.Reservation;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -120,7 +121,23 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                          public void onSuccess(DocumentSnapshot documentSnapshot) {
                              documentReference.update("status", "Accepted");
                              reservationArrayList.remove(getAdapterPosition());
-                             //Todo : send email to customer
+
+                             //Send email to customer after approval
+                             String message = "Dear "+selectedReservation.getCustomerName()+"," +
+                                     "\n\nYour Reservation have been approved!" +
+                                     "\n\n Below are the details of the reservation." +
+                                     "\n- Restaurant: "+selectedReservation.getRestaurantName()+
+                                     "\n- Date: "+selectedReservation.getDate()+
+                                     "\n- Time: "+selectedReservation.getTime()+
+                                     "\n- Table.No: "+selectedReservation.getTableNo()+
+                                     "\n- Ordered food: "+selectedReservation.getFood()+
+                                     "\n- Date: "+selectedReservation.getDate()+
+                                     "\nIf you need any assistance please contact bookingluucustomerservice@gmail.com" +
+                                     "\n\nBest Regards,\nBookingLuu Customer Center";
+                             String subject = "Approval of Reservation";
+                             JavaMailAPI javaMailAPI = new JavaMailAPI(temp,selectedReservation.getCustomerEmail().trim(),subject,message);
+                             javaMailAPI.execute();
+
                          }
                      });
                 }
@@ -138,6 +155,22 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                             documentReference.update("status", "Declined");
                             reservationArrayList.remove(getAdapterPosition());
                             //Todo : send email to customer
+                            //Send email to customer after declined
+                            String message = "Dear "+selectedReservation.getCustomerName()+"," +
+                                    "\n\nWe have to apologise that your reservation was declined! " +
+                                    "\n\n Below are the details of the reservation." +
+                                    "\n- Restaurant: "+selectedReservation.getRestaurantName()+
+                                    "\n- Date: "+selectedReservation.getDate()+
+                                    "\n- Time: "+selectedReservation.getTime()+
+                                    "\n- Table.No: "+selectedReservation.getTableNo()+
+                                    "\n- Ordered food: "+selectedReservation.getFood()+
+                                    "\n- Date: "+selectedReservation.getDate()+
+                                    "\nIf you need any assistance please contact bookingluucustomerservice@gmail.com"+
+                                    "\n\nBest Regards," +
+                                    "\nBookingLuu Customer Center";
+                            String subject = "Decline of Reservation";
+                            JavaMailAPI javaMailAPI = new JavaMailAPI(temp,selectedReservation.getCustomerEmail().trim(),subject,message);
+                            javaMailAPI.execute();
                         }
                     });
                 }
