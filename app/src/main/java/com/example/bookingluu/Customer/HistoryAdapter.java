@@ -106,7 +106,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                     BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(temp);
                     bottomSheetDialog.setContentView(R.layout.dialog_big_cancel_reservation);
                     TextView restaurantName = bottomSheetDialog.findViewById(R.id.restaurantName);
-//                    TextView restaurant_address = bottomSheetDialog.findViewById(R.id.restaurant_address);
+                    TextView restaurant_address = bottomSheetDialog.findViewById(R.id.restaurant_address);
                     TextView dateAndDay = bottomSheetDialog.findViewById(R.id.dateAndDay);
                     TextView hour = bottomSheetDialog.findViewById(R.id.hour);
                     TextView people = bottomSheetDialog.findViewById(R.id.people);
@@ -120,7 +120,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                     ImageView resHisbackBtn = bottomSheetDialog.findViewById(R.id.resHisbackBtn);
 
                     restaurantName.setText(reservationHistory.getRestaurantName());
-//                    restaurant_address.setText(reservationHistory.getRestaurantName());
+                    restaurant_address.setText(reservationHistory.getRestaurantAddress());
                     dateAndDay.setText(reservationHistory.getDate());
                     hour.setText(reservationHistory.getTime());
                     people.setText(reservationHistory.getPax()+" people");

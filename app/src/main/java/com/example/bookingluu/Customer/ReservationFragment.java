@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ import com.example.bookingluu.Restaurant.Menu;
 import com.example.bookingluu.Restaurant.Reservation;
 import com.example.bookingluu.Restaurant.Table;
 import com.example.bookingluu.R;
+import com.example.bookingluu.TermsOfServicePage;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -45,7 +47,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -56,7 +57,7 @@ import java.util.Map;
 public class ReservationFragment extends Fragment {
     private LinearLayout selectDateCon;
     private EditText dateText,nameText,phoneNoText,emailText,notesText;
-    private TextView termsOfService, showSelectedFoodText, addNoPax, minusNoPax, noOfPax;
+    private TextView termsOfServiceText, showSelectedFoodText, addNoPax, minusNoPax, noOfPax;
     private CheckBox checkBox;
     private Button reserveBtn;
     FirebaseFirestore fStore;
@@ -115,7 +116,7 @@ public class ReservationFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
         super.onViewCreated(view, savedInstanceState);
-        termsOfService = view.findViewById(R.id.termsOfService);
+        termsOfServiceText = view.findViewById(R.id.termsOfServiceText);
         reserveBtn = view.findViewById(R.id.reserveBtn);
         selectDateCon = view.findViewById(R.id.selectDateCon);
         dateText = view.findViewById(R.id.dateText);
@@ -166,6 +167,14 @@ public class ReservationFragment extends Fragment {
 
                     }
                 });
+            }
+        });
+
+        termsOfServiceText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(getContext(), TermsOfServicePage.class);
+                startActivity(intent);
             }
         });
 
@@ -340,7 +349,7 @@ public class ReservationFragment extends Fragment {
                                 @Override
                                 public void onClick(View view) {
                                     Reservation reservation = new Reservation(reservationNumber,reservationPax,selectedTableNo,date,reservationSlot,
-                                            reservationSelectedFood,fAuth.getUid(),reservationName,reservationPhoneNo,reservationEmail,reservationNotes,restaurantName,imageURI);
+                                            reservationSelectedFood,fAuth.getUid(),reservationName,reservationPhoneNo,reservationEmail,reservationNotes,restaurantName,restaurantAddress,imageURI);
                                     DocumentReference reservationDocumentReference =fStore.collection("restaurant").document("HollandFood").collection("Reservation").document(String.valueOf(reservationNumber));
                                     reservationDocumentReference.set(reservation).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
@@ -485,6 +494,7 @@ public class ReservationFragment extends Fragment {
 
 
         //Select Date
+        // todo : set to  non clickable
         //Use the current date as the default date in the picker
         final Calendar calender = Calendar.getInstance();
         final int year = calender.get(Calendar.YEAR);

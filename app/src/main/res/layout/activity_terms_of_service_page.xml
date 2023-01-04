@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/listBackBtn"
+            android:id="@+id/termOfServiceBackBtn"
             android:layout_width="80px"
             android:layout_height="80px"
             android:layout_marginLeft="50px"
@@ -29,7 +29,7 @@
         </ImageView>
 
         <TextView
-            android:id="@+id/termsOfService"
+            android:id="@+id/termsOfServiceText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="35px"

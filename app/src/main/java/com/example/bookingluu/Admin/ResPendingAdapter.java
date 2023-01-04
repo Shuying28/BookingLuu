@@ -157,7 +157,7 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                             //Todo : send email to customer
                             //Send email to customer after declined
                             String message = "Dear "+selectedReservation.getCustomerName()+"," +
-                                    "\n\nWe have to apologise that your reservation was declined! " +
+                                    "\n\nWe have to apologise that your reservation was declined due to some issue! " +
                                     "\n\n Below are the details of the reservation." +
                                     "\n- Restaurant: "+selectedReservation.getRestaurantName()+
                                     "\n- Date: "+selectedReservation.getDate()+
@@ -165,6 +165,7 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                                     "\n- Table.No: "+selectedReservation.getTableNo()+
                                     "\n- Ordered food: "+selectedReservation.getFood()+
                                     "\n- Date: "+selectedReservation.getDate()+
+                                    "\nHope to receive your reservation again!! "+
                                     "\nIf you need any assistance please contact bookingluucustomerservice@gmail.com"+
                                     "\n\nBest Regards," +
                                     "\nBookingLuu Customer Center";
