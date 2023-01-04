@@ -19,6 +19,7 @@
     </ImageView>
 
     <ImageView
+        android:id="@+id/reservationAccIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -27,6 +28,7 @@
     </ImageView>
 
     <TextView
+        android:id="@+id/reservationStatusText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -305,14 +307,14 @@
         android:id="@+id/cancelReservationBtn"
         android:layout_width="250dp"
         android:layout_height="40dp"
-        android:layout_marginTop="25dp"
         android:layout_gravity="center"
+        android:layout_marginTop="25dp"
         android:background="@drawable/button_shape"
         android:fontFamily="@font/montserrat"
         android:text="Cancel Reservation"
         android:textSize="14sp"
         android:textStyle="bold"
-        />
+        android:visibility="invisible" />
 
 
 </LinearLayout>

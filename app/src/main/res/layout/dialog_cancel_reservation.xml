@@ -22,7 +22,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/confirmCancelBtn"
         android:layout_width="155dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
@@ -33,7 +33,7 @@
         app:cornerRadius="15dp" />
 
     <Button
-        android:id="@+id/pendingDeclineBtn"
+        android:id="@+id/noCancelBtn"
         android:layout_width="155dp"
         android:layout_height="45dp"
         android:layout_gravity="center"

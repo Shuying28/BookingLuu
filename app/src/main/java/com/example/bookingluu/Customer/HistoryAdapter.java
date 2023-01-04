@@ -1,7 +1,10 @@
 package com.example.bookingluu.Customer;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -111,6 +114,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                     TextView notes = bottomSheetDialog.findViewById(R.id.notes);
                     Button cancelReservationBtn = bottomSheetDialog.findViewById(R.id.cancelReservationBtn);
                     Reservation reservationHistory = historyArrayList.get(getAdapterPosition());
+                    ImageView reservationAccIcon = bottomSheetDialog.findViewById(R.id.reservationAccIcon);
+                    TextView reservationStatusText = bottomSheetDialog.findViewById(R.id.reservationStatusText);
+
 
                     restaurantName.setText(reservationHistory.getRestaurantName());
 //                    restaurant_address.setText(reservationHistory.getRestaurantName());
@@ -120,26 +126,51 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                     orderMeal.setText(reservationHistory.getFood());
                     table.setText("Table No: "+reservationHistory.getTableNo());
                     notes.setText(reservationHistory.getCustomerNotes());
+                    bottomSheetDialog.show();
 
                     if(reservationHistory.getStatus().equals("Accepted")){
-                        bottomSheetDialog.show();
+                        cancelReservationBtn.setVisibility(View.VISIBLE);
                         cancelReservationBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Reservation reservationHistory = historyArrayList.get(getAdapterPosition());
-                                documentReference=fStore.collection("restaurant").document("HollandFood").collection("Reservation")
-                                        .document(String.valueOf(reservationHistory.getBookingNo()));
-                                documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                        documentReference.update("status", "Cancel");
-                                        historyArrayList.remove(getAdapterPosition());
+                                Dialog cancelResConfirm = new Dialog(temp);
+                                cancelResConfirm.setContentView(R.layout.dialog_cancel_reservation);
+                                cancelResConfirm.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                Button confirmCancelBtn= cancelResConfirm.findViewById(R.id.confirmCancelBtn);
+                                Button noCancelBtn = cancelResConfirm.findViewById(R.id.noCancelBtn);
+                                cancelResConfirm.show();
 
+                                confirmCancelBtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+
+                                        Reservation reservationHistory = historyArrayList.get(getAdapterPosition());
+                                        documentReference=fStore.collection("restaurant").document("HollandFood").collection("Reservation")
+                                                .document(String.valueOf(reservationHistory.getBookingNo()));
+                                        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                            @Override
+                                            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                                //TODO : card view arrangement
+                                                documentReference.update("status", "Cancel");
+//                                                historyArrayList.remove(getAdapterPosition());
+                                                cancelResConfirm.dismiss();
+
+                                            }
+                                        });
                                     }
                                 });
+
+                                noCancelBtn.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View view) {
+                                        cancelResConfirm.dismiss();
+                                    }
+                                });
+
                             }
                         });
                     }
+                    // TODO: the status of other condition
 
                 }
             });

@@ -84,6 +84,7 @@ public class ReservationHistoryPage extends AppCompatActivity {
                             historyArrayList.add(dc.getDocument().toObject(Reservation.class));
                         }
                     }else if(dc.getType()==DocumentChange.Type.MODIFIED){
+                        //TODO modify here the card view arrangent
                         if (fAuth.getCurrentUser().getUid().equals(dc.getDocument().toObject(Reservation.class).getCustomerID())){
                             historyArrayList.set(dc.getOldIndex(),dc.getDocument().toObject(Reservation.class));
                         }
