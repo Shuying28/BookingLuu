@@ -309,12 +309,13 @@
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginTop="25dp"
-        android:background="@drawable/button_shape"
+        android:backgroundTint="@color/orange_second"
         android:fontFamily="@font/montserrat"
         android:text="Cancel Reservation"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:cornerRadius="20dp" />
 
 
 </LinearLayout>
