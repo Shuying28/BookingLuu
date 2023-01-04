@@ -83,7 +83,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView date,code,restaurantName,people,hours,status;
         ImageView restaurantImage, resHisBackBtn;
-        Button cancelReservationBtn;
+        Button cancelReservationBtn,resHisbackBtn;
         private static FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference documentReference;
 
@@ -98,6 +98,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
             restaurantImage=itemView.findViewById(R.id.restaurantImage);
             resHisBackBtn = itemView.findViewById(R.id.resHisbackBtn);
             cancelReservationBtn = itemView.findViewById(R.id.cancelReservationBtn);
+            resHisbackBtn = itemView.findViewById(R.id.resHisbackBtn);
             itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -116,7 +117,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                     Reservation reservationHistory = historyArrayList.get(getAdapterPosition());
                     ImageView reservationAccIcon = bottomSheetDialog.findViewById(R.id.reservationAccIcon);
                     TextView reservationStatusText = bottomSheetDialog.findViewById(R.id.reservationStatusText);
-
+                    ImageView resHisbackBtn = bottomSheetDialog.findViewById(R.id.resHisbackBtn);
 
                     restaurantName.setText(reservationHistory.getRestaurantName());
 //                    restaurant_address.setText(reservationHistory.getRestaurantName());
@@ -128,7 +129,14 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                     notes.setText(reservationHistory.getCustomerNotes());
                     bottomSheetDialog.show();
 
-                    if(reservationHistory.getStatus().equals("Accepted")){
+                    resHisbackBtn.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            bottomSheetDialog.dismiss();
+                        }
+                    });
+
+                    if(reservationHistory.getStatus().equals("Accepted")||reservationHistory.getStatus().equals("Pending")){
                         cancelReservationBtn.setVisibility(View.VISIBLE);
                         cancelReservationBtn.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -169,12 +177,28 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
                             }
                         });
-                    }else if(reservationHistory.getStatus().equals("Cancel")){
+                    }
+                    if(reservationHistory.getStatus().equals("Cancel")){
                         reservationAccIcon.setImageResource(R.drawable.cancelicon);
                         reservationStatusText.setText("Your reservation is cancelled!");
                         reservationStatusText.setTextColor(temp.getResources().getColor(R.color.decline_colour));
 
 
+
+                    }else if(reservationHistory.getStatus().equals("Pending")) {
+                        reservationAccIcon.setImageResource(R.drawable.pendingicon);
+                        reservationStatusText.setText("Your reservation is pending!");
+                        reservationStatusText.setTextColor(temp.getResources().getColor(R.color.pending_colour));
+
+                    }else if(reservationHistory.getStatus().equals("Accepted")) {
+                        reservationAccIcon.setImageResource(R.drawable.green_tick);
+                        reservationStatusText.setText("Your reservation is accepted!");
+                        reservationStatusText.setTextColor(temp.getResources().getColor(R.color.admin_third));
+
+                    }else if(reservationHistory.getStatus().equals("Arrived")) {
+                        reservationAccIcon.setImageResource(R.drawable.arrivedicon);
+                        reservationStatusText.setText("Your reservation is completed!");
+                        reservationStatusText.setTextColor(temp.getResources().getColor(R.color.approved_colour));
                     }
                     // TODO: the status of other condition
 

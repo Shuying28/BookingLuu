@@ -38,8 +38,8 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView12">
 
             <ImageView
@@ -130,7 +130,7 @@
 
             <View
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/minusNoPax"
@@ -311,8 +311,8 @@
                 android:inputType="textMultiLine"
                 android:isScrollContainer="true"
                 android:scrollbarAlwaysDrawHorizontalTrack="false"
-                android:scrollbars="vertical"
                 android:scrollbarThumbVertical="@color/orange_second"
+                android:scrollbars="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -340,11 +340,11 @@
                 android:layout_centerInParent="true"
                 android:background="@android:drawable/editbox_background"
                 android:drawableRight="@drawable/ic_baseline_arrow_drop_down_24"
-                app:layout_constraintStart_toStartOf="@+id/resInfoOrderNoText"
-                app:layout_constraintTop_toBottomOf="@+id/resInfoOrderNoText"
                 android:drawablePadding="16dp"
                 android:hint="Select Food"
-                android:padding="12dp" />
+                android:padding="12dp"
+                app:layout_constraintStart_toStartOf="@+id/resInfoOrderNoText"
+                app:layout_constraintTop_toBottomOf="@+id/resInfoOrderNoText" />
 
         </LinearLayout>
 
