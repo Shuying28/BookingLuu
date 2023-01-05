@@ -82,11 +82,12 @@ public class CustomerMainPage extends AppCompatActivity {
                 Date openTime = formatter.parse(open_operation_hour);
                 Date closeTime = formatter.parse(end_operation_hour);
                 Date currentTime = formatter.parse(timeStr2);
-                    Boolean close = openTime.after(currentTime)&&currentTime.after(closeTime);
+                    Boolean close = openTime.after(currentTime)||currentTime.after(closeTime);
                     Boolean open = openTime.before(currentTime)&&currentTime.before(closeTime);
                     Boolean bool3 = openTime.equals(currentTime);
                     System.out.println("gagaeqgeagearg"+ openTime);
                     System.out.println("fawaegwergherhqeghqeh"+ currentTime);
+                    System.out.println("fawaegwergherhqeghqeh"+ closeTime);
                     if(close){
                         operation_status.setText("Now Closed");
                         operation_status.setTextColor(getApplicationContext().getResources().getColor(R.color.decline_colour));

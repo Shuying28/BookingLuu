@@ -133,7 +133,6 @@ public class RestaurantListPage extends AppCompatActivity {
     private void init(){
         backBtn=findViewById(R.id.listBackBtn);
         profileBtn=findViewById(R.id.profileBtn);
-        tempBtn=findViewById(R.id.tempBtn);
         visitHollandBtn=findViewById(R.id.visitHollandBtn);
         visitThaiBtn=findViewById(R.id.visitThaiBtn);
         hollFoodRating=findViewById(R.id.hollFoodRating);
@@ -172,7 +171,6 @@ public class RestaurantListPage extends AppCompatActivity {
             }
         });
     }
-
 
 
 
