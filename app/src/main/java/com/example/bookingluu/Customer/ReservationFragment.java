@@ -539,8 +539,6 @@ public class ReservationFragment extends Fragment {
 
 
 
-
-
     }
     public void arrayListToArray(){
         menuCodeArray = new String[menuCodeList.size()];
