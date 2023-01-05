@@ -70,6 +70,14 @@ public class CustomerProfilePage extends AppCompatActivity {
             }
         });
 
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(CustomerProfilePage.this, RestaurantListPage.class));
+            }
+        });
+
+
         documentReference= fStore.collection("customers").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override

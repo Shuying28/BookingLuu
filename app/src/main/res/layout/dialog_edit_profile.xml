@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="280dp"
-    android:layout_height="180dp"
+    android:layout_width="300dp"
+    android:layout_height="185dp"
     android:layout_gravity="center"
     android:background="@drawable/button_shape"
     android:orientation="vertical"
@@ -19,7 +19,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Name"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold">
 
 
@@ -27,10 +27,10 @@
 
     <LinearLayout
         android:id="@+id/customerNameText2"
-        android:layout_width="150dp"
-        android:layout_height="25dp"
+        android:layout_width="155dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginTop="19dp"
         android:background="@drawable/edit_text_shape"
         android:gravity="center_horizontal">
@@ -38,11 +38,11 @@
         <EditText
             android:id="@+id/customerNameText"
             android:layout_width="140dp"
-            android:layout_height="20dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:background="@color/white"
-            android:foregroundGravity="center|center_horizontal"
-            android:gravity="center|start|center_horizontal|top"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center|start|center_horizontal"
             android:inputType="textMultiLine"
             android:textColor="@color/dark_blue" />
 
@@ -54,12 +54,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/customerNameTxt"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:fontFamily="@font/montserrat"
         android:text="Phone No"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold">
 
 
@@ -67,10 +67,10 @@
 
     <LinearLayout
         android:id="@+id/phoneNoText2"
-        android:layout_width="150dp"
-        android:layout_height="25dp"
+        android:layout_width="155dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="110dp"
         android:layout_marginTop="68dp"
         android:background="@drawable/edit_text_shape"
         android:gravity="center_horizontal">
@@ -78,11 +78,11 @@
         <EditText
             android:id="@+id/phoneNoText"
             android:layout_width="140dp"
-            android:layout_height="20dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:background="@color/white"
-            android:foregroundGravity="center|center_horizontal"
-            android:gravity="center|start|center_horizontal|top"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center|start|center_horizontal"
             android:inputType="textMultiLine"
             android:textColor="@color/dark_blue" />
 
@@ -92,33 +92,31 @@
 
     <Button
         android:id="@+id/cancelReservationBtn"
-        android:layout_width="90dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/desEdtTxt"
-        android:layout_marginLeft="70dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="50dp"
         android:layout_marginTop="120dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="@color/orange_main"
         android:fontFamily="@font/montserrat"
         android:text="Cancel"
         android:textColor="@color/dark_blue"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:cornerRadius="10dp" />
+        app:cornerRadius="20dp" />
 
     <Button
         android:id="@+id/saveBtn"
-        android:layout_width="90dp"
-        android:layout_height="35dp"
-        android:layout_below="@+id/desEdtTxt"
-        android:layout_marginLeft="170dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="163dp"
         android:layout_marginTop="120dp"
         android:backgroundTint="@color/orange_main"
         android:fontFamily="@font/montserrat"
         android:text="Save"
         android:textColor="@color/dark_blue"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:cornerRadius="10dp" />
+        app:cornerRadius="20dp" />
 
 
 </RelativeLayout>
