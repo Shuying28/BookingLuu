@@ -14,5 +14,11 @@
 
     </style>
 
+    <style name="DatePickerDialogTheme" parent="ThemeOverlay.AppCompat.Dialog">
+
+        <item name="colorAccent">@color/orange_second</item>
+
+    </style>
+
 
 </resources>
