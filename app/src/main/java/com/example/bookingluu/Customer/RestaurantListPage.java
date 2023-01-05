@@ -78,12 +78,6 @@ public class RestaurantListPage extends AppCompatActivity {
             }
         });
 
-//        tempBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getApplicationContext(), CustomerMainPage.class));
-//            }
-//        });
 
 
         visitHollandBtn.setOnClickListener(new View.OnClickListener() {
