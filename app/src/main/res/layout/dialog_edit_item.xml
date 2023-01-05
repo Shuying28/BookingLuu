@@ -19,15 +19,15 @@
         android:fontFamily="@font/montserrat"
         android:text="Code"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold">
 
 
     </TextView>
 
     <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="20dp"
+        android:layout_width="155dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         android:background="@drawable/edit_text_shape"
         android:gravity="center_horizontal"
@@ -37,11 +37,12 @@
         <TextView
             android:id="@+id/menuCodeEditText"
             android:layout_width="140dp"
-            android:layout_height="15dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:background="@color/white"
-            android:foregroundGravity="center|center_horizontal"
-            android:gravity="center|start|center_horizontal|top"
+            android:fontFamily="@font/montserrat"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center|start|center_horizontal"
             android:inputType="textMultiLine"
             android:textColor="@color/dark_blue"
             android:textSize="12sp" />
@@ -55,19 +56,19 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="56dp"
         android:layout_below="@+id/codeTxt"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/montserrat"
         android:text="Name"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold">
 
 
     </TextView>
 
     <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="20dp"
+        android:layout_width="155dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         android:background="@drawable/edit_text_shape"
         android:gravity="center_horizontal"
@@ -78,11 +79,12 @@
         <EditText
             android:id="@+id/menuNameEditText"
             android:layout_width="140dp"
-            android:layout_height="15dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:background="@color/white"
-            android:foregroundGravity="center|center_horizontal"
-            android:gravity="center|start|center_horizontal|top"
+            android:fontFamily="@font/montserrat"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center|start|center_horizontal"
             android:inputType="textMultiLine"
             android:textColor="@color/dark_blue"
             android:textSize="12sp" />
@@ -96,19 +98,19 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="61dp"
         android:layout_below="@+id/nameTxt"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/montserrat"
         android:text="Price"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold">
 
 
     </TextView>
 
     <LinearLayout
-        android:layout_width="150dp"
-        android:layout_height="20dp"
+        android:layout_width="155dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         android:background="@drawable/edit_text_shape"
         android:gravity="center_horizontal"
@@ -119,11 +121,12 @@
         <EditText
             android:id="@+id/menuPriceEditText"
             android:layout_width="140dp"
-            android:layout_height="15dp"
+            android:layout_height="25dp"
             android:layout_gravity="center"
             android:background="@color/white"
-            android:foregroundGravity="center|center_horizontal"
-            android:gravity="center|start|center_horizontal|top"
+            android:fontFamily="@font/montserrat"
+            android:foregroundGravity="center_horizontal"
+            android:gravity="center|start|center_horizontal"
             android:inputType="textMultiLine"
             android:textColor="@color/dark_blue"
             android:textSize="12sp" />
@@ -137,11 +140,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="56dp"
         android:layout_below="@+id/priceTxt"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/montserrat"
         android:text="Image"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold">
 
 
@@ -151,7 +154,7 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/menuEditImage"
-            android:layout_width="100dp"
+            android:layout_width="155dp"
             android:layout_height="50dp"
             android:gravity="center_horizontal"
             android:layout_marginTop="165dp"
@@ -171,11 +174,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/menuEditImage"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="200dp"
+        android:layout_marginLeft="185dp"
+        android:layout_marginTop="1dp"
         android:text="Choose Image"
         android:fontFamily="@font/montserrat"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textColor="#29FF00">
 
     </TextView>
@@ -184,13 +187,13 @@
         android:id="@+id/desTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="28dp"
         android:layout_below="@+id/imgTxt"
-        android:layout_marginTop="70dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="65dp"
         android:fontFamily="@font/montserrat"
         android:text="Description"
         android:textColor="@color/white"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="bold">
 
 
@@ -198,7 +201,7 @@
 
     <LinearLayout
         android:id="@+id/desEdtTxt"
-        android:layout_width="150dp"
+        android:layout_width="155dp"
         android:layout_height="70dp"
         android:layout_gravity="center"
         android:background="@drawable/edit_text_shape"
@@ -214,6 +217,7 @@
             android:layout_gravity="center"
             android:background="@color/white"
             android:ems="10"
+            android:fontFamily="@font/montserrat"
             android:foregroundGravity="center|center_horizontal"
             android:gravity="center|start|center_horizontal|top"
             android:inputType="textMultiLine"
@@ -231,34 +235,33 @@
 
     <Button
         android:id="@+id/cancelEditMenuBtn"
-        android:layout_width="90dp"
-        android:layout_height="35dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/desEdtTxt"
-        android:layout_marginLeft="80dp"
-        android:layout_marginTop="39dp"
-        android:backgroundTint="@color/white"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="#EAF9FF"
         android:fontFamily="@font/montserrat"
         android:text="Cancel"
         android:textColor="@color/dark_blue"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:cornerRadius="10dp" />
+        app:cornerRadius="20dp" />
 
     <Button
         android:id="@+id/saveEditMenuBtn"
-        android:layout_width="90dp"
-        android:layout_height="35dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/desEdtTxt"
-        android:layout_marginTop="39dp"
-        android:layout_marginLeft="180dp"
+        android:layout_marginLeft="172dp"
+        android:layout_marginTop="35dp"
+        android:backgroundTint="#EAF9FF"
         android:fontFamily="@font/montserrat"
         android:text="Save"
         android:textColor="@color/dark_blue"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        android:backgroundTint="#EAF9FF"
-        app:cornerRadius="10dp" />
-
+        app:cornerRadius="20dp" />
 
 
 </RelativeLayout>
