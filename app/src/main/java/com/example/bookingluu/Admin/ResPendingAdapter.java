@@ -126,15 +126,16 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
 
                              //Send email to customer after approval
                              String message = "Dear "+selectedReservation.getCustomerName()+"," +
-                                     "\n\nYour Reservation have been approved!" +
-                                     "\n\n Below are the details of the reservation." +
-                                     "\n- Restaurant: "+selectedReservation.getRestaurantName()+
-                                     "\n- Date: "+selectedReservation.getDate()+
-                                     "\n- Time: "+selectedReservation.getTime()+
-                                     "\n- Table.No: "+selectedReservation.getTableNo()+
-                                     "\n- Ordered food: "+selectedReservation.getFood()+
-                                     "\n- Date: "+selectedReservation.getDate()+
-                                     "\nIf you need any assistance please contact bookingluucustomerservice@gmail.com" +
+                                     "\n\nThank you for your reservation at " + selectedReservation.getRestaurantName() +
+                                     "We are pleased to inform you that your reservation have been approved!" +
+                                     "\n\n Below are the details of your reservation." +
+                                     "\nRestaurant: "+selectedReservation.getRestaurantName()+
+                                     "\nDate: "+selectedReservation.getDate()+
+                                     "\nTime: "+selectedReservation.getTime()+
+                                     "\nTable.No: "+selectedReservation.getTableNo()+
+                                     "\nOrdered food: "+selectedReservation.getFood()+
+                                     "\nDate: "+selectedReservation.getDate()+
+                                     "\nIf you have any enquiries, do reach out to us at bookingluucustomerservice@gmail.com " +
                                      "\n\nBest Regards,\nBookingLuu Customer Center";
                              String subject = "Approval of Reservation";
                              JavaMailAPI javaMailAPI = new JavaMailAPI(temp,selectedReservation.getCustomerEmail().trim(),subject,message);
@@ -159,7 +160,8 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                             //Todo : send email to customer
                             //Send email to customer after declined
                             String message = "Dear "+selectedReservation.getCustomerName()+"," +
-                                    "\n\nWe have to apologise that your reservation was declined due to some issue! " +
+                                    "\n\nThank you for your reservation at " + selectedReservation.getRestaurantName() +
+                                    "Unfortunately, we are unable to accommodate your reservation request at this time. " +
                                     "\n\n Below are the details of the reservation." +
                                     "\n- Restaurant: "+selectedReservation.getRestaurantName()+
                                     "\n- Date: "+selectedReservation.getDate()+
@@ -167,8 +169,8 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                                     "\n- Table.No: "+selectedReservation.getTableNo()+
                                     "\n- Ordered food: "+selectedReservation.getFood()+
                                     "\n- Date: "+selectedReservation.getDate()+
-                                    "\nHope to receive your reservation again!! "+
-                                    "\nIf you need any assistance please contact bookingluucustomerservice@gmail.com"+
+                                    "\nWe apologise for the inconvenience cause and hope to receive your reservation again!! "+
+                                    "\nIf you have any enquiries, do reach out to us at bookingluucustomerservice@gmail.com " +
                                     "\n\nBest Regards," +
                                     "\nBookingLuu Customer Center";
                             String subject = "Decline of Reservation";
