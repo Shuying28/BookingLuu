@@ -32,6 +32,7 @@ public class AdminMenuFragment extends Fragment {
     private AdminMenuAdapter adminMenuAdapter;
     ArrayList<Menu> menuArrayList;
     ProgressDialog progressDialog;
+    private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
 
 
 
@@ -71,7 +72,7 @@ public class AdminMenuFragment extends Fragment {
     }
 
     private void EventChangeListener() {
-        fStore.collection("restaurant").document("HollandFood").collection("Menu").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Menu").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){

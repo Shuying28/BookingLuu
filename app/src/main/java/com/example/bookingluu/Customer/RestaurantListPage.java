@@ -28,6 +28,7 @@ public class RestaurantListPage extends AppCompatActivity {
     private Button tempBtn,visitHollandBtn,visitThaiBtn;
     private TextView hollFoodRating, hollFoodNumRating, thaiFoodRating, thaiFoodNumRating;
     FirebaseFirestore firebaseFirestore;
+    public static String passString;
 
 
 
@@ -77,26 +78,34 @@ public class RestaurantListPage extends AppCompatActivity {
             }
         });
 
-        tempBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), CustomerMainPage.class));
-            }
-        });
+//        tempBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getApplicationContext(), CustomerMainPage.class));
+//            }
+//        });
 
 
         visitHollandBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent toHolland= new Intent(getApplicationContext(),CustomerMainPage.class);
+                toHolland.putExtra("RestaurantName", "HollandFood");
+                passString = "HollandFood";
+                startActivity(toHolland);
+
 
             }
         });
 
 
-        visitHollandBtn.setOnClickListener(new View.OnClickListener() {
+        visitThaiBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent toThailand= new Intent(getApplicationContext(),CustomerMainPage.class);
+                toThailand.putExtra("RestaurantName", "ThailandFood");
+                passString="ThailandFood";
+                startActivity(toThailand);
             }
         });
     }
@@ -169,4 +178,8 @@ public class RestaurantListPage extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 }

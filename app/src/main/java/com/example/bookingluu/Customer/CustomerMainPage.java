@@ -47,21 +47,25 @@ public class CustomerMainPage extends AppCompatActivity {
     String currentRating;
     DocumentReference documentReference;
     DocumentReference documentReferenceToRating;
+    // To get what is the current restaurant
+    private String currentVisitRestaurant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_main_page);
 
-        init();
 
-        documentReference= fStore.collection("restaurant").document("HollandFood");
+        init();
+        viewPager2.setTag(currentVisitRestaurant);
+
+        documentReference= fStore.collection("restaurant").document(currentVisitRestaurant);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 restaurant_name.setText(value.getString("RestaurantName"));
                 restaurant_address.setText(value.getString("Address"));
-                end_operation_hour.setText(value.getString("EndOperateHour"));
+                end_operation_hour.setText(value.getString("EndOperationHour"));
 
                 //rating in 2 decimal places
                 String ratingvalues = value.getString("currentRating");
@@ -71,20 +75,26 @@ public class CustomerMainPage extends AppCompatActivity {
 
                 //update operation hour
                 String open_operation_hour = value.getString("OpenOperationHour");
+                String end_operation_hour=value.getString("EndOperationHour");
                 SimpleDateFormat formatter = new SimpleDateFormat("hh:mm a");
                 String timeStr2 = formatter.format(Calendar.getInstance().getTime());
                 try{
-                Date dateTime1 = formatter.parse(open_operation_hour);
-                Date dateTime2 = formatter.parse(timeStr2);
-                    Boolean bool1 = dateTime1.after(dateTime2);
-                    Boolean bool2 = dateTime1.before(dateTime2);
-                    Boolean bool3 = dateTime1.equals(dateTime2);
-                    if(bool1){
+                Date openTime = formatter.parse(open_operation_hour);
+                Date closeTime = formatter.parse(end_operation_hour);
+                Date currentTime = formatter.parse(timeStr2);
+                    Boolean close = openTime.after(currentTime)&&currentTime.after(closeTime);
+                    Boolean open = openTime.before(currentTime)&&currentTime.before(closeTime);
+                    Boolean bool3 = openTime.equals(currentTime);
+                    System.out.println("gagaeqgeagearg"+ openTime);
+                    System.out.println("fawaegwergherhqeghqeh"+ currentTime);
+                    if(close){
                         operation_status.setText("Now Closed");
-                    }else if(bool2){
+                        operation_status.setTextColor(getApplicationContext().getResources().getColor(R.color.decline_colour));
+                    }else if(open){
                         operation_status.setText("Now Open");
                     }else if(bool3){
                         operation_status.setText("Close Soon");
+                        operation_status.setTextColor(getApplicationContext().getResources().getColor(R.color.orange_second));
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -146,7 +156,7 @@ public class CustomerMainPage extends AppCompatActivity {
                         String comment=commentText.getText().toString();
                         String rate = String.valueOf(ratingBar.getRating());
                         Rating rating = new Rating(currentUserName,comment,currentUserImage,rate);
-                        DocumentReference documentReference =fStore.collection("restaurant").document("HollandFood").collection("RatingList").document(currentUserName+numberOfRating);
+                        DocumentReference documentReference =fStore.collection("restaurant").document(currentVisitRestaurant).collection("RatingList").document(currentUserName+numberOfRating);
                         documentReference.set(rating);
                         updateRatingToFireStore(rate);
                         Toast.makeText(CustomerMainPage.this, "Rate Successful", Toast.LENGTH_SHORT).show();
@@ -183,6 +193,11 @@ public class CustomerMainPage extends AppCompatActivity {
         fStore=FirebaseFirestore.getInstance();
         fAuth=FirebaseAuth.getInstance();
         userId=fAuth.getCurrentUser().getUid();
+
+        Bundle extras = getIntent().getExtras();
+        if(extras !=null) {
+            currentVisitRestaurant=extras.getString("RestaurantName");
+        }
         documentReference= fStore.collection("customers").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
@@ -192,7 +207,7 @@ public class CustomerMainPage extends AppCompatActivity {
             }
         });
 
-        documentReferenceToRating=fStore.collection("restaurant").document("HollandFood");
+        documentReferenceToRating=fStore.collection("restaurant").document(currentVisitRestaurant);
         documentReferenceToRating.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -200,6 +215,14 @@ public class CustomerMainPage extends AppCompatActivity {
                 currentRating=value.getString("currentRating");
             }
         });
+
+        //get the current visited restaurant
+//        Bundle bundle = new Bundle();
+//        bundle.putString("RestaurantName",currentVisitRestaurant);
+//// set Fragmentclass Arguments
+//        ReservationFragment reservationFragment = new ReservationFragment();
+//        reservationFragment.setArguments(bundle);
+//        System.out.println("foajwbnfoawujdfnvwfw"+ currentVisitRestaurant);
     }
 
     public void updateRatingToFireStore(String rate){
@@ -209,5 +232,9 @@ public class CustomerMainPage extends AppCompatActivity {
         documentReferenceToRating.update("numberOfRating",String.valueOf(Integer.parseInt(numberOfRating)+1));
         documentReferenceToRating.update("currentRating",res);
 
+    }
+
+    public String passStr(){
+        return currentVisitRestaurant;
     }
 }

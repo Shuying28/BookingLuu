@@ -43,6 +43,7 @@ public class AdminLoginPage extends AppCompatActivity {
     private ProgressBar progressBar;
     FirebaseFirestore fStore;
     DocumentReference documentReference;
+    static String restaurantOfAdmin;
 
     private long pressedTime;
 
@@ -86,6 +87,8 @@ public class AdminLoginPage extends AppCompatActivity {
                         if (documentSnapshot.exists()){
                             String FSadminEmail = documentSnapshot.getString("email");
                             String FSadminPassw = documentSnapshot.getString("password");
+                            restaurantOfAdmin=documentSnapshot.getString("restaurantName");
+
 
                             if(emailText.getText().toString().equals(FSadminEmail)&&passwordText.getText().toString().equals(FSadminPassw)){
                                 progressBar.setVisibility(View.GONE);

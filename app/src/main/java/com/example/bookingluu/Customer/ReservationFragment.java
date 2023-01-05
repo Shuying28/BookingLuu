@@ -64,6 +64,7 @@ public class ReservationFragment extends Fragment {
     DocumentReference menuDocumentReference, timeDocumentReference, tableDocumentReference, customerDocumentReference;
     private Spinner spinnerTime;
     private String[] timeslot;
+    final String CURRENT_RESTAURANT= RestaurantListPage.passString;
 
     //For select food
     private boolean[] selectedFood;;
@@ -108,7 +109,8 @@ public class ReservationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_reservation, container, false);
+        View view =  inflater.inflate(R.layout.fragment_reservation, container, false);
+        return view;
 
     }
 
@@ -135,13 +137,16 @@ public class ReservationFragment extends Fragment {
         reserveBtn= view.findViewById(R.id.reserveBtn);
         fAuth=FirebaseAuth.getInstance();
 
+
+
+
         //initialize data
         initRestaurantData();
 
 
         //Select time
         alTimeSlot= new ArrayList<>();
-        timeDocumentReference= fStore.collection("restaurant").document("HollandFood");
+        timeDocumentReference= fStore.collection("restaurant").document(CURRENT_RESTAURANT);
         timeDocumentReference.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -225,7 +230,7 @@ public class ReservationFragment extends Fragment {
                 progressDialog.setMessage("Searching suitable table......");
                 progressDialog.show();
 
-                tableDocumentReference= fStore.collection("restaurant").document("HollandFood");
+                tableDocumentReference= fStore.collection("restaurant").document(CURRENT_RESTAURANT);
                 tableDocumentReference.collection("Table").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -350,7 +355,7 @@ public class ReservationFragment extends Fragment {
                                 public void onClick(View view) {
                                     Reservation reservation = new Reservation(reservationNumber,reservationPax,selectedTableNo,date,reservationSlot,
                                             reservationSelectedFood,fAuth.getUid(),reservationName,reservationPhoneNo,reservationEmail,reservationNotes,restaurantName,restaurantAddress,imageURI);
-                                    DocumentReference reservationDocumentReference =fStore.collection("restaurant").document("HollandFood").collection("Reservation").document(String.valueOf(reservationNumber));
+                                    DocumentReference reservationDocumentReference =fStore.collection("restaurant").document(CURRENT_RESTAURANT).collection("Reservation").document(String.valueOf(reservationNumber));
                                     reservationDocumentReference.set(reservation).addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void unused) {
@@ -392,7 +397,7 @@ public class ReservationFragment extends Fragment {
         foodPositionList = new ArrayList<>();
 
         //Get menuCode from firestore
-        menuDocumentReference= fStore.collection("restaurant").document("HollandFood");
+        menuDocumentReference= fStore.collection("restaurant").document(CURRENT_RESTAURANT);
         menuDocumentReference.collection("Menu").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -557,7 +562,7 @@ public class ReservationFragment extends Fragment {
     }
 
     public void initRestaurantData(){
-        DocumentReference restaurantDocumentReference =fStore.collection("restaurant").document("HollandFood");
+        DocumentReference restaurantDocumentReference =fStore.collection("restaurant").document(CURRENT_RESTAURANT);
         restaurantDocumentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
@@ -577,10 +582,13 @@ public class ReservationFragment extends Fragment {
         });
 
 
+
+
+
     }
 
     public void updateRestaurantData(){
-        DocumentReference restaurantDocumentReference =fStore.collection("restaurant").document("HollandFood");
+        DocumentReference restaurantDocumentReference =fStore.collection("restaurant").document(CURRENT_RESTAURANT);
         restaurantDocumentReference.update("ReservationNumber", reservationNumber+1);
     }
 

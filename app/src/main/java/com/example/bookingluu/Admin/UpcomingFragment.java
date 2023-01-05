@@ -30,6 +30,7 @@ public class UpcomingFragment extends Fragment {
     private ResUpcomingAdapter ResUpcomingAdapter;
     ArrayList<Reservation> reservationArrayList;
     ProgressDialog progressDialog;
+    private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
 
     public UpcomingFragment() {
         // Required empty public constructor
@@ -68,7 +69,7 @@ public class UpcomingFragment extends Fragment {
     }
 
     private void EventChangeListener() {
-        fStore.collection("restaurant").document("HollandFood").collection("Reservation").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Reservation").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){

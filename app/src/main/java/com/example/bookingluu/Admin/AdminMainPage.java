@@ -56,6 +56,7 @@ public class AdminMainPage extends AppCompatActivity {
     String menuCode;
     ShapeableImageView menuImage;
     String imageLink;
+    private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -189,7 +190,7 @@ public class AdminMainPage extends AppCompatActivity {
                             return;
                         }
                         Menu menu = new Menu(menuCode,name,price,des,imageLink);
-                        DocumentReference documentReference =fStore.collection("restaurant").document("HollandFood").collection("Menu").document(menuCode);
+                        DocumentReference documentReference =fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Menu").document(menuCode);
                         documentReference.set(menu).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {

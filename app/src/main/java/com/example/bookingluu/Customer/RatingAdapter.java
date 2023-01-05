@@ -40,7 +40,13 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.MyViewHold
     public void onBindViewHolder(@NonNull RatingAdapter.MyViewHolder holder, int position) {
     Rating rating = ratingArrayList.get(position);
     holder.nameText.setText("@"+rating.getCustomerName());
-    holder.ratingBar.setRating(Float.parseFloat(rating.getRate()));
+
+    try{
+        holder.ratingBar.setRating(Float.parseFloat(rating.getRate()));
+    }catch(NullPointerException e){
+
+    }
+
 
     holder.commentText.setText(rating.getCommentText());
         System.out.println(rating.getCustomerName());

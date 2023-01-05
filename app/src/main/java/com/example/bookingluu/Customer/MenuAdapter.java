@@ -1,6 +1,7 @@
 package com.example.bookingluu.Customer;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
         holder.menuNameText.setText(menu.getMenuName());
         holder.menuDesText.setText(menu.getMenuDescription());
         holder.menuPriceText.setText(menu.getMenuPrice());
-        Picasso.get().load(menu.getMenuImage()).into(holder.menuImage);
+        if(!TextUtils.isEmpty(menu.getMenuImage())){
+            Picasso.get().load(menu.getMenuImage()).into(holder.menuImage);
+        }
+
 
     }
 

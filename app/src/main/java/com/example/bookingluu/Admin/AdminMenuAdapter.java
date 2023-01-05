@@ -65,6 +65,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
     static String menuCodeTxt;
     static StorageReference storageReference = FirebaseStorage.getInstance().getReference();
     public static final int PICK_IMAGE = 1;
+    private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
 
 
     public AdminMenuAdapter(Context context, ArrayList<Menu> menuArrayList) {
@@ -108,6 +109,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
         static int selectedPosition;
         private static FirebaseFirestore fStore = FirebaseFirestore.getInstance();
 
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             menuCodeText = itemView.findViewById(R.id.cardMenuCodeText);
@@ -134,6 +136,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
         public static void showPopUpMenu(View view) {
             PopupMenu popupMenu = new PopupMenu(view.getContext(), view);
             popupMenu.inflate(R.menu.pop_up_menu);
+            final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
 
             ActivityResultLauncher<String> launcher;
             popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -160,7 +163,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                                     Menu menuToBeDelete = menuArrayList.get(selectedPosition);
                                     System.out.println("uhagweaggqw" + menuToBeDelete.getMenuCode());
                                     menuArrayList.remove(selectedPosition);
-                                    fStore.collection("restaurant").document("HollandFood").collection("Menu")
+                                    fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Menu")
                                             .document(menuToBeDelete.getMenuCode()).delete()
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                 @Override
@@ -270,7 +273,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
 
                                     Menu updatedMenu = new Menu(code, name, price, des, menuToBeEdited.getMenuImage());
 
-                                    fStore.collection("restaurant").document("HollandFood").collection("Menu").document(code)
+                                    fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Menu").document(code)
                                             .set(updatedMenu)
                                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override

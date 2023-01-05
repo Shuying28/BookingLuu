@@ -36,6 +36,9 @@ public class ReservationHistoryPage extends AppCompatActivity {
     ProgressDialog progressDialog;
     FirebaseAuth fAuth;
 
+
+    //todo: get reservation from difference restaurant
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,34 +70,46 @@ public class ReservationHistoryPage extends AppCompatActivity {
 
 
     private void EventChangeListener() {
-        fStore.collection("restaurant").document("HollandFood").collection("Reservation")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+        fStore.collection("restaurant").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if(error!=null){
-                    if(progressDialog.isShowing()){
-                        progressDialog.dismiss();
-                    }
-                    return;
-                }
-
                 for(DocumentChange dc: value.getDocumentChanges()){
-                    if(dc.getType()==DocumentChange.Type.ADDED){
-                        if (fAuth.getCurrentUser().getUid().equals(dc.getDocument().toObject(Reservation.class).getCustomerID())){
-                            historyArrayList.add(dc.getDocument().toObject(Reservation.class));
-                        }
-                    }else if(dc.getType()==DocumentChange.Type.MODIFIED){
-                        //TODO modify here the card view arrangent
-                        if (fAuth.getCurrentUser().getUid().equals(dc.getDocument().toObject(Reservation.class).getCustomerID())){
-                            historyArrayList.set(dc.getOldIndex(),dc.getDocument().toObject(Reservation.class));
-                        }
-                    }
+                    String resName=dc.getDocument().getString("RestaurantName");
+                    fStore.collection("restaurant").document(resName).collection("Reservation")
+                            .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                                @Override
+                                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                                    if(error!=null){
+                                        if(progressDialog.isShowing()){
+                                            progressDialog.dismiss();
+                                        }
+                                        return;
+                                    }
 
-                    historyAdapter.notifyDataSetChanged();
-                    if(progressDialog.isShowing())progressDialog.dismiss();
+                                    for(DocumentChange dc: value.getDocumentChanges()){
+                                        if(dc.getType()==DocumentChange.Type.ADDED){
+                                            if (fAuth.getCurrentUser().getUid().equals(dc.getDocument().toObject(Reservation.class).getCustomerID())){
+                                                historyArrayList.add(dc.getDocument().toObject(Reservation.class));
+                                            }
+                                        }else if(dc.getType()==DocumentChange.Type.MODIFIED){
+                                            //TODO modify here the card view arrangent
+                                            if (fAuth.getCurrentUser().getUid().equals(dc.getDocument().toObject(Reservation.class).getCustomerID())){
+                                                historyArrayList.set(dc.getOldIndex(),dc.getDocument().toObject(Reservation.class));
+                                            }
+                                        }
+
+                                        historyAdapter.notifyDataSetChanged();
+                                        if(progressDialog.isShowing())progressDialog.dismiss();
+                                    }
+                                }
+                            });
                 }
             }
         });
+
+
+
+
 
     }
 

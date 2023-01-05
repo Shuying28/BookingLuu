@@ -32,6 +32,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     Context context;
     static ArrayList<Reservation> historyArrayList;
     static Context temp;
+    final String CURRENT_RESTAURANT= RestaurantListPage.passString;
 
     public HistoryAdapter(Context context, ArrayList<Reservation> historyArrayList) {
         this.context = context;
@@ -86,6 +87,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         Button cancelReservationBtn,resHisbackBtn;
         private static FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference documentReference;
+        final String CURRENT_RESTAURANT= RestaurantListPage.passString;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -153,7 +155,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                                     public void onClick(View view) {
 
                                         Reservation reservationHistory = historyArrayList.get(getAdapterPosition());
-                                        documentReference=fStore.collection("restaurant").document("HollandFood").collection("Reservation")
+                                        documentReference=fStore.collection("restaurant").document(CURRENT_RESTAURANT).collection("Reservation")
                                                 .document(String.valueOf(reservationHistory.getBookingNo()));
                                         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                             @Override
@@ -162,6 +164,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                                                 documentReference.update("status", "Cancel");
 //                                                historyArrayList.remove(getAdapterPosition());
                                                 cancelResConfirm.dismiss();
+                                                reservationAccIcon.setImageResource(R.drawable.cancelicon);
+                                                reservationStatusText.setText("Your reservation is cancelled!");
+                                                reservationStatusText.setTextColor(temp.getResources().getColor(R.color.decline_colour));
 
                                             }
                                         });

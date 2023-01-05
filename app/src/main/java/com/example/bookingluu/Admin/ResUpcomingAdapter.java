@@ -63,6 +63,7 @@ public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.
         Button upcomingArrivedBtn, upcomingCancelBtn;
         private static FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference documentReference;
+        private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -110,7 +111,7 @@ public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.
                 @Override
                 public void onClick(View view) {
                     Reservation selectedReservation = reservationArrayList.get(getAdapterPosition());
-                    documentReference=fStore.collection("restaurant").document("HollandFood").collection("Reservation")
+                    documentReference=fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Reservation")
                             .document(String.valueOf(selectedReservation.getBookingNo()));
                     documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
@@ -127,7 +128,7 @@ public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.
                 @Override
                 public void onClick(View view) {
                     Reservation selectedReservation = reservationArrayList.get(getAdapterPosition());
-                    documentReference=fStore.collection("restaurant").document("HollandFood").collection("Reservation")
+                    documentReference=fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Reservation")
                             .document(String.valueOf(selectedReservation.getBookingNo()));
                     documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override

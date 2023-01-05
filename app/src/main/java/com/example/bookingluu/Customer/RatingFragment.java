@@ -30,6 +30,7 @@ public class RatingFragment extends Fragment {
     private RatingAdapter ratingAdapter;
     ArrayList<Rating> ratingArrayList;
     ProgressDialog progressDialog;
+    final String CURRENT_RESTAURANT= RestaurantListPage.passString;
 
 
 
@@ -75,7 +76,7 @@ public class RatingFragment extends Fragment {
     }
 
     private void EventChangeListener() {
-        fStore.collection("restaurant").document("HollandFood").collection("RatingList").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        fStore.collection("restaurant").document(CURRENT_RESTAURANT).collection("RatingList").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if(error!=null){

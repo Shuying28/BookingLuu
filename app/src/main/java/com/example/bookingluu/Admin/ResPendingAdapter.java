@@ -28,6 +28,7 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
     Context context;
     static ArrayList<Reservation> reservationArrayList;
     static Context temp;
+    private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
 
     public ResPendingAdapter(Context context, ArrayList<Reservation> reservationArrayList) {
         this.context = context;
@@ -67,6 +68,7 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
         Button pendingAcceptBtn,pendingDeclineBtn;
         private static FirebaseFirestore fStore= FirebaseFirestore.getInstance();
         DocumentReference documentReference;
+        private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -114,7 +116,7 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                 @Override
                 public void onClick(View view) {
                     Reservation selectedReservation = reservationArrayList.get(getAdapterPosition());
-                     documentReference=fStore.collection("restaurant").document("HollandFood").collection("Reservation")
+                     documentReference=fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Reservation")
                             .document(String.valueOf(selectedReservation.getBookingNo()));
                      documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                          @Override
@@ -147,7 +149,7 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                 @Override
                 public void onClick(View view) {
                     Reservation selectedReservation = reservationArrayList.get(getAdapterPosition());
-                    documentReference=fStore.collection("restaurant").document("HollandFood").collection("Reservation")
+                    documentReference=fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Reservation")
                             .document(String.valueOf(selectedReservation.getBookingNo()));
                     documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override

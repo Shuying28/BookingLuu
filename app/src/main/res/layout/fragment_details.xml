@@ -79,7 +79,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/AddressDetail"
+                            android:id="@+id/detailResAddress"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat"
@@ -160,7 +160,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/PhoneDetail"
+                            android:id="@+id/detailResPhone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat"
@@ -223,20 +223,14 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/Operation_hours_detatil_1"
+                            android:id="@+id/detailResOperateHour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat"
-                            android:text="Mon - Fri: 11:00 AM - 11:00 PM"
+                            android:text="Mon - Sun: 11:00 AM - 11:00 PM"
                             android:textColor="#000F45" />
 
-                        <TextView
-                            android:id="@+id/Operation_hours_detatil_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:text="Sat - Sun: 10:00 AM - 11:59 PM"
-                            android:textColor="#000F45" />
+
 
                     </LinearLayout>
 
@@ -294,7 +288,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/CuisineDes"
+                            android:id="@+id/detailResCuisine"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat"
@@ -357,7 +351,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/Payment_OptionsDes"
+                            android:id="@+id/detailResPaymentOption"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat"
