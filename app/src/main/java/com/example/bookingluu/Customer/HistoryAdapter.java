@@ -13,15 +13,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookingluu.R;
 import com.example.bookingluu.Restaurant.Reservation;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,6 +37,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     static ArrayList<Reservation> historyArrayList;
     static Context temp;
     final String CURRENT_RESTAURANT= RestaurantListPage.passString;
+    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
 
     public HistoryAdapter(Context context, ArrayList<Reservation> historyArrayList) {
         this.context = context;
@@ -56,6 +61,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         holder.people.setText((reservationHistory.getPax())+" people, ");
         holder.hours.setText(reservationHistory.getTime());
         holder.status.setText(reservationHistory.getStatus());
+
+
+        DocumentReference documentReference=fStore.collection("restaurant").document(reservationHistory.getRestaurantName());
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                String restaurantImage= value.getString("RestaurantAdminImage");
+                Picasso.get().load(restaurantImage).into(holder.restaurantImage);
+            }
+        });
+
+
+
 
         switch (reservationHistory.getStatus()){
             case "Accepted":
@@ -83,7 +101,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView date,code,restaurantName,people,hours,status;
-        ImageView restaurantImage, resHisBackBtn;
+        ImageView resHisBackBtn;
+        ShapeableImageView  restaurantImage;
         Button cancelReservationBtn,resHisbackBtn;
         private static FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference documentReference;
@@ -169,6 +188,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                                                 reservationStatusText.setText("Your reservation is cancelled!");
                                                 reservationStatusText.setTextColor(temp.getResources().getColor(R.color.decline_colour));
                                                 cancelReservationBtn.setVisibility(View.INVISIBLE);
+
 
 
                                             }

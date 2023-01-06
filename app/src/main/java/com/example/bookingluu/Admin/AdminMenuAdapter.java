@@ -197,8 +197,6 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                             Button saveMenuBtn = editMenuDialog.findViewById(R.id.saveEditMenuBtn);
                             Button cancelEditMenuBtn = editMenuDialog.findViewById(R.id.cancelEditMenuBtn);
                             TextView menuCode = editMenuDialog.findViewById(R.id.menuCodeEditText);
-                            //set menu code uneditable
-                            menuCode.setEnabled(false);
                             EditText menuName = editMenuDialog.findViewById(R.id.menuNameEditText);
                             EditText menuPrice = editMenuDialog.findViewById(R.id.menuPriceEditText);
                             EditText menuDesc = editMenuDialog.findViewById(R.id.menuDesEditText);
@@ -209,6 +207,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                             menuPrice.setText(menuToBeEdited.getMenuPrice());
                             menuDesc.setText(menuToBeEdited.getMenuDescription());
                             Picasso.get().load(menuToBeEdited.getMenuImage()).into(menuImage);
+
 
                             cancelEditMenuBtn.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -222,7 +221,16 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                                 @Override
                                 public void onClick(View view) {
                                     menuCode.setError("This field cannot be edited!");
-                                    System.out.println("ugh8ygg8yg80g8ygy8");
+                                    Toast.makeText(temp, "Menu code is uneditable", Toast.LENGTH_SHORT).show();
+
+
+                                }
+                            });
+
+                            menuImage.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Toast.makeText(temp, "Menu image is uneditable", Toast.LENGTH_SHORT).show();
                                 }
                             });
 
