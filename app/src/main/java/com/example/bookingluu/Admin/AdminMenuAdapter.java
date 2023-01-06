@@ -192,8 +192,6 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                             editMenuDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             editMenuDialog.show();
 
-                            //Todo : edit menu code here (regina)
-
                             Menu menuToBeEdited = menuArrayList.get(selectedPosition);
 
                             Button saveMenuBtn = editMenuDialog.findViewById(R.id.saveEditMenuBtn);
@@ -205,7 +203,6 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                             EditText menuPrice = editMenuDialog.findViewById(R.id.menuPriceEditText);
                             EditText menuDesc = editMenuDialog.findViewById(R.id.menuDesEditText);
                             ShapeableImageView menuImage = editMenuDialog.findViewById(R.id.menuEditImage);
-                            TextView chooseImageText = editMenuDialog.findViewById(R.id.chooseImageText);
 
                             menuCode.setText(menuToBeEdited.getMenuCode());
                             menuName.setText(menuToBeEdited.getMenuName());
@@ -220,25 +217,6 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                                 }
                             });
 
-                            chooseImageText.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    menuCodeTxt = menuCode.getText().toString();
-
-                                    if (TextUtils.isEmpty(menuCodeTxt)) {
-                                        menuCode.setError("Menu code is required before choosing image");
-                                        return;
-                                    }
-
-
-
-
-//                                    Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                                    startActivityForResult(openGalleryIntent,1000);
-                                }
-
-                                
-                            });
 
                             menuCode.setOnClickListener(new View.OnClickListener() {
                                 @Override

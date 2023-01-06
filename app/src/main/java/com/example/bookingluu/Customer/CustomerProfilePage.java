@@ -128,10 +128,6 @@ public class CustomerProfilePage extends AppCompatActivity {
         });
 
 
-         //Todo: editProfileDialog and editProfile in database : all member can try
-        // 1.用和我pop up logout dialog 的方法pop edit profile dialog
-        // 2.去看我怎样update image 的field  在line 199 - 用来update 名字和电话号码
-        //Shuying
         editDetailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

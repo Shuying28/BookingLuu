@@ -164,22 +164,6 @@
             />
 
 
-
-
-    <TextView
-        android:id="@+id/chooseImageText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/menuEditImage"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="200dp"
-        android:text="Choose Image"
-        android:fontFamily="@font/montserrat"
-        android:textSize="10sp"
-        android:textColor="#29FF00">
-
-    </TextView>
-
     <TextView
         android:id="@+id/desTxt"
         android:layout_width="wrap_content"

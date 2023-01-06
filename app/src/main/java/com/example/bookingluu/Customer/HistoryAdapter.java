@@ -101,6 +101,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
             resHisBackBtn = itemView.findViewById(R.id.resHisbackBtn);
             cancelReservationBtn = itemView.findViewById(R.id.cancelReservationBtn);
             resHisbackBtn = itemView.findViewById(R.id.resHisbackBtn);
+
             itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -155,18 +156,20 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                                     public void onClick(View view) {
 
                                         Reservation reservationHistory = historyArrayList.get(getAdapterPosition());
-                                        documentReference=fStore.collection("restaurant").document(CURRENT_RESTAURANT).collection("Reservation")
+                                        documentReference=fStore.collection("restaurant").document(reservationHistory.getRestaurantName()).collection("Reservation")
                                                 .document(String.valueOf(reservationHistory.getBookingNo()));
                                         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                             @Override
                                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                 //TODO : card view arrangement
                                                 documentReference.update("status", "Cancel");
-//                                                historyArrayList.remove(getAdapterPosition());
+                                               historyArrayList.remove(getAdapterPosition());
                                                 cancelResConfirm.dismiss();
                                                 reservationAccIcon.setImageResource(R.drawable.cancelicon);
                                                 reservationStatusText.setText("Your reservation is cancelled!");
                                                 reservationStatusText.setTextColor(temp.getResources().getColor(R.color.decline_colour));
+                                                cancelReservationBtn.setVisibility(View.INVISIBLE);
+
 
                                             }
                                         });
@@ -205,7 +208,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                         reservationStatusText.setText("Your reservation is completed!");
                         reservationStatusText.setTextColor(temp.getResources().getColor(R.color.approved_colour));
                     }
-                    // TODO: the status of other condition
 
                 }
             });

@@ -57,6 +57,7 @@ public class AdminMainPage extends AppCompatActivity {
     ShapeableImageView menuImage;
     String imageLink;
     private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
+    String restaurantImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -229,6 +230,7 @@ public class AdminMainPage extends AppCompatActivity {
         addMenuBtn=findViewById(R.id.addMenuBtn);
         storageReference= FirebaseStorage.getInstance().getReference();
         fStore=FirebaseFirestore.getInstance();
+
 
     }
 
