@@ -12,25 +12,33 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.bookingluu.R;
 import com.example.bookingluu.Restaurant.Reservation;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class UpcomingFragment extends Fragment {
     private RecyclerView resUpcomingList;
     private FirebaseFirestore fStore;
     private ResUpcomingAdapter ResUpcomingAdapter;
-    ArrayList<Reservation> reservationArrayList;
+    private ArrayList<Reservation> reservationArrayList;
+    private ArrayList<Reservation> filterReservationArrayList;
     ProgressDialog progressDialog;
     private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
+    private SearchView searchView;
 
     public UpcomingFragment() {
         // Required empty public constructor
@@ -56,6 +64,22 @@ public class UpcomingFragment extends Fragment {
         progressDialog.setMessage("Fetching Data......");
         progressDialog.show();
 
+        searchView = view.findViewById(R.id.searchView);
+        searchView.clearFocus();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterList(newText);
+                return true;
+            }
+
+
+        });
 
 
         resUpcomingList.setHasFixedSize(true);
@@ -67,6 +91,31 @@ public class UpcomingFragment extends Fragment {
 
 
     }
+
+    private void filterList(String newText) {
+        filterReservationArrayList = new ArrayList<>();
+        if(!newText.isEmpty()){
+            for (Reservation r : reservationArrayList) {
+                String bookingNo = String.valueOf(r.getBookingNo());
+
+                if (bookingNo.contains(newText)) {
+                    filterReservationArrayList.add(r);
+                }
+            }
+
+            if (filterReservationArrayList.isEmpty()) {
+                ResUpcomingAdapter.setFilterList(null);
+                Toast.makeText(getContext(), "No Booking No found", Toast.LENGTH_SHORT).show();
+
+            } else {
+                ResUpcomingAdapter.setFilterList(filterReservationArrayList);
+            }
+
+        }else {
+            ResUpcomingAdapter.setFilterList(reservationArrayList);
+        }
+    }
+
 
     private void EventChangeListener() {
         fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Reservation").addSnapshotListener(new EventListener<QuerySnapshot>() {
