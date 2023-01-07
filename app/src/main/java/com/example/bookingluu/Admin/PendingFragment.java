@@ -80,9 +80,13 @@ public class PendingFragment extends Fragment {
                 for(DocumentChange dc: value.getDocumentChanges()){
                     if(dc.getType()==DocumentChange.Type.ADDED){
                         Reservation reservation= dc.getDocument().toObject(Reservation.class);
-                        if(reservation.getStatus().equals("Pending")){
-                            reservationArrayList.add(reservation);
+                        try{
+                            if(reservation.getStatus().equals("Pending")){
+                                reservationArrayList.add(reservation);}
+                        }catch(NullPointerException e){
+
                         }
+
                     }
                     ResPendingAdapter.notifyDataSetChanged();
                     if(progressDialog.isShowing())progressDialog.dismiss();
