@@ -13,15 +13,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookingluu.R;
 import com.example.bookingluu.Restaurant.Reservation;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,6 +37,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     static ArrayList<Reservation> historyArrayList;
     static Context temp;
     final String CURRENT_RESTAURANT= RestaurantListPage.passString;
+    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
 
     public HistoryAdapter(Context context, ArrayList<Reservation> historyArrayList) {
         this.context = context;
@@ -57,18 +62,35 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         holder.hours.setText(reservationHistory.getTime());
         holder.status.setText(reservationHistory.getStatus());
 
+
+        DocumentReference documentReference=fStore.collection("restaurant").document(reservationHistory.getRestaurantName());
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                String restaurantImage= value.getString("RestaurantAdminImage");
+                Picasso.get().load(restaurantImage).into(holder.restaurantImage);
+            }
+        });
+
+
+
+
         switch (reservationHistory.getStatus()){
             case "Accepted":
                 holder.status.setBackgroundColor(context.getResources().getColor(R.color.admin_third));
+                holder.status.setBackground(context.getResources().getDrawable(R.drawable.res_approved_shape));
                 break;
             case "Pending":
                 holder.status.setBackgroundColor(context.getResources().getColor(R.color.pending_colour));
+                holder.status.setBackground(context.getResources().getDrawable(R.drawable.res_pending_shape));
                 break;
             case "Arrived":
                 holder.status.setBackgroundColor(context.getResources().getColor(R.color.approved_colour));
+                holder.status.setBackground(context.getResources().getDrawable(R.drawable.res_arrived_shape));
                 break;
             case "Cancel":
                 holder.status.setBackgroundColor(context.getResources().getColor(R.color.decline_colour));
+                holder.status.setBackground(context.getResources().getDrawable(R.drawable.res_cancel_shape));
                 break;
         }
 
@@ -83,7 +105,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView date,code,restaurantName,people,hours,status;
-        ImageView restaurantImage, resHisBackBtn;
+        ImageView resHisBackBtn;
+        ShapeableImageView  restaurantImage;
         Button cancelReservationBtn,resHisbackBtn;
         private static FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference documentReference;
@@ -101,6 +124,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
             resHisBackBtn = itemView.findViewById(R.id.resHisbackBtn);
             cancelReservationBtn = itemView.findViewById(R.id.cancelReservationBtn);
             resHisbackBtn = itemView.findViewById(R.id.resHisbackBtn);
+
             itemView.setOnClickListener(new View.OnClickListener() {
 
                 @Override
@@ -155,18 +179,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                                     public void onClick(View view) {
 
                                         Reservation reservationHistory = historyArrayList.get(getAdapterPosition());
-                                        documentReference=fStore.collection("restaurant").document(CURRENT_RESTAURANT).collection("Reservation")
+                                        documentReference=fStore.collection("restaurant").document(reservationHistory.getRestaurantName()).collection("Reservation")
                                                 .document(String.valueOf(reservationHistory.getBookingNo()));
                                         documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                             @Override
                                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                 //TODO : card view arrangement
                                                 documentReference.update("status", "Cancel");
-//                                                historyArrayList.remove(getAdapterPosition());
+                                               historyArrayList.remove(getAdapterPosition());
                                                 cancelResConfirm.dismiss();
                                                 reservationAccIcon.setImageResource(R.drawable.cancelicon);
                                                 reservationStatusText.setText("Your reservation is cancelled!");
                                                 reservationStatusText.setTextColor(temp.getResources().getColor(R.color.decline_colour));
+                                                cancelReservationBtn.setVisibility(View.INVISIBLE);
+
+
 
                                             }
                                         });
@@ -188,8 +215,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                         reservationStatusText.setText("Your reservation is cancelled!");
                         reservationStatusText.setTextColor(temp.getResources().getColor(R.color.decline_colour));
 
-
-
                     }else if(reservationHistory.getStatus().equals("Pending")) {
                         reservationAccIcon.setImageResource(R.drawable.pendingicon);
                         reservationStatusText.setText("Your reservation is pending!");
@@ -204,8 +229,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                         reservationAccIcon.setImageResource(R.drawable.arrivedicon);
                         reservationStatusText.setText("Your reservation is completed!");
                         reservationStatusText.setTextColor(temp.getResources().getColor(R.color.approved_colour));
+
                     }
-                    // TODO: the status of other condition
 
                 }
             });

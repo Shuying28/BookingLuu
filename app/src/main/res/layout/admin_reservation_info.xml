@@ -9,11 +9,11 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="540dp"
+        android:layout_height="500dp"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -92,7 +92,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
@@ -113,6 +113,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:fontFamily="@font/montserrat"
+                        android:layout_marginTop="3dp"
                         android:text="Wednesday, 25th Sep 2021"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -135,6 +136,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
                         android:fontFamily="@font/montserrat"
+                        android:layout_marginTop="3dp"
                         android:text="18h00 - 18h30"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -158,6 +160,7 @@
                         android:layout_marginLeft="20dp"
                         android:fontFamily="@font/montserrat"
                         android:text="2 People"
+                        android:layout_marginTop="3dp"
                         android:textAllCaps="false"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -181,6 +184,7 @@
                         android:layout_marginLeft="20dp"
                         android:fontFamily="@font/montserrat"
                         android:text="Table No: 12"
+                        android:layout_marginTop="3dp"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -190,7 +194,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="360dp"
-            android:layout_height="150dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="300dp"
             app:cardBackgroundColor="#EAF9FF"
@@ -199,21 +203,22 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="25dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="20dp"
                 android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imageView10"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:layout_marginTop="50dp"
                     app:srcCompat="@drawable/admin_order_icon" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="13dp"
                     android:orientation="vertical">
 
                     <LinearLayout

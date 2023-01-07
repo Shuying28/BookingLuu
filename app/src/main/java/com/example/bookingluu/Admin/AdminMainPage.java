@@ -20,6 +20,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +35,10 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -57,6 +61,10 @@ public class AdminMainPage extends AppCompatActivity {
     ShapeableImageView menuImage;
     String imageLink;
     private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
+    String restaurantImage, restaurantLogo;
+    private ImageView adminRestaurant, adminLogo;
+    private TextView restaurantName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -200,14 +208,6 @@ public class AdminMainPage extends AppCompatActivity {
                         });
 
 
-//                        StorageReference menuRef =storageReference.child("menu/"+code+".jpg");
-//                        menuRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                            @Override
-//                            public void onSuccess(Uri uri) {
-//                                Picasso.get().load(uri).into(menuImage);
-//                            }
-//                        });
-
 
 
                     }
@@ -229,6 +229,25 @@ public class AdminMainPage extends AppCompatActivity {
         addMenuBtn=findViewById(R.id.addMenuBtn);
         storageReference= FirebaseStorage.getInstance().getReference();
         fStore=FirebaseFirestore.getInstance();
+        adminRestaurant=findViewById(R.id.adminRestaurant);
+        adminLogo=findViewById(R.id.adminLogo);
+        restaurantName=findViewById(R.id.restaurantName);
+
+
+        DocumentReference documentReference=fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN);
+        documentReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                restaurantImage= value.getString("RestaurantAdminImage");
+                restaurantLogo= value.getString("RestaurantLogo");
+                restaurantName.setText(RESTAURANT_OF_ADMIN);
+                Picasso.get().load(restaurantImage).into(adminRestaurant);
+                Picasso.get().load(restaurantLogo).into(adminLogo);
+            }
+        });
+
+
+
 
     }
 

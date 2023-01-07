@@ -82,7 +82,6 @@ public class MenuFragment extends Fragment {
                         menuArrayList.add(dc.getDocument().toObject(Menu.class));
                     }
 
-                    //TODO: live update menu after admin update the menu
                     menuAdapter.notifyDataSetChanged();
                     if(progressDialog.isShowing())progressDialog.dismiss();
                 }

@@ -47,6 +47,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.squareup.picasso.Picasso;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -287,7 +288,6 @@ public class ReservationFragment extends Fragment {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        //TODO: set up the data in the dialog
                         progressDialog.dismiss();
                         if(suitableTable.size()==0){
                             Toast.makeText(getContext(), "Time slot is full. Try another slot ", Toast.LENGTH_SHORT).show();
@@ -512,7 +512,21 @@ public class ReservationFragment extends Fragment {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), R.style.DatePickerDialogTheme, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        String currentDateString = dayOfMonth+"-"+(month+1)+"-"+year;
+                        String currentDateString="";
+                        System.out.println(dayOfMonth+"hjdhcbdcjkscsddjasdjasdoajd");
+
+                        if (String.valueOf(month).length()==2 && String.valueOf(dayOfMonth).length()==2){
+                            currentDateString = dayOfMonth+"-"+(month+1)+"-"+year;
+
+                        }else if (String.valueOf(month).length()==2 && String.valueOf(dayOfMonth).length()==1){
+                            currentDateString = "0"+dayOfMonth+"-"+(month+1)+"-"+year;
+
+                        }else if (String.valueOf(month).length()==1 && String.valueOf(dayOfMonth).length()==2){
+                            currentDateString = dayOfMonth+"-"+"0"+(month+1)+"-"+year;
+
+                        }else {
+                            currentDateString = "0"+dayOfMonth+"-"+"0"+(month+1)+"-"+year;
+                        }
 
                         dateText.setText(currentDateString);
                     }

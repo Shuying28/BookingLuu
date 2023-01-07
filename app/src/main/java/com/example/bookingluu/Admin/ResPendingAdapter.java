@@ -155,9 +155,8 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                     documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            documentReference.update("status", "Declined");
+                            documentReference.update("status", "Cancel");
                             reservationArrayList.remove(getAdapterPosition());
-                            //Todo : send email to customer
                             //Send email to customer after declined
                             String message = "Dear "+selectedReservation.getCustomerName()+"," +
                                     "\n\nThank you for your reservation at " + selectedReservation.getRestaurantName() +

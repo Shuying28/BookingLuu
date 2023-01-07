@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bookingluu.CustomerLoginPage;
 import com.example.bookingluu.R;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.squareup.picasso.Picasso;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -24,6 +26,7 @@ import android.widget.TextView;
 
 public class RestaurantListPage extends AppCompatActivity {
     private ImageView backBtn, profileBtn;
+    private ShapeableImageView  hollandImage, thailandImage;
     private Dialog logoutDialog;
     private Button tempBtn,visitHollandBtn,visitThaiBtn;
     private TextView hollFoodRating, hollFoodNumRating, thaiFoodRating, thaiFoodNumRating;
@@ -133,7 +136,7 @@ public class RestaurantListPage extends AppCompatActivity {
     private void init(){
         backBtn=findViewById(R.id.listBackBtn);
         profileBtn=findViewById(R.id.profileBtn);
-        tempBtn=findViewById(R.id.tempBtn);
+        //tempBtn=findViewById(R.id.tempBtn);
         visitHollandBtn=findViewById(R.id.visitHollandBtn);
         visitThaiBtn=findViewById(R.id.visitThaiBtn);
         hollFoodRating=findViewById(R.id.hollFoodRating);
@@ -141,6 +144,8 @@ public class RestaurantListPage extends AppCompatActivity {
         thaiFoodRating=findViewById(R.id.thaiFoodRating);
         thaiFoodNumRating=findViewById(R.id.thaiFoodNumRating);
         firebaseFirestore= FirebaseFirestore.getInstance();
+        hollandImage= findViewById(R.id.hollandImage);
+        thailandImage=findViewById(R.id.thailandImage);
     }
 
     private void setHollandFood(){
@@ -154,6 +159,7 @@ public class RestaurantListPage extends AppCompatActivity {
                 String strDouble = String.format("%.2f", double_ratingvalues);
                 hollFoodRating.setText(strDouble);
                 hollFoodNumRating.setText("("+value.getString("numberOfRating")+")");
+                Picasso.get().load(value.getString("RestaurantImage")).into(hollandImage);
             }
         });
     }
@@ -169,6 +175,7 @@ public class RestaurantListPage extends AppCompatActivity {
                 String strDouble = String.format("%.2f", double_ratingvalues);
                 thaiFoodRating.setText(strDouble);
                 thaiFoodNumRating.setText("("+value.getString("numberOfRating")+")");
+                Picasso.get().load(value.getString("RestaurantImage")).into(thailandImage);
             }
         });
     }
