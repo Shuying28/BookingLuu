@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -49,6 +51,8 @@ public class CustomerMainPage extends AppCompatActivity {
     DocumentReference documentReferenceToRating;
     // To get what is the current restaurant
     private String currentVisitRestaurant;
+    String restaurantImageLink;
+    private ImageView restaurantImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,9 +89,11 @@ public class CustomerMainPage extends AppCompatActivity {
                     Boolean close = openTime.after(currentTime)||currentTime.after(closeTime);
                     Boolean open = openTime.before(currentTime)&&currentTime.before(closeTime);
                     Boolean bool3 = openTime.equals(currentTime);
+
                     System.out.println("gagaeqgeagearg"+ openTime);
                     System.out.println("fawaegwergherhqeghqeh"+ currentTime);
-                    System.out.println("fawaegwergherhqeghqeh"+ closeTime);
+                    System.out.println("gagaeqgeagearg"+ closeTime);
+                    System.out.println("fawaegwergherhqeghqeh"+ close);
                     if(close){
                         operation_status.setText("Now Closed");
                         operation_status.setTextColor(getApplicationContext().getResources().getColor(R.color.decline_colour));
@@ -194,6 +200,7 @@ public class CustomerMainPage extends AppCompatActivity {
         fStore=FirebaseFirestore.getInstance();
         fAuth=FirebaseAuth.getInstance();
         userId=fAuth.getCurrentUser().getUid();
+        restaurantImage=findViewById(R.id.restaurantImage);
 
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
@@ -205,6 +212,7 @@ public class CustomerMainPage extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 currentUserName= value.getString("fullName");
                 currentUserImage=value.getString("image");
+
             }
         });
 
@@ -214,16 +222,11 @@ public class CustomerMainPage extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 numberOfRating= value.getString("numberOfRating");
                 currentRating=value.getString("currentRating");
+                restaurantImageLink=value.getString("RestaurantImage");
+                Picasso.get().load(restaurantImageLink).into(restaurantImage);
             }
         });
 
-        //get the current visited restaurant
-//        Bundle bundle = new Bundle();
-//        bundle.putString("RestaurantName",currentVisitRestaurant);
-//// set Fragmentclass Arguments
-//        ReservationFragment reservationFragment = new ReservationFragment();
-//        reservationFragment.setArguments(bundle);
-//        System.out.println("foajwbnfoawujdfnvwfw"+ currentVisitRestaurant);
     }
 
     public void updateRatingToFireStore(String rate){

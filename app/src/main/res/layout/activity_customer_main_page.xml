@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/restaurantImage"
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:scaleType="centerCrop"
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:alpha="0.4"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
+        app:layout_constraintBottom_toBottomOf="@+id/restaurantImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/grey_rectangle" />

@@ -79,7 +79,6 @@ public class AdminMenuFragment extends Fragment {
                     if(progressDialog.isShowing())progressDialog.dismiss();
                     return;
                 }
-                // TODO: here cannot change the data when the menu is edited
 
                 for(DocumentChange dc: value.getDocumentChanges()){
                     if(dc.getType()==DocumentChange.Type.ADDED){
@@ -88,9 +87,6 @@ public class AdminMenuFragment extends Fragment {
                         menuArrayList.set(dc.getOldIndex(),dc.getDocument().toObject(Menu.class));
 
                     }
-//                    else if(dc.getType()==DocumentChange.Type.REMOVED){
-//                        menuArrayList.remove(dc.getOldIndex());
-//                    }
                     adminMenuAdapter.notifyDataSetChanged();
                     if(progressDialog.isShowing())progressDialog.dismiss();
                 }

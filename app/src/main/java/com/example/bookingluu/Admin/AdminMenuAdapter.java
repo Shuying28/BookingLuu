@@ -192,26 +192,22 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                             editMenuDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                             editMenuDialog.show();
 
-                            //Todo : edit menu code here (regina)
-
                             Menu menuToBeEdited = menuArrayList.get(selectedPosition);
 
                             Button saveMenuBtn = editMenuDialog.findViewById(R.id.saveEditMenuBtn);
                             Button cancelEditMenuBtn = editMenuDialog.findViewById(R.id.cancelEditMenuBtn);
                             TextView menuCode = editMenuDialog.findViewById(R.id.menuCodeEditText);
-                            //set menu code uneditable
-                            menuCode.setEnabled(false);
                             EditText menuName = editMenuDialog.findViewById(R.id.menuNameEditText);
                             EditText menuPrice = editMenuDialog.findViewById(R.id.menuPriceEditText);
                             EditText menuDesc = editMenuDialog.findViewById(R.id.menuDesEditText);
                             ShapeableImageView menuImage = editMenuDialog.findViewById(R.id.menuEditImage);
-                            TextView chooseImageText = editMenuDialog.findViewById(R.id.chooseImageText);
 
                             menuCode.setText(menuToBeEdited.getMenuCode());
                             menuName.setText(menuToBeEdited.getMenuName());
                             menuPrice.setText(menuToBeEdited.getMenuPrice());
                             menuDesc.setText(menuToBeEdited.getMenuDescription());
                             Picasso.get().load(menuToBeEdited.getMenuImage()).into(menuImage);
+
 
                             cancelEditMenuBtn.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -220,31 +216,21 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                                 }
                             });
 
-                            chooseImageText.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    menuCodeTxt = menuCode.getText().toString();
-
-                                    if (TextUtils.isEmpty(menuCodeTxt)) {
-                                        menuCode.setError("Menu code is required before choosing image");
-                                        return;
-                                    }
-
-
-
-
-//                                    Intent openGalleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                                    startActivityForResult(openGalleryIntent,1000);
-                                }
-
-                                
-                            });
 
                             menuCode.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
                                     menuCode.setError("This field cannot be edited!");
-                                    System.out.println("ugh8ygg8yg80g8ygy8");
+                                    Toast.makeText(temp, "Menu code is uneditable", Toast.LENGTH_SHORT).show();
+
+
+                                }
+                            });
+
+                            menuImage.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Toast.makeText(temp, "Menu image is uneditable", Toast.LENGTH_SHORT).show();
                                 }
                             });
 

@@ -287,7 +287,6 @@ public class ReservationFragment extends Fragment {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        //TODO: set up the data in the dialog
                         progressDialog.dismiss();
                         if(suitableTable.size()==0){
                             Toast.makeText(getContext(), "Time slot is full. Try another slot ", Toast.LENGTH_SHORT).show();
