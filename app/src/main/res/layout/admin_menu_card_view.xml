@@ -2,12 +2,12 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="350dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_marginTop="10dp"
-    android:background="@color/white"
-    android:backgroundTint="@color/white"
+    android:orientation="horizontal"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="13dp"
     app:cardElevation="8dp">
 

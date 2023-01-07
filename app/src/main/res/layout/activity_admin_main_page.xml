@@ -15,7 +15,7 @@
         android:background="@drawable/ic_baseline_add_menu"
         android:clickable="true"
         android:visibility="invisible"
-        app:backgroundTint="@color/white"
+        app:backgroundTint="@color/admin_second"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_baseline_add_menu" />
