@@ -6,25 +6,33 @@
     tools:context=".Admin.UpcomingFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:iconifiedByDefault="false"
-        android:queryHint="Search Booking No here..." />
+
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginTop="70dp"
         android:layout_height="match_parent"
         android:paddingBottom="30dp">
 
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/resUpcomingList"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search Booking No here..."
+                android:layout_marginBottom="10dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/resUpcomingList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+
     </ScrollView>
 
 </FrameLayout>
