@@ -6,10 +6,17 @@
     tools:context=".Admin.UpcomingFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search Booking No here..." />
 
     <ScrollView
         android:layout_width="match_parent"
+        android:layout_marginTop="70dp"
         android:layout_height="match_parent"
         android:paddingBottom="30dp">
 

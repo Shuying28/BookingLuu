@@ -1,10 +1,13 @@
 package com.example.bookingluu.Admin;
 
 import android.content.Context;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,9 +22,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
+import org.checkerframework.checker.units.qual.A;
+
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import io.grpc.internal.JsonUtil;
 
 public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.MyViewHolder> {
     Context context;
@@ -31,6 +40,12 @@ public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.
     public ResUpcomingAdapter(Context context, ArrayList<Reservation> reservationArrayList) {
         this.context = context;
         this.reservationArrayList = reservationArrayList;
+
+    }
+
+    public void setFilterList(ArrayList<Reservation> filterList){
+        this.reservationArrayList = filterList;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -54,8 +69,15 @@ public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.
 
     @Override
     public int getItemCount() {
-        return reservationArrayList.size();
+        try {
+            return reservationArrayList.size();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        return 0;
     }
+
+
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -64,6 +86,7 @@ public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.
         private static FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference documentReference;
         private final String RESTAURANT_OF_ADMIN= AdminLoginPage.restaurantOfAdmin;
+
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +113,7 @@ public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.
                     TextView resInfoOrderNoText = bottomSheetDialog.findViewById(R.id.resInfoOrderNoText);
                     TextView resInfoFoodText = bottomSheetDialog.findViewById(R.id.resInfoFoodText);
                     TextView resInfoNotesText = bottomSheetDialog.findViewById(R.id.resInfoNotesText);
+
                     Reservation selectedReservation = reservationArrayList.get(getAdapterPosition());
                     CircleImageView adminResProfilePic = bottomSheetDialog.findViewById(R.id.adminResProfilePic);
                     resInfoNameText.setText(selectedReservation.getCustomerName());
