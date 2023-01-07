@@ -106,7 +106,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView date,code,restaurantName,people,hours,status;
         ImageView resHisBackBtn;
-        ShapeableImageView  restaurantImage;
+        ShapeableImageView restaurantImage;
         Button cancelReservationBtn,resHisbackBtn;
         private static FirebaseFirestore fStore = FirebaseFirestore.getInstance();
         DocumentReference documentReference;
@@ -186,7 +186,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                                             public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                 //TODO : card view arrangement
                                                 documentReference.update("status", "Cancel");
-                                               historyArrayList.remove(getAdapterPosition());
+                                                historyArrayList.remove(getAdapterPosition());
                                                 cancelResConfirm.dismiss();
                                                 reservationAccIcon.setImageResource(R.drawable.cancelicon);
                                                 reservationStatusText.setText("Your reservation is cancelled!");
@@ -221,7 +221,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                         reservationStatusText.setTextColor(temp.getResources().getColor(R.color.pending_colour));
 
                     }else if(reservationHistory.getStatus().equals("Accepted")) {
-                        reservationAccIcon.setImageResource(R.drawable.green_tick);
+                        reservationAccIcon.setImageResource(R.drawable.acceptedicon);
                         reservationStatusText.setText("Your reservation is accepted!");
                         reservationStatusText.setTextColor(temp.getResources().getColor(R.color.admin_third));
 
