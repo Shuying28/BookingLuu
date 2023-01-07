@@ -380,7 +380,7 @@ public class ReservationFragment extends Fragment {
 
 
                     }
-                },1500);
+                },2000);
 
 
 
