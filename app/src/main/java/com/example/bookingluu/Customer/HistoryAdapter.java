@@ -78,15 +78,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
         switch (reservationHistory.getStatus()){
             case "Accepted":
                 holder.status.setBackgroundColor(context.getResources().getColor(R.color.admin_third));
+                holder.status.setBackground(context.getResources().getDrawable(R.drawable.res_approved_shape));
                 break;
             case "Pending":
                 holder.status.setBackgroundColor(context.getResources().getColor(R.color.pending_colour));
+                holder.status.setBackground(context.getResources().getDrawable(R.drawable.res_pending_shape));
                 break;
             case "Arrived":
                 holder.status.setBackgroundColor(context.getResources().getColor(R.color.approved_colour));
+                holder.status.setBackground(context.getResources().getDrawable(R.drawable.res_arrived_shape));
                 break;
             case "Cancel":
                 holder.status.setBackgroundColor(context.getResources().getColor(R.color.decline_colour));
+                holder.status.setBackground(context.getResources().getDrawable(R.drawable.res_cancel_shape));
                 break;
         }
 
@@ -211,8 +215,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                         reservationStatusText.setText("Your reservation is cancelled!");
                         reservationStatusText.setTextColor(temp.getResources().getColor(R.color.decline_colour));
 
-
-
                     }else if(reservationHistory.getStatus().equals("Pending")) {
                         reservationAccIcon.setImageResource(R.drawable.pendingicon);
                         reservationStatusText.setText("Your reservation is pending!");
@@ -227,6 +229,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.MyViewHo
                         reservationAccIcon.setImageResource(R.drawable.arrivedicon);
                         reservationStatusText.setText("Your reservation is completed!");
                         reservationStatusText.setTextColor(temp.getResources().getColor(R.color.approved_colour));
+
                     }
 
                 }
