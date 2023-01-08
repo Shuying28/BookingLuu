@@ -128,9 +128,14 @@ public class UpcomingFragment extends Fragment {
                 for(DocumentChange dc: value.getDocumentChanges()){
                     if(dc.getType()==DocumentChange.Type.ADDED||dc.getType()==DocumentChange.Type.MODIFIED){
                         Reservation reservation= dc.getDocument().toObject(Reservation.class);
-                        if(reservation.getStatus().equals("Accepted")){
-                            reservationArrayList.add(reservation);
+                        try{
+                            if(reservation.getStatus().equals("Accepted")){
+                                reservationArrayList.add(reservation);
+                            }
+                        }catch(NullPointerException e){
+
                         }
+
                     }
 
                     ResUpcomingAdapter.notifyDataSetChanged();

@@ -132,7 +132,8 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/white"
                     android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:contentDescription="Rating"/>
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -202,7 +203,7 @@
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
-        android:layout_width="409dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@+id/scrollView"
         android:foregroundGravity="center_horizontal"

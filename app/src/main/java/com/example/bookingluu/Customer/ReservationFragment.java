@@ -99,7 +99,7 @@ public class ReservationFragment extends Fragment {
 
     //For getting the restaurant information
     String restaurantName, restaurantAddress;
-    int reservationNumber;
+    int reservationNumber,maxNoOfPax;
 
     public ReservationFragment() {
         // Required empty public constructor
@@ -362,6 +362,7 @@ public class ReservationFragment extends Fragment {
                                             //Update data to firestore
                                             updateRestaurantData();
                                             updateTableAvailability(restaurantName,selectedTableNo,timeSlotPosition);
+                                            clearLayout();
                                             bottomSheetDialog.dismiss();
                                             Toast.makeText(getContext(), "Reservation created. Pending approval", Toast.LENGTH_SHORT).show();
 
@@ -447,7 +448,7 @@ public class ReservationFragment extends Fragment {
                             // when checkbox unselected, remove position from foodposition list
                             for(int j=0;j< foodPositionList.size();j++){
                                 if(foodPositionList.get(j)==i){
-                                    foodPositionList.remove(i);
+                                    foodPositionList.remove((Object)i);
                                 }
                             }
                         }
@@ -538,8 +539,10 @@ public class ReservationFragment extends Fragment {
         addNoPax.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Integer.parseInt(noOfPax.getText().toString())>=1){
+                if(Integer.parseInt(noOfPax.getText().toString())>=1&&Integer.parseInt(noOfPax.getText().toString())<maxNoOfPax){
                     noOfPax.setText(String.valueOf(Integer.parseInt(noOfPax.getText().toString())+1));
+                }else{
+                    Toast.makeText(getContext(), "Maximum No of Pax is "+maxNoOfPax, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -584,6 +587,7 @@ public class ReservationFragment extends Fragment {
                 restaurantName =value.getString("RestaurantName");
                 restaurantAddress =value.getString("Address");
                 reservationNumber = (int)(long)value.getLong("ReservationNumber");
+                maxNoOfPax=(int)(long)value.getLong("maxNoOfPax");
 
             }
         });
@@ -619,5 +623,18 @@ public class ReservationFragment extends Fragment {
 
             }
         });
+    }
+
+    public void clearLayout(){
+        dateText.setText("");
+        spinnerTime.setSelection(0);
+        noOfPax.setText("0");
+        showSelectedFoodText.setText("");
+        nameText.setText("");
+        phoneNoText.setText("");
+        emailText.setText("");
+        notesText.setText("");
+        checkBox.setChecked(false);
+
     }
 }
