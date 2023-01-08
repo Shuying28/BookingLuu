@@ -83,36 +83,6 @@ public class RestaurantListPage extends AppCompatActivity {
         sliderView.startAutoCycle();
 
 
-
-        backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                logoutDialog = new Dialog(RestaurantListPage.this);
-                logoutDialog.setContentView(R.layout.dialog_customer_logout);
-                Button yesBtn= logoutDialog.findViewById(R.id.deleteMenuBtn);
-                Button noBtn= logoutDialog.findViewById(R.id.cancelDeleteMenuBtn);
-                logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                logoutDialog.show();
-                yesBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        FirebaseAuth.getInstance().signOut();
-                        logoutDialog.dismiss();
-                        startActivity(new Intent(getApplicationContext(), CustomerLoginPage.class));
-                        finish();
-                    }
-                });
-                noBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        logoutDialog.dismiss();
-                    }
-                });
-
-
-            }
-        });
-
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -174,9 +144,7 @@ public class RestaurantListPage extends AppCompatActivity {
     }
 
     private void init(){
-        backBtn=findViewById(R.id.listBackBtn);
         profileBtn=findViewById(R.id.profileBtn);
-        //tempBtn=findViewById(R.id.tempBtn);
         visitHollandBtn=findViewById(R.id.visitHollandBtn);
         visitThaiBtn=findViewById(R.id.visitThaiBtn);
         hollFoodRating=findViewById(R.id.hollFoodRating);
