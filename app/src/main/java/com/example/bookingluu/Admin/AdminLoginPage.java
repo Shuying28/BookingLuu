@@ -95,7 +95,7 @@ public class AdminLoginPage extends AppCompatActivity {
                                 adminLoginBtn.setVisibility(View.VISIBLE);
                                 Toast.makeText(AdminLoginPage.this, "Welcome Back, "+documentSnapshot.get("restaurantName"), Toast.LENGTH_SHORT).show();
 
-                                //finish();
+                                finish();
                                 startActivity(new Intent(getApplicationContext(), AdminMainPage.class));
 
                             }else{

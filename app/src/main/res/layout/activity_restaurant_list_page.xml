@@ -11,27 +11,18 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="135px"
-        android:orientation="horizontal"
+        android:background="@drawable/toolbar_design"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        android:background="@color/orange_main">
-
-        <ImageView
-            android:id="@+id/listBackBtn"
-            android:layout_width="80px"
-            android:layout_height="80px"
-            android:layout_marginLeft="50px"
-            app:srcCompat="@drawable/ic_baseline_arrow_back_24">
-
-        </ImageView>
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="35px"
+            android:layout_marginLeft="40px"
             android:fontFamily="@font/montserrat"
             android:text="Restaurant List"
             android:textColor="@color/dark_blue"
@@ -43,8 +34,8 @@
             android:id="@+id/profileBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="280px"
-            app:srcCompat="@drawable/profile_icon">
+            android:layout_marginStart="400px"
+            app:srcCompat="@drawable/profile_new">
 
         </ImageView>
 

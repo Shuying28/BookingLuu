@@ -141,7 +141,11 @@ public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
                             documentReference.update("status", "Arrived");
-                            reservationArrayList.remove(getAdapterPosition());
+                            try{
+                                reservationArrayList.remove(getAdapterPosition());
+                            }catch(IndexOutOfBoundsException e){
+
+                            }
                             //Todo : send email to customer
                         }
                     });

@@ -36,9 +36,9 @@ public class RestaurantListPage extends AppCompatActivity {
     FirebaseFirestore firebaseFirestore;
     public static String passString;
 
-    String url1 = "https://firebasestorage.googleapis.com/v0/b/bookingluu-b66f7.appspot.com/o/BookingLuu.png?alt=media&token=024e2b90-cc89-4b5f-a848-d8f384d00b5c";
-    String url2 = "https://firebasestorage.googleapis.com/v0/b/bookingluu-b66f7.appspot.com/o/Holland%20Food.png?alt=media&token=1775f996-8228-4c98-9eac-6781b71ef7f2";
-    String url3 = "https://firebasestorage.googleapis.com/v0/b/bookingluu-b66f7.appspot.com/o/Thailand%20Food.png?alt=media&token=8b6a554f-c241-4917-8ed4-c18aa62bdc06";
+    String url1 = "https://firebasestorage.googleapis.com/v0/b/bookingluu-b66f7.appspot.com/o/BookingLuu%20(1).png?alt=media&token=216ab6ac-520a-4ceb-b964-fcd484046f19";
+    String url2 = "https://firebasestorage.googleapis.com/v0/b/bookingluu-b66f7.appspot.com/o/Frame%202157.png?alt=media&token=83c1347b-d333-45ce-ab24-0144799a5f3b";
+    String url3 = "https://firebasestorage.googleapis.com/v0/b/bookingluu-b66f7.appspot.com/o/Thailand%20Food%20(1).png?alt=media&token=7c9ef088-8f02-41ad-9e89-be175e18fd84";
 
 
 

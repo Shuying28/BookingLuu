@@ -122,7 +122,11 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                          @Override
                          public void onSuccess(DocumentSnapshot documentSnapshot) {
                              documentReference.update("status", "Accepted");
-                             reservationArrayList.remove(getAdapterPosition());
+                             try{
+                                 reservationArrayList.remove(getAdapterPosition());
+                             }catch(IndexOutOfBoundsException e){
+
+                             }
 
                              //Send email to customer after approval
                              String message = "Dear "+selectedReservation.getCustomerName()+"," +
