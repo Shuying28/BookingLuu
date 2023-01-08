@@ -20,8 +20,8 @@
 
     <ImageView
         android:id="@+id/reservationAccIcon"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:layout_gravity="center"
         android:src="@drawable/tick_green">
 
@@ -36,7 +36,7 @@
         android:fontFamily="@font/montserrat"
         android:text="Your reservation is approved!"
         android:textColor="@color/approved_colour"
-        android:textSize="16dp"
+        android:textSize="18dp"
         android:textStyle="bold">
 
     </TextView>
@@ -78,7 +78,7 @@
                     android:fontFamily="@font/montserrat"
                     android:text="Holland Food"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10dp"
+                    android:textSize="14dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -87,13 +87,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="23dp"
+                    android:layout_marginTop="28dp"
                     android:layout_toRightOf="@+id/locationIcon"
                     android:id="@+id/restaurant_address"
                     android:fontFamily="@font/montserrat"
                     android:text="Kolej Kediaman Kinabalu, University Malaya"
                     android:textColor="@color/grey_colour"
-                    android:textSize="8dp">
+                    android:textSize="10dp">
 
                 </TextView>
 
@@ -126,7 +126,7 @@
                     android:id="@+id/dateAndDay"
                     android:text="Wednesday, 25th Sep 2021"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10dp"
+                    android:textSize="14dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -159,7 +159,7 @@
                     android:text="18h00 - 18h30"
                     android:id="@+id/hour"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10dp"
+                    android:textSize="14dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -192,7 +192,7 @@
                     android:id="@+id/people"
                     android:text="2 People"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10dp"
+                    android:textSize="14dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -225,7 +225,7 @@
                     android:id="@+id/orderMeal"
                     android:text="Menu"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10dp"
+                    android:textSize="14dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -258,7 +258,7 @@
                     android:id="@+id/table"
                     android:text="Table"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10dp"
+                    android:textSize="14dp"
                     android:textStyle="bold">
 
                 </TextView>
@@ -291,7 +291,7 @@
                     android:text="Notes"
                     android:id="@+id/notes"
                     android:textColor="@color/dark_blue"
-                    android:textSize="10dp"
+                    android:textSize="14dp"
                     android:textStyle="bold">
 
                 </TextView>
