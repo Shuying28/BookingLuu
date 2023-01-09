@@ -22,9 +22,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40px"
+            android:layout_marginLeft="55px"
             android:fontFamily="@font/montserrat"
-            android:text="Restaurant List"
+            android:text="Home Page"
             android:textColor="@color/dark_blue"
             android:textSize="23dp">
 
@@ -34,7 +34,7 @@
             android:id="@+id/profileBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_marginStart="400px"
+            android:layout_marginStart="490px"
             app:srcCompat="@drawable/profile_new">
 
         </ImageView>
