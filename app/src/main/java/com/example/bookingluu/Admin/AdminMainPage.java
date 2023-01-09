@@ -289,4 +289,29 @@ public class AdminMainPage extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        logoutDialog = new Dialog(AdminMainPage.this);
+        logoutDialog.setContentView(R.layout.dialog_admin_logout);
+        Button yesBtn= logoutDialog.findViewById(R.id.deleteMenuBtn);
+        Button noBtn= logoutDialog.findViewById(R.id.cancelDeleteMenuBtn);
+        logoutDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        logoutDialog.show();
+        yesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                logoutDialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), AdminLoginPage.class));
+                finish();
+            }
+        });
+        noBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                logoutDialog.dismiss();
+            }
+        });
+    }
 }
