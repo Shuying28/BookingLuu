@@ -165,6 +165,7 @@ public class CustomerMainPage extends AppCompatActivity {
 
 
 
+
                     }
                 });
 
@@ -217,13 +218,7 @@ public class CustomerMainPage extends AppCompatActivity {
             }
         });
 
-        //get the current visited restaurant
-//        Bundle bundle = new Bundle();
-//        bundle.putString("RestaurantName",currentVisitRestaurant);
-//// set Fragmentclass Arguments
-//        ReservationFragment reservationFragment = new ReservationFragment();
-//        reservationFragment.setArguments(bundle);
-//        System.out.println("foajwbnfoawujdfnvwfw"+ currentVisitRestaurant);
+
     }
 
     public void updateRatingToFireStore(String rate){
@@ -232,6 +227,9 @@ public class CustomerMainPage extends AppCompatActivity {
         String res=String.valueOf(totalRate/(Integer.parseInt(numberOfRating)+1));
         documentReferenceToRating.update("numberOfRating",String.valueOf(Integer.parseInt(numberOfRating)+1));
         documentReferenceToRating.update("currentRating",res);
+        String strDouble = String.format("%.2f", Double.valueOf(res));
+        showReview.setText(strDouble);
+
 
     }
 

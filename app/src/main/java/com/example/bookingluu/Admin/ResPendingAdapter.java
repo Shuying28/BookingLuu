@@ -22,6 +22,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import javax.mail.SendFailedException;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.MyViewHolder> {
@@ -130,9 +132,9 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
 
                              //Send email to customer after approval
                              String message = "Dear "+selectedReservation.getCustomerName()+"," +
-                                     "\n\nThank you for your reservation at " + selectedReservation.getRestaurantName() +
+                                     "\n\nThank you for your reservation at " + selectedReservation.getRestaurantName() +".\n\n"+
                                      "We are pleased to inform you that your reservation have been approved!" +
-                                     "\n\n Below are the details of your reservation." +
+                                     "\n\nBelow are the details of your reservation." +
                                      "\nRestaurant: "+selectedReservation.getRestaurantName()+
                                      "\nDate: "+selectedReservation.getDate()+
                                      "\nTime: "+selectedReservation.getTime()+
@@ -144,6 +146,8 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                              String subject = "Approval of Reservation";
                              JavaMailAPI javaMailAPI = new JavaMailAPI(temp,selectedReservation.getCustomerEmail().trim(),subject,message);
                              javaMailAPI.execute();
+
+
 
                          }
                      });
@@ -163,7 +167,7 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                             reservationArrayList.remove(getAdapterPosition());
                             //Send email to customer after declined
                             String message = "Dear "+selectedReservation.getCustomerName()+"," +
-                                    "\n\nThank you for your reservation at " + selectedReservation.getRestaurantName() +
+                                    "\n\nThank you for your reservation at " + selectedReservation.getRestaurantName()+".\n\n" +
                                     "Unfortunately, we are unable to accommodate your reservation request at this time. " +
                                     "\n\n Below are the details of the reservation." +
                                     "\n- Restaurant: "+selectedReservation.getRestaurantName()+

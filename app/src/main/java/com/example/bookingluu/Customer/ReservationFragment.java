@@ -628,7 +628,7 @@ public class ReservationFragment extends Fragment {
     public void clearLayout(){
         dateText.setText("");
         spinnerTime.setSelection(0);
-        noOfPax.setText("0");
+        noOfPax.setText("1");
         showSelectedFoodText.setText("");
         nameText.setText("");
         phoneNoText.setText("");

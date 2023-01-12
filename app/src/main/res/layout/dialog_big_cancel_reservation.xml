@@ -48,257 +48,265 @@
         android:layout_marginTop="10dp"
         app:cardCornerRadius="10dp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/locationIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="18dp"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/ic_baseline_location_on_24">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                </ImageView>
+                    <ImageView
+                        android:id="@+id/locationIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="18dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_baseline_location_on_24">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@+id/locationIcon"
-                    android:id="@+id/restaurantName"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Holland Food"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14dp"
-                    android:textStyle="bold">
+                    </ImageView>
 
-                </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toRightOf="@+id/locationIcon"
+                        android:id="@+id/restaurantName"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Holland Food"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14dp"
+                        android:textStyle="bold">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="28dp"
-                    android:layout_toRightOf="@+id/locationIcon"
-                    android:id="@+id/restaurant_address"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Kolej Kediaman Kinabalu, University Malaya"
-                    android:textColor="@color/grey_colour"
-                    android:textSize="10dp">
+                    </TextView>
 
-                </TextView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="28dp"
+                        android:layout_toRightOf="@+id/locationIcon"
+                        android:id="@+id/restaurant_address"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Kolej Kediaman Kinabalu, University Malaya"
+                        android:textColor="@color/grey_colour"
+                        android:textSize="10dp">
+
+                    </TextView>
 
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/calendarIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_baseline_calendar_month_24">
+                    <ImageView
+                        android:id="@+id/calendarIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_baseline_calendar_month_24">
 
-                </ImageView>
+                    </ImageView>
 
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/calendarIcon"
-                    android:fontFamily="@font/montserrat"
-                    android:id="@+id/dateAndDay"
-                    android:text="Wednesday, 25th Sep 2021"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14dp"
-                    android:textStyle="bold">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/calendarIcon"
+                        android:fontFamily="@font/montserrat"
+                        android:id="@+id/dateAndDay"
+                        android:text="Wednesday, 25th Sep 2021"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14dp"
+                        android:textStyle="bold">
 
-                </TextView>
+                    </TextView>
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/timeIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_baseline_access_time_24">
+                    <ImageView
+                        android:id="@+id/timeIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_baseline_access_time_24">
 
-                </ImageView>
+                    </ImageView>
 
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/timeIcon"
-                    android:fontFamily="@font/montserrat"
-                    android:text="18h00 - 18h30"
-                    android:id="@+id/hour"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14dp"
-                    android:textStyle="bold">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/timeIcon"
+                        android:fontFamily="@font/montserrat"
+                        android:text="18h00 - 18h30"
+                        android:id="@+id/hour"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14dp"
+                        android:textStyle="bold">
 
-                </TextView>
+                    </TextView>
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/peopleIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_baseline_people_alt_24">
+                    <ImageView
+                        android:id="@+id/peopleIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_baseline_people_alt_24">
 
-                </ImageView>
+                    </ImageView>
 
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/peopleIcon"
-                    android:fontFamily="@font/montserrat"
-                    android:id="@+id/people"
-                    android:text="2 People"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14dp"
-                    android:textStyle="bold">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/peopleIcon"
+                        android:fontFamily="@font/montserrat"
+                        android:id="@+id/people"
+                        android:text="2 People"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14dp"
+                        android:textStyle="bold">
 
-                </TextView>
+                    </TextView>
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/mealIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_baseline_fastfood_24">
+                    <ImageView
+                        android:id="@+id/mealIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_baseline_fastfood_24">
 
-                </ImageView>
+                    </ImageView>
 
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/mealIcon"
-                    android:fontFamily="@font/montserrat"
-                    android:id="@+id/orderMeal"
-                    android:text="Menu"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14dp"
-                    android:textStyle="bold">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/mealIcon"
+                        android:fontFamily="@font/montserrat"
+                        android:id="@+id/orderMeal"
+                        android:text="Menu"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14dp"
+                        android:textStyle="bold">
 
-                </TextView>
+                    </TextView>
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/tableIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="10dp"
-                    android:src="@drawable/ic_baseline_table_bar_24">
+                    <ImageView
+                        android:id="@+id/tableIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/ic_baseline_table_bar_24">
 
-                </ImageView>
+                    </ImageView>
 
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_toRightOf="@+id/tableIcon"
-                    android:fontFamily="@font/montserrat"
-                    android:id="@+id/table"
-                    android:text="Table"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14dp"
-                    android:textStyle="bold">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@+id/tableIcon"
+                        android:fontFamily="@font/montserrat"
+                        android:id="@+id/table"
+                        android:text="Table"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14dp"
+                        android:textStyle="bold">
 
-                </TextView>
+                    </TextView>
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/notesIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="8dp"
-                    android:src="@drawable/ic_baseline_edit_note_24">
+                    <ImageView
+                        android:id="@+id/notesIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="8dp"
+                        android:src="@drawable/ic_baseline_edit_note_24">
 
-                </ImageView>
+                    </ImageView>
 
-                <TextView
-                    android:layout_centerVertical="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_toRightOf="@+id/notesIcon"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Notes"
-                    android:id="@+id/notes"
-                    android:textColor="@color/dark_blue"
-                    android:textSize="14dp"
-                    android:textStyle="bold">
+                    <TextView
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_toRightOf="@+id/notesIcon"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Notes"
+                        android:id="@+id/notes"
+                        android:textColor="@color/dark_blue"
+                        android:textSize="14dp"
+                        android:textStyle="bold">
 
-                </TextView>
+                    </TextView>
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-        </LinearLayout>
+            </LinearLayout>
+
+        </ScrollView>
+
+
 
 
     </androidx.cardview.widget.CardView>

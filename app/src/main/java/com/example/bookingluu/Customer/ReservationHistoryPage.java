@@ -123,10 +123,15 @@ public class ReservationHistoryPage extends AppCompatActivity {
                                     }
                                 }else if(dc.getType()==DocumentChange.Type.MODIFIED){
                                     //TODO modify here the card view arrangent
-                                    System.out.println("tryrtryrtryrtryrtryrtryrtry"+dc.getDocument().toObject(Reservation.class).getRestaurantName());
-                                    if (fAuth.getCurrentUser().getUid().equals(dc.getDocument().toObject(Reservation.class).getCustomerID())){
-                                        historyArrayList.add(dc.getOldIndex(),dc.getDocument().toObject(Reservation.class));
+                                    try{
+                                        if (fAuth.getCurrentUser().getUid().equals(dc.getDocument().toObject(Reservation.class).getCustomerID())){
+                                            historyArrayList.add(dc.getDocument().toObject(Reservation.class));
+                                        }
+                                    }catch (NullPointerException e){
+
                                     }
+                                    System.out.println("tryrtryreryrtryrtryrtryrtry"+dc.getDocument().toObject(Reservation.class).getRestaurantName());
+
                                 }
 
                                 historyAdapter.notifyDataSetChanged();
@@ -141,7 +146,11 @@ public class ReservationHistoryPage extends AppCompatActivity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        finish();
+        startActivity(new Intent(getApplicationContext(), CustomerProfilePage.class));
+    }
 
     public void init(){
         historyBackBtn=findViewById(R.id.historyBackBtn);
