@@ -57,23 +57,41 @@ public class CustomerRegisterPage extends AppCompatActivity {
                 String conPassword = confirmPasswordText.getText().toString().trim();
                 String fullName= fullNameText.getText().toString().trim();
                 String phoneNumber = phoneNumberText.getText().toString().trim();
-
-
+                if(TextUtils.isEmpty(fullName)){
+                    fullNameText.setError("Name is required!");
+                    registerProgressBar.setVisibility(View.GONE);
+                    signUpBtn.setVisibility(View.VISIBLE);
+                    return;
+                }
+                if(TextUtils.isEmpty(phoneNumber)){
+                    phoneNumberText.setError("Phone Number is required!");
+                    registerProgressBar.setVisibility(View.GONE);
+                    signUpBtn.setVisibility(View.VISIBLE);
+                    return;
+                }
                 if(TextUtils.isEmpty(email)){
                     emailText.setError("Email is required!");
+                    registerProgressBar.setVisibility(View.GONE);
+                    signUpBtn.setVisibility(View.VISIBLE);
                     return;
                 }
                 if(TextUtils.isEmpty(password)){
                     passwordText.setError("Password is required!");
+                    registerProgressBar.setVisibility(View.GONE);
+                    signUpBtn.setVisibility(View.VISIBLE);
                     return;
                 }
                 if(password.length()<6){
                     passwordText.setError("Password must be longer than 6 characters!");
+                    registerProgressBar.setVisibility(View.GONE);
+                    signUpBtn.setVisibility(View.VISIBLE);
                     return;
                 }
 
                 if(!conPassword.equals(password)){
-                    confirmPasswordText.setError("Different password input!                                                                                      ");
+                    confirmPasswordText.setError("Different password input!");
+                    registerProgressBar.setVisibility(View.GONE);
+                    signUpBtn.setVisibility(View.VISIBLE);
                     return;
                 }
 

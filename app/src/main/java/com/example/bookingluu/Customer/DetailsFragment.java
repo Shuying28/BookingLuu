@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bookingluu.CustomerLoginPage;
 import com.example.bookingluu.SplashActivity;
@@ -70,6 +71,7 @@ public class DetailsFragment extends Fragment {
                 gMap.addMarker(new MarkerOptions().position(restaurantLoc).title(CURRENT_RESTAURANT));
                 moveToCurrentLocation(restaurantLoc);
             }catch (NullPointerException e){
+                Toast.makeText(getContext(), "Restaurant Data fetch failed, try again. ", Toast.LENGTH_SHORT).show();
 
             }
 

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.bookingluu.Customer.Rating;
 import com.example.bookingluu.Customer.RatingAdapter;
@@ -84,7 +85,7 @@ public class PendingFragment extends Fragment {
                             if(reservation.getStatus().equals("Pending")){
                                 reservationArrayList.add(reservation);}
                         }catch(NullPointerException e){
-
+                            Toast.makeText(getContext(), "Error with the reservation.", Toast.LENGTH_SHORT).show();
                         }
 
                     }

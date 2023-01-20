@@ -165,7 +165,6 @@ public class ReservationFragment extends Fragment {
                     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                         selectedTimeSlot = (String) adapterView.getItemAtPosition(position);
                         timeSlotPosition=position;
-                        System.out.println("aidousahfpiofunweoifuweg"+position);
                     }
 
                     @Override
@@ -192,7 +191,6 @@ public class ReservationFragment extends Fragment {
 
                 reservationPax= Integer.parseInt(noOfPax.getText().toString());
                 date = dateText.getText().toString();
-                System.out.println("gjoerbgijebngjioegnjqeg"+date);
                 reservationName= nameText.getText().toString();
                 reservationEmail= emailText.getText().toString();
                 reservationPhoneNo = phoneNoText.getText().toString();
@@ -245,7 +243,6 @@ public class ReservationFragment extends Fragment {
                                 int tableNo= table.getTableNo();
                                 suitableTable=new ArrayList<>();
 
-                                System.out.println("ihyvuofufiyoyvoiyv80y"+tableNoPax);
                                 if(tableNoPax>=reservationPax&&reservationPax+1>=tableNoPax){
                                     tableDocumentReference.collection("Table").document(String.valueOf(tableNo))
                                             .collection("Date").document(date).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -253,9 +250,7 @@ public class ReservationFragment extends Fragment {
                                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                                     if(documentSnapshot.exists()){
                                                         StringBuilder availability = new StringBuilder(documentSnapshot.getString("TimeSlot"));
-                                                        System.out.println(availability.toString());
                                                         if(availability.charAt(timeSlotPosition)=='0'){
-                                                            System.out.println("ihyvuofufiyoyvoiyv80yj vviyub"+tableNo);
                                                             suitableTable.add(tableNo);
 
 
@@ -514,7 +509,6 @@ public class ReservationFragment extends Fragment {
                     @Override
                     public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
                         String currentDateString="";
-                        System.out.println(dayOfMonth+"hjdhcbdcjkscsddjasdjasdoajd");
 
                         if (String.valueOf(month).length()==2 && String.valueOf(dayOfMonth).length()==2){
                             currentDateString = dayOfMonth+"-"+(month+1)+"-"+year;
@@ -618,7 +612,6 @@ public class ReservationFragment extends Fragment {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 StringBuilder availability = new StringBuilder(value.getString("TimeSlot"));
                 availability.setCharAt(timeSlot,'1');
-                System.out.println(availability);
                 dateDocumentReference.update("TimeSlot",availability.toString());
 
             }

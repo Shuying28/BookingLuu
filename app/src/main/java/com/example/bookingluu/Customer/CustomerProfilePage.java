@@ -212,6 +212,7 @@ public class CustomerProfilePage extends AppCompatActivity {
                 progressDialog.show();
 
             }catch(NullPointerException ex){
+                Toast.makeText(this, "Image not found ", Toast.LENGTH_SHORT).show();
 
             }
         }

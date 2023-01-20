@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,13 +39,20 @@ public class ForgotPasswordPage extends AppCompatActivity {
         });
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+
                 String email=emailText.getText().toString().trim();
+                if(TextUtils.isEmpty(email)){
+                    emailText.setError("Email is required!");
+                    return;
+                }
                 fAuth.sendPasswordResetEmail(email).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
                         Toast.makeText(ForgotPasswordPage.this, "Reset Link Sent to Your Email", Toast.LENGTH_LONG).show();
+                        emailText.setText("");
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

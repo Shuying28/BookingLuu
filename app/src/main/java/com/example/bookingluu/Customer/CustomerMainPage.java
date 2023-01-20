@@ -85,9 +85,9 @@ public class CustomerMainPage extends AppCompatActivity {
                     Boolean close = openTime.after(currentTime)||currentTime.after(closeTime);
                     Boolean open = openTime.before(currentTime)&&currentTime.before(closeTime);
                     Boolean bool3 = openTime.equals(currentTime);
-                    System.out.println("gagaeqgeagearg"+ openTime);
-                    System.out.println("fawaegwergherhqeghqeh"+ currentTime);
-                    System.out.println("fawaegwergherhqeghqeh"+ closeTime);
+//                    System.out.println("gagaeqgeagearg"+ openTime);
+//                    System.out.println("fawaegwergherhqeghqeh"+ currentTime);
+//                    System.out.println("fawaegwergherhqeghqeh"+ closeTime);
                     if(close){
                         operation_status.setText("Now Closed");
                         operation_status.setTextColor(getApplicationContext().getResources().getColor(R.color.decline_colour));
@@ -163,9 +163,6 @@ public class CustomerMainPage extends AppCompatActivity {
                         Toast.makeText(CustomerMainPage.this, "Rate Successful", Toast.LENGTH_SHORT).show();
                         addRatingDialog.dismiss();
 
-
-
-
                     }
                 });
 
@@ -233,7 +230,4 @@ public class CustomerMainPage extends AppCompatActivity {
 
     }
 
-    public String passStr(){
-        return currentVisitRestaurant;
-    }
 }

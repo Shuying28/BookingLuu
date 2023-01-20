@@ -130,7 +130,6 @@ public class ReservationHistoryPage extends AppCompatActivity {
                                     }catch (NullPointerException e){
 
                                     }
-                                    System.out.println("tryrtryreryrtryrtryrtryrtry"+dc.getDocument().toObject(Reservation.class).getRestaurantName());
 
                                 }
 

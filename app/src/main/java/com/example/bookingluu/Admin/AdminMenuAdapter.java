@@ -161,7 +161,6 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                                 @Override
                                 public void onClick(View view) {
                                     Menu menuToBeDelete = menuArrayList.get(selectedPosition);
-                                    System.out.println("uhagweaggqw" + menuToBeDelete.getMenuCode());
                                     menuArrayList.remove(selectedPosition);
                                     fStore.collection("restaurant").document(RESTAURANT_OF_ADMIN).collection("Menu")
                                             .document(menuToBeDelete.getMenuCode()).delete()
@@ -176,6 +175,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                                             .addOnFailureListener(new OnFailureListener() {
                                                 @Override
                                                 public void onFailure(@NonNull Exception e) {
+                                                    Toast.makeText(context, "Menu " + menuToBeDelete.getMenuCode() + " failed to delete", Toast.LENGTH_SHORT).show();
 
                                                 }
                                             });
@@ -270,7 +270,7 @@ public class AdminMenuAdapter extends RecyclerView.Adapter<com.example.bookinglu
                                         }).addOnFailureListener(new OnFailureListener() {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
-
+                                                Toast.makeText(context, "Menu " + code + " Update Failed!", Toast.LENGTH_SHORT).show();
                                             }
                                         });
 

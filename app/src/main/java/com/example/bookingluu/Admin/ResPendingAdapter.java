@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -127,6 +128,7 @@ public class ResPendingAdapter extends RecyclerView.Adapter<ResPendingAdapter.My
                              try{
                                  reservationArrayList.remove(getAdapterPosition());
                              }catch(IndexOutOfBoundsException e){
+                                 Toast.makeText(temp, "Error, please try again", Toast.LENGTH_SHORT).show();
 
                              }
 

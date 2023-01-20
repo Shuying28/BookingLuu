@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -144,9 +145,8 @@ public class ResUpcomingAdapter extends RecyclerView.Adapter<ResUpcomingAdapter.
                             try{
                                 reservationArrayList.remove(getAdapterPosition());
                             }catch(IndexOutOfBoundsException e){
-
+                                Toast.makeText(temp, "Error, please try again", Toast.LENGTH_SHORT).show();
                             }
-                            //Todo : send email to customer
                         }
                     });
                 }

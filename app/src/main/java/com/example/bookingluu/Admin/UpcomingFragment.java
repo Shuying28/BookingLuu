@@ -133,6 +133,7 @@ public class UpcomingFragment extends Fragment {
                                 reservationArrayList.add(reservation);
                             }
                         }catch(NullPointerException e){
+                            Toast.makeText(getContext(), "Error with the reservation.", Toast.LENGTH_SHORT).show();
 
                         }
 

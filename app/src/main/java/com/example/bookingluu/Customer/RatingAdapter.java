@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -44,6 +45,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.MyViewHold
     try{
         holder.ratingBar.setRating(Float.parseFloat(rating.getRate()));
     }catch(NullPointerException e){
+        Toast.makeText(context, "Missing rating value", Toast.LENGTH_SHORT).show();
 
     }
 
