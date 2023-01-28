@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -26,6 +27,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -192,6 +194,7 @@ public class CustomerMainPage extends AppCompatActivity {
         fStore=FirebaseFirestore.getInstance();
         fAuth=FirebaseAuth.getInstance();
         userId=fAuth.getCurrentUser().getUid();
+        ImageView restaurantImage= findViewById(R.id.restaurantImage);
 
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
@@ -212,6 +215,8 @@ public class CustomerMainPage extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 numberOfRating= value.getString("numberOfRating");
                 currentRating=value.getString("currentRating");
+                Picasso.get().load(value.getString("RestaurantImage")).into(restaurantImage);
+
             }
         });
 
